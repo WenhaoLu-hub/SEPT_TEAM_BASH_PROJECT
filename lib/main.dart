@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:team_bash_project/Screens/Welcome/components/body.dart';
 import 'package:team_bash_project/Screens/Welcome/welcome.dart';
+import 'package:team_bash_project/stateful.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,9 +17,8 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'SEPT_Project',
       theme: ThemeData(),
+      // home: MyWidget(),
       home: Welcome(),
     );
   }
 }
-
-
