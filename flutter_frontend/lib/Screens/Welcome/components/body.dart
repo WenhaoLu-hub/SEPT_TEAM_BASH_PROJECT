@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:team_bash_project/Screens/Welcome/components/login.dart';
+import 'package:team_bash_project/Screens/login/login.dart';
 import 'package:team_bash_project/Screens/Welcome/components/roundedButton.dart';
 
 class Body extends StatelessWidget {
@@ -7,24 +7,29 @@ class Body extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const Color buttonColor = Color(0xff277BC0);
     Size deviceSize = MediaQuery.of(context).size;
     return Container(
-      // color: Colors,
+      width: double.infinity,
       child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            const Padding(
-              padding: EdgeInsets.only(bottom: 30),
-              child: Text(
-                'ND Telemedicine',
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
-              ),
+            Image(
+              width: deviceSize.width * 0.5,
+              image: const AssetImage('assets/images/logo.png'),
             ),
-            const Image(
-              image: AssetImage('assets/img/welcome_doctor.png'),
+            const SizedBox(
+              height: 20,
             ),
-            const SizedBox(height: 40),
+            const Text(
+              'ND \n Telemedicine',
+              style: TextStyle(
+                  fontSize: 25,
+                  fontWeight: FontWeight.w400,
+                  fontFamily: 'OpenSans'),
+              textAlign: TextAlign.center,
+            ),
+
+            const SizedBox(height: 70),
             SizedBox(
                 width: deviceSize.width * 0.7,
                 child: RoundedButton(
