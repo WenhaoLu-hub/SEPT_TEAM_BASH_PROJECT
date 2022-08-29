@@ -1,25 +1,30 @@
+// ignore: file_names
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 
 class RoundedButton extends StatelessWidget {
-  const RoundedButton({Key? key}) : super(key: key);
-
+  final String text;
+  final VoidCallback press;
+  // ignore: use_key_in_widget_constructors
+  const RoundedButton({
+    required this.text,
+    required this.press});
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-            style: ButtonStyle(
-              padding: MaterialStateProperty.resolveWith<EdgeInsetsGeometry>(
-                  (Set<MaterialState> states) =>
-                      const EdgeInsets.symmetric(horizontal: 5, vertical: 16)),
-              shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                  RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(29.0),
-              )),
-            ),
-            onPressed: () {},
-            child: const Text('Login'),
-          );
-    
+      style: ButtonStyle(
+        padding: MaterialStateProperty.resolveWith<EdgeInsetsGeometry>(
+            (Set<MaterialState> states) =>
+                const EdgeInsets.symmetric(horizontal: 5, vertical: 16)),
+        shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+            RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(29.0),
+        )),
+      ),
+      onPressed: press,
+      child: Text(
+        text,
+        style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+      ),
+    );
   }
 }
