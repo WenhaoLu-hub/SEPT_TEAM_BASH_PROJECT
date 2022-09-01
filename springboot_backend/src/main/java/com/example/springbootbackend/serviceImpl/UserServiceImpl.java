@@ -11,7 +11,7 @@ import javax.annotation.Resource;
 @Service
 @Transactional
 public class UserServiceImpl implements UserService {
-    @Resource
+    //@Resource
     private UserDao userDao;
     @Override
     public String search(User user) {
