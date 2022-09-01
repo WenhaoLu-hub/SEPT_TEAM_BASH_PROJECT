@@ -1,0 +1,13 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://49.234.121.26:3306/nd_telemedicine_app?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+    username: root
+    password: TencentCloud7
+
+    #??mapper????????
+    mybatis:
+      mapper-locations: mappers/*Mapper.xml
+
+server:
+  port:8080
