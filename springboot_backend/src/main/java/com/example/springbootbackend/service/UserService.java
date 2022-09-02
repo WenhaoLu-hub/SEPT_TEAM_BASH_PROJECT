@@ -8,4 +8,5 @@ public interface UserService {
     public void add(User user);
     public void delete(int id);
     public void change(User user);
+    public void addHealthInformation(User user);
 }

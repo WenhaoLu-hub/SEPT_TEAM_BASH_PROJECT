@@ -32,4 +32,8 @@ userDao.delete(id);
     public void change(User user) {
 userDao.change(user);
     }
+    @Override
+    public void addHealthInformation(User user) {
+        userDao.addHealthInformation(user);
+    }
 }

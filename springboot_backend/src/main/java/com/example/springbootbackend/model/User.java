@@ -8,6 +8,16 @@ public class User {
     int phoneNumber;
     String address;
 
+    public String getHealthInformation() {
+        return healthInformation;
+    }
+
+    public void setHealthInformation(String healthInformation) {
+        this.healthInformation = healthInformation;
+    }
+
+    String healthInformation;
+
     public String getFirstName() {
         return firstName;
     }
@@ -55,4 +65,6 @@ public class User {
     public void setAddress(String address) {
         this.address = address;
     }
+
+
 }
