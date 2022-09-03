@@ -8,6 +8,6 @@ public interface UserService {
     public void add(User user);
     public void delete(int id);
     public void change(User user);
-    public void addHealthStatus(User user);
+    public void addHealthStatus(String status);
 
 }

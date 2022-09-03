@@ -36,8 +36,8 @@ userMapper.change(user);
     }
 
     @Override
-    public void addHealthStatus(User user) {
-        userMapper.add(user);
+    public void addHealthStatus(String status) {
+        userMapper.addHealthStatus(status);
     }
 
 

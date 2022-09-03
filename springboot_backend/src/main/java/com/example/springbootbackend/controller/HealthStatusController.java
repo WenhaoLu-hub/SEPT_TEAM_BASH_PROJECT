@@ -12,8 +12,8 @@ public class HealthStatusController {
     @Resource
     private UserService userService;
     @PostMapping("/healthStatus")
-    public void add(@RequestBody User user){
-        userService.add(user);
+    public void addHealthStatus(@RequestBody String status){
+        userService.addHealthStatus(status);
     }
 
 }
