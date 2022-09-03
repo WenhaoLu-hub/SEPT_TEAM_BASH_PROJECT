@@ -46,7 +46,7 @@
 		</data>
 		<key>Frameworks/App.framework/App</key>
 		<data>
-		HlNLAG9HcQQrzWMCEd3FX57wOu0=
+		PITAsPv0QmOrD7/chMRK48IAbuw=
 		</data>
 		<key>Frameworks/App.framework/Info.plist</key>
 		<data>
@@ -54,21 +54,49 @@
 		</data>
 		<key>Frameworks/App.framework/_CodeSignature/CodeResources</key>
 		<data>
-		kD5MD3qOvCeUPi+pY6oZ9faw830=
+		Qpa1TkozCbEv5LfeH40LC7b8WeU=
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/AssetManifest.json</key>
 		<data>
-		i3DlCzQ6vK4EA4DXBS4q/OE5yUM=
+		qZJP3pKWphkM7fCp7f76dwljfZs=
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/FontManifest.json</key>
 		<data>
-		vKJkVIcw+LGHFnKJGwrQwCREv68=
+		cBVSh/CMjuve9odwD6XfB3JISN4=
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/NOTICES.Z</key>
 		<data>
 		yPRPK9s3eT0hqZSKdBKsg7Px1RU=
 		</data>
-		<key>Frameworks/App.framework/flutter_assets/assets/img/welcome_doctor.png</key>
+		<key>Frameworks/App.framework/flutter_assets/assets/fonts/OpenSans-Bold.ttf</key>
+		<data>
+		CtUzxwL5rB3nFwYwQEJoWGYs+8w=
+		</data>
+		<key>Frameworks/App.framework/flutter_assets/assets/fonts/OpenSans-Regular.ttf</key>
+		<data>
+		3JwHMDojkvnuAv22NoFJcHU6yUo=
+		</data>
+		<key>Frameworks/App.framework/flutter_assets/assets/fonts/Quicksand-Bold.ttf</key>
+		<data>
+		cLrsqUM1/KE6rdVBCrK2eOFqmJc=
+		</data>
+		<key>Frameworks/App.framework/flutter_assets/assets/fonts/Quicksand-Light.ttf</key>
+		<data>
+		uDrAJLJj6hxRuAJSVIS8Cpr1jb8=
+		</data>
+		<key>Frameworks/App.framework/flutter_assets/assets/fonts/Quicksand-Medium.ttf</key>
+		<data>
+		wKu5nEvwZ8D+t8Ujk+0Mz2Xtpkk=
+		</data>
+		<key>Frameworks/App.framework/flutter_assets/assets/fonts/Quicksand-Regular.ttf</key>
+		<data>
+		dzAJMFt2d20TqMUlMweXvNBaMMg=
+		</data>
+		<key>Frameworks/App.framework/flutter_assets/assets/images/logo.png</key>
+		<data>
+		TSPJNTm6Pru0Y1hwlIx5C4j+R6A=
+		</data>
+		<key>Frameworks/App.framework/flutter_assets/assets/images/welcome_doctor.png</key>
 		<data>
 		PepHzSfEUk5LMf8owJbfGLvbgJk=
 		</data>
@@ -82,7 +110,7 @@
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/kernel_blob.bin</key>
 		<data>
-		WvOlo4sq3lxBIxwwkRDipN3WUEk=
+		tABwLkvdV1d2h71AqBO/Aglz8Z4=
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/packages/cupertino_icons/assets/CupertinoIcons.ttf</key>
 		<data>
@@ -261,7 +289,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			wiluXJ50W/ve/g8LqRP9dQPHQzmreJZ/gWcvdtZn5G4=
+			IZrFTeTPaRWkyCAITfDioBZIxlXokQKtJ/Bqqf5Au7E=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/Info.plist</key>
@@ -275,21 +303,21 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			gyyQhhDM0/kBqrmyMeUcOUMxitHvxn82vBBZ2j35j9M=
+			8N3Q+OKi0MXtcpPjfSZopYNOfk6W8UzsWvIqC+FkhIE=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/flutter_assets/AssetManifest.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			cZ1ux+UWyulFjpCZmS3AEdS3stEQQpazWeDpcXwd74Q=
+			Z/kRTSNQzIRIIiysGP+5PzPG7napK7eh4pZ8TpB1VLE=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/flutter_assets/FontManifest.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			zX4DZFvESy3Ue3y2JvUcTsv1Whl6t3JBYotHrBZfviE=
+			UPE8SKahZJPQupUCMHYcSy4UA78Kl/o5URxjiuOnxaw=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/flutter_assets/NOTICES.Z</key>
@@ -299,7 +327,56 @@
 			NLLiO4nS/jfHpuQ+V00ybcvMd8iFJHBuoHu69YL3Rw0=
 			</data>
 		</dict>
-		<key>Frameworks/App.framework/flutter_assets/assets/img/welcome_doctor.png</key>
+		<key>Frameworks/App.framework/flutter_assets/assets/fonts/OpenSans-Bold.ttf</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			p6QbBJaUVN++Ygv7x2mWR7KBnXaDdLPw+QpxSg2AsZk=
+			</data>
+		</dict>
+		<key>Frameworks/App.framework/flutter_assets/assets/fonts/OpenSans-Regular.ttf</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			NK1nz8NiQD47qr5K0PTvC0traOLyUt1wO7seEBmBiOI=
+			</data>
+		</dict>
+		<key>Frameworks/App.framework/flutter_assets/assets/fonts/Quicksand-Bold.ttf</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			49gkjnO69klwM87inSG8UaNMp4550HyvyE36VQZzC0Y=
+			</data>
+		</dict>
+		<key>Frameworks/App.framework/flutter_assets/assets/fonts/Quicksand-Light.ttf</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			bMu0W+X7pFvnGkQvJqYWfCAKQ7vU+GI3hK+2Op5E1uo=
+			</data>
+		</dict>
+		<key>Frameworks/App.framework/flutter_assets/assets/fonts/Quicksand-Medium.ttf</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			Z6iOcBBU5bjJ8YVl04nfzkhpKfPSV5YGr8StBfPdo74=
+			</data>
+		</dict>
+		<key>Frameworks/App.framework/flutter_assets/assets/fonts/Quicksand-Regular.ttf</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			5iKu9xpi/euXqh2OZzipHV9mBpPDovY/EyzwFYZ42Uc=
+			</data>
+		</dict>
+		<key>Frameworks/App.framework/flutter_assets/assets/images/logo.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			JMUigxy7OCRsLSRb06HfwGgWkXy+Fc5FoNT0RG2OJUc=
+			</data>
+		</dict>
+		<key>Frameworks/App.framework/flutter_assets/assets/images/welcome_doctor.png</key>
 		<dict>
 			<key>hash2</key>
 			<data>
@@ -324,7 +401,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			SluJB8om2rH8OlYFombmVdjvTe3B5p/CVwcwXWDjARE=
+			sX1QU6qZt5CtD1ssSri5rTCC6eUm/BE9eTZ9Pq/yYmE=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/flutter_assets/packages/cupertino_icons/assets/CupertinoIcons.ttf</key>
