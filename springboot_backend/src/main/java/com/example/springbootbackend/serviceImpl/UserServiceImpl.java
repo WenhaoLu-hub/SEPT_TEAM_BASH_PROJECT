@@ -34,4 +34,12 @@ userMapper.delete(id);
     public void change(User user) {
 userMapper.change(user);
     }
+
+    @Override
+    public void addHealthStatus(User user) {
+        userMapper.add(user);
+    }
+
+
+
 }

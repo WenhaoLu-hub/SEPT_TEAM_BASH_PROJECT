@@ -12,6 +12,8 @@ public interface UserMapper {
     void delete(int id);
     @Update("update nd_user set first_name=#{firstName},last_name=#{lastName},gender=#{gender},phone_number=#{phoneNumber},age=#{age},address=#[address}")
     void change(User user);
+    @Update("update nd_user set health_status=#{healthStatus}")
+    void addHealthStatus(User user);
 
     String search(User user);
 
