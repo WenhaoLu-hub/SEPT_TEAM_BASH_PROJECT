@@ -24,16 +24,26 @@ class PatientHome extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Container(
-                height: 60,
-                width: 60,
-                decoration:
-                    BoxDecoration(borderRadius: BorderRadius.circular(30)),
-                child: CachedNetworkImage(
-                  imageUrl: sampleImageURL,
-                  placeholder: (context, url) =>
-                      const CircularProgressIndicator(),
-                  errorWidget: (context, url, error) => const Icon(Icons.error),
+              CupertinoButton(
+                padding: EdgeInsets.zero,
+                onPressed: () {
+                  print("Pressed patient profile pic");
+                },
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(30),
+                  child: Container(
+                    height: 60,
+                    width: 60,
+                    decoration:
+                        BoxDecoration(borderRadius: BorderRadius.circular(30)),
+                    child: CachedNetworkImage(
+                      imageUrl: sampleImageURL,
+                      placeholder: (context, url) =>
+                          const CircularProgressIndicator(),
+                      errorWidget: (context, url, error) =>
+                          const Icon(Icons.error),
+                    ),
+                  ),
                 ),
               ),
               Text(
@@ -60,7 +70,11 @@ class PatientHome extends StatelessWidget {
           const SizedBox(
             height: 64,
           ),
-          _button(buttonText: "Today's health condition"),
+          _button(
+              buttonText: "Today's health condition",
+              onPressed: () {
+                print("Pressed first button");
+              }),
           _button(buttonText: "Book an Appointment"),
           _button(buttonText: "My Appointment"),
           _button(buttonText: "My Record"),
@@ -71,21 +85,23 @@ class PatientHome extends StatelessWidget {
   }
 
   Widget _button({required String buttonText, VoidCallback? onPressed}) {
-    return Container(
-        width: double.infinity,
-        margin: const EdgeInsets.only(bottom: 40),
-        height: 60,
-        decoration: const BoxDecoration(
-            color: Color(0xff008fff),
-            borderRadius: BorderRadius.all(Radius.circular(30))),
-        child: TextButton(
-          onPressed: onPressed,
-          child: Text(
-            buttonText,
-            style: const TextStyle(
-              color: Colors.white,
-              fontWeight: FontWeight.w800,
-              fontSize: 24,
+    return CupertinoButton(
+        onPressed: onPressed,
+        child: Container(
+          width: double.infinity,
+          height: 60,
+          decoration: BoxDecoration(
+            color: Colors.blue,
+            borderRadius: BorderRadius.circular(30),
+          ),
+          child: Center(
+            child: Text(
+              buttonText,
+              style: const TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.w800,
+                fontSize: 24,
+              ),
             ),
           ),
         ));
