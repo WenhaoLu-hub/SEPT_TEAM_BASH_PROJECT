@@ -9,6 +9,16 @@ public class User {
     String address;
     Long id;
 
+    public String getHealthStatus() {
+        return healthStatus;
+    }
+
+    public void setHealthStatus(String healthStatus) {
+        this.healthStatus = healthStatus;
+    }
+
+    String healthStatus;
+
     public Long getId() {
         return id;
     }
