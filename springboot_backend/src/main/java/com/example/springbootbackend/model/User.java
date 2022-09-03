@@ -8,6 +8,8 @@ public class User {
     int phoneNumber;
     String address;
 
+    String healthInformation;
+
     public String getHealthInformation() {
         return healthInformation;
     }
@@ -16,7 +18,6 @@ public class User {
         this.healthInformation = healthInformation;
     }
 
-    String healthInformation;
 
     public String getFirstName() {
         return firstName;

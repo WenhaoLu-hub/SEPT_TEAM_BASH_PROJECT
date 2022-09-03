@@ -33,9 +33,4 @@ public class UserController {
         return userService.search(user);
     }
 
-    @PostMapping("/healthInformation")
-    public void addHealthInformation(@RequestBody User user){
-        userService.addHealthInformation(user);
-    }
-
 }

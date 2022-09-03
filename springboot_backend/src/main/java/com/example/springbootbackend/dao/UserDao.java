@@ -8,6 +8,5 @@ public interface UserDao {
     void delete(int id);
     void change(User user);
     String search(User user);
-    void addHealthInformation(User user);
 
 }
