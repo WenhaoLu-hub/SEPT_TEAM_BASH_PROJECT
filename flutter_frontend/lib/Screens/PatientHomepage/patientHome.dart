@@ -24,9 +24,11 @@ class PatientHome extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              SizedBox(
+              Container(
                 height: 60,
                 width: 60,
+                decoration:
+                    BoxDecoration(borderRadius: BorderRadius.circular(30)),
                 child: CachedNetworkImage(
                   imageUrl: sampleImageURL,
                   placeholder: (context, url) =>
