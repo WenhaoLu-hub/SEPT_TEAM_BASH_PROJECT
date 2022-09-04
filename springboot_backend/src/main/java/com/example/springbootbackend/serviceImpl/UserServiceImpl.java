@@ -40,6 +40,4 @@ userMapper.change(user);
         userMapper.addHealthStatus(status);
     }
 
-
-
 }
