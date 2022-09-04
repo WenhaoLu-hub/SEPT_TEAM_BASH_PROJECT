@@ -11,44 +11,48 @@ class Login extends StatelessWidget {
     Size size = MediaQuery.of(context).size;
 
     return Scaffold(
-        body: SizedBox(width: double.infinity,
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 30, ),
-          child: Column(
-      // mainAxisAlignment: MainAxisAlignment.,
-      children: [
-        const SizedBox(
-          height: 80,
+        body: SizedBox(
+      width: double.infinity,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(
+          horizontal: 30,
         ),
-        _logo(context),
-        const SizedBox(
-          height: 50,
+        child: Column(
+          // mainAxisAlignment: MainAxisAlignment.,
+          children: [
+            const SizedBox(
+              height: 80,
+            ),
+            _logo(context),
+            const SizedBox(
+              height: 50,
+            ),
+            _loginLabel(),
+            const SizedBox(
+              height: 100,
+            ),
+            _labelTextInput("username", "your username", false),
+            const SizedBox(
+              height: 50,
+            ),
+            _labelTextInput("Password", "your password", true),
+            const SizedBox(
+              height: 50,
+            ),
+            _loginBtn(),
+            const SizedBox(
+              height: 80,
+            ),
+            _signUpLabel(
+                "Dont's have an account yet?", const Color(0xff909090)),
+            const SizedBox(
+              height: 10,
+            ),
+            _signUpLabel("Sign Up", const Color(0xff164276)),
+          ],
         ),
-        _loginLabel(),
-        const SizedBox(
-          height: 100,
-        ),
-        _labelTextInput("username", "your username", false),
-        const SizedBox(
-          height: 50,
-        ),
-        _labelTextInput("Password", "your password", true),
-        const SizedBox(
-          height: 50,
-        ),
-        _loginBtn(),
-        const SizedBox(
-          height: 80,
-        ),
-        _signUpLabel("Dont's have an account yet?",const Color(0xff909090)),
-        const SizedBox(
-          height: 10,
-        ),
-        _signUpLabel("Sign Up",const Color(0xff164276)),
-      ],
-    ),
-        ),)
-    );
+      ),
+    ));
   }
 }
 
@@ -93,7 +97,7 @@ Widget _labelTextInput(String label, String hintText, bool isPassword) {
         label,
         style: GoogleFonts.josefinSans(
             textStyle: const TextStyle(
-                color: Color(0xff8fa1b6),
+                color: Color(0xff293462),
                 fontWeight: FontWeight.w600,
                 fontSize: 20)),
       ),
