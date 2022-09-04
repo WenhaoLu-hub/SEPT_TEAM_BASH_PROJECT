@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:team_bash_project/Screens/login/login.dart';
-import 'package:team_bash_project/Screens/Welcome/components/roundedButton.dart';
 import 'package:team_bash_project/Screens/signup/signup.dart';
+
+import '../components/roundedButton.dart';
 
 class Body extends StatelessWidget {
   const Body({Key? key}) : super(key: key);
@@ -40,7 +41,7 @@ class Body extends StatelessWidget {
                       context,
                       MaterialPageRoute(
                         builder: (context) {
-                          return const Login();
+                          return  Login(showRegisterPage: () {  },);
                         },
                       ),
                     );
@@ -56,7 +57,7 @@ class Body extends StatelessWidget {
                     context,
                     MaterialPageRoute(
                       builder: (context) {
-                        return const SignUp();
+                        return SignUp(showLoginPage: () {  },);
                       },
                     ),
                   );

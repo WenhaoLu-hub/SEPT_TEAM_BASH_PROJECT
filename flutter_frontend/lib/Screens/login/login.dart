@@ -3,8 +3,11 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../components/textFieldContainer.dart';
+
 class Login extends StatelessWidget {
-  const Login({Key? key}) : super(key: key);
+  final VoidCallback showRegisterPage;
+  const Login({Key? key, required this.showRegisterPage}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -30,24 +33,35 @@ class Login extends StatelessWidget {
             const SizedBox(
               height: 100,
             ),
-            _labelTextInput("username", "your username", false),
+            const TextFieldContainer(
+              title: "username",
+              hintText: "your username",
+              isPassword: true,
+            ),
             const SizedBox(
               height: 50,
             ),
-            _labelTextInput("Password", "your password", true),
+            // _labelTextInput("Password", "your password", true),
+            // const TextFieldContainer(child: TextField(),),
+            const TextFieldContainer(
+              title: "Password",
+              hintText: "your password",
+              isPassword: true,
+            ),
             const SizedBox(
               height: 50,
             ),
             _loginBtn(),
-            const SizedBox(
-              height: 80,
-            ),
+            // const SizedBox(
+            //   height: 80,
+            // ),
             _signUpLabel(
                 "Dont's have an account yet?", const Color(0xff909090)),
             const SizedBox(
               height: 10,
             ),
             _signUpLabel("Sign Up", const Color(0xff164276)),
+            const TextButton(onPressed: null, child: Text("data")),
           ],
         ),
       ),
@@ -145,22 +159,4 @@ Widget _logo(BuildContext context) {
       ),
     ),
   );
-}
-
-class TextFieldContainer extends StatelessWidget {
-  final Widget child;
-  // ignore: use_key_in_widget_constructors
-  const TextFieldContainer({
-    required this.child,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
-    return Container(
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
-        width: size.width * 0.8,
-        decoration: BoxDecoration(borderRadius: BorderRadius.circular(29)),
-        child: child);
-  }
 }
