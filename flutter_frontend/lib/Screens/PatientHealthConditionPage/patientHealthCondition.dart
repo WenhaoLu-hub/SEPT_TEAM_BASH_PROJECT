@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:team_bash_project/Widgets/BlackBorderButton.dart';
 
 class PatientHealthCondition extends StatefulWidget {
   const PatientHealthCondition({Key? key}) : super(key: key);
@@ -58,35 +59,35 @@ class _PatientHealthConditionState extends State<PatientHealthCondition> {
     );
   }
 
-  Widget blackBorderButton({
-    required String buttonText,
-    required VoidCallback? onPressed,
-    double? width,
-    double? height,
-    EdgeInsets? padding = EdgeInsets.zero,
-  }) {
-    return CupertinoButton(
-        padding: EdgeInsets.zero,
-        onPressed: onPressed,
-        child: Container(
-          alignment: Alignment.center,
-          margin: padding,
-          width: width ?? double.infinity,
-          height: height ?? 60,
-          decoration: BoxDecoration(
-            color: Colors.white,
-            border: Border.all(color: Colors.black, width: 2),
-          ),
-          child: Text(
-            buttonText,
-            style: const TextStyle(
-              color: Colors.black,
-              fontWeight: FontWeight.w800,
-              fontSize: 24,
-            ),
-          ),
-        ));
-  }
+  // Widget blackBorderButton({
+  //   required String buttonText,
+  //   required VoidCallback? onPressed,
+  //   double? width,
+  //   double? height,
+  //   EdgeInsets? padding = EdgeInsets.zero,
+  // }) {
+  //   return CupertinoButton(
+  //       padding: EdgeInsets.zero,
+  //       onPressed: onPressed,
+  //       child: Container(
+  //         alignment: Alignment.center,
+  //         margin: padding,
+  //         width: width ?? double.infinity,
+  //         height: height ?? 60,
+  //         decoration: BoxDecoration(
+  //           color: Colors.white,
+  //           border: Border.all(color: Colors.black, width: 2),
+  //         ),
+  //         child: Text(
+  //           buttonText,
+  //           style: const TextStyle(
+  //             color: Colors.black,
+  //             fontWeight: FontWeight.w800,
+  //             fontSize: 24,
+  //           ),
+  //         ),
+  //       ));
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -156,7 +157,7 @@ class _PatientHealthConditionState extends State<PatientHealthCondition> {
             const SizedBox(
               height: 60,
             ),
-            blackBorderButton(
+            BlackBorderButton(
                 buttonText: "Confirm",
                 onPressed: () {
                   confirmedConditions.clear();
