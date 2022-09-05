@@ -41,7 +41,7 @@ class Body extends StatelessWidget {
                       context,
                       MaterialPageRoute(
                         builder: (context) {
-                          return  Login(showRegisterPage: () {  },);
+                          return  const Login();
                         },
                       ),
                     );
