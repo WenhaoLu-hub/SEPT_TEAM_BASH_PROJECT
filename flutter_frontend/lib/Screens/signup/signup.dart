@@ -39,14 +39,14 @@ class SignUp extends StatelessWidget {
                 height: 60,
               ),
               const TextFieldContainer(
-                title: "username",
+                title: "Username",
                 hintText: "your username",
                 isPassword: false,
               ),
               const SizedBox(
                 height: 30,
               ),
-              DropDownButtonSelector(),
+              const DropDownButtonSelector(),
               const SizedBox(
                 height: 30,
               ),
@@ -66,7 +66,7 @@ class SignUp extends StatelessWidget {
               const SizedBox(
                 height: 50,
               ),
-              _loginBtn(),
+              _confirmBtn(),
               const SizedBox(
                 height: 50,
               ),
@@ -101,7 +101,7 @@ class DropDownButtonSelector extends StatefulWidget {
 }
 
 class _DropDownButtonState extends State<DropDownButtonSelector> {
-  String dropdownValue = list.first;
+  String? _dropdownValue;
 
   @override
   Widget build(BuildContext context) {
@@ -119,10 +119,18 @@ class _DropDownButtonState extends State<DropDownButtonSelector> {
         Container(
           width: double.infinity,
           child: DropdownButton(
-            value: dropdownValue,
+            isExpanded: true,
+            hint: const Text("Choose your account type"),
+            value: _dropdownValue,
             //  icon: const Icon(Icons.arrow_downward),
-            elevation: 16,
-            style: const TextStyle(color: Colors.deepPurple),
+            // elevation: 16,
+            style: GoogleFonts.josefinSans(
+                textStyle: const TextStyle(
+                  color: Colors.black,
+                  fontWeight: FontWeight.w400,
+                  fontSize: 20,
+                ),
+              ),
             underline: Container(
               height: 1,
               color: const Color(0xffdfe8f3),
@@ -135,7 +143,7 @@ class _DropDownButtonState extends State<DropDownButtonSelector> {
                 .toList(),
             onChanged: (String? value) {
               setState(() {
-                dropdownValue = value!;
+                _dropdownValue = value!;
               });
             },
           ),
@@ -158,7 +166,7 @@ Widget _signUpLabel(String label, Color textColor) {
   );
 }
 
-Widget _loginBtn() {
+Widget _confirmBtn() {
   return Container(
       width: double.infinity,
       height: 60,
@@ -168,7 +176,7 @@ Widget _loginBtn() {
       child: const TextButton(
         onPressed: null,
         child: Text(
-          "Login",
+          "Submit",
           style: TextStyle(
             color: Colors.white,
             fontWeight: FontWeight.w800,
