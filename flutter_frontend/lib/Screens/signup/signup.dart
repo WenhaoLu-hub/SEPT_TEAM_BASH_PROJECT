@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class SignUp extends StatelessWidget {
-  final VoidCallback showLoginPage;
-  const SignUp({Key? key, required this.showLoginPage}) : super(key: key);
+  const SignUp({Key? key,}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -44,13 +43,11 @@ class SignUp extends StatelessWidget {
             const SizedBox(
               height: 80,
             ),
-            GestureDetector(
-                onTap: showLoginPage,
-                child: _signUpLabel("Log in", const Color(0xff164276))),
-          ],
-        ),
-      ),
-    ));
+           _signUpLabel("Log in", const Color(0xff164276)),
+          
+          ]
+      
+    ),),),);
   }
 }
 

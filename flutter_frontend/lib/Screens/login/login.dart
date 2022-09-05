@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:team_bash_project/Screens/signup/signup.dart';
 
 import '../components/textFieldContainer.dart';
 
@@ -36,10 +37,10 @@ class Login extends StatelessWidget {
             const TextFieldContainer(
               title: "username",
               hintText: "your username",
-              isPassword: true,
+              isPassword: false,
             ),
             const SizedBox(
-              height: 50,
+              height: 30,
             ),
             // _labelTextInput("Password", "your password", true),
             // const TextFieldContainer(child: TextField(),),
@@ -49,24 +50,62 @@ class Login extends StatelessWidget {
               isPassword: true,
             ),
             const SizedBox(
-              height: 50,
+              height: 60,
             ),
             _loginBtn(),
-            // const SizedBox(
-            //   height: 80,
-            // ),
+            const SizedBox(
+              height: 50,
+            ),
             _signUpLabel(
                 "Dont's have an account yet?", const Color(0xff909090)),
-            const SizedBox(
-              height: 10,
+            // const SizedBox(
+            //   height: 10,
+            // ),
+            // _signUpLabel("Sign Up", const Color(0xff164276)),
+            // _signUpButton(),
+            CustomizedTextButton(
+              label: "Sign Up Now",
+              fontSize: 18,
+              fontWeight: FontWeight.w800,
+              press: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => const SignUp(),
+                  ),
+                );
+              },
+              color: const Color(0xff164276),
             ),
-            _signUpLabel("Sign Up", const Color(0xff164276)),
-            const TextButton(onPressed: null, child: Text("data")),
+            // TextButton(
+            //   onPressed: null,
+            //   child: Text(
+            //     "Sign Up Now",
+            //     style: GoogleFonts.josefinSans(
+            //       color: const Color(0xff164276),
+            //       fontWeight: FontWeight.w800,
+            //       fontSize: 16,
+            //     ),
+            //   ),
+            // ),
           ],
         ),
       ),
     ));
   }
+}
+
+Widget _TextButton(String label, Color textColor, FontWeight fontweight) {
+  return TextButton(
+    onPressed: null,
+    child: Text(
+      "Sign Up Now",
+      style: GoogleFonts.josefinSans(
+        color: const Color(0xff164276),
+        fontWeight: FontWeight.w800,
+        fontSize: 16,
+      ),
+    ),
+  );
 }
 
 Widget _signUpLabel(String label, Color textColor) {
@@ -100,6 +139,36 @@ Widget _loginBtn() {
           ),
         ),
       ));
+}
+
+class CustomizedTextButton extends StatelessWidget {
+  final String label;
+  final Color color;
+  final FontWeight fontWeight;
+  final VoidCallback press;
+  final double fontSize;
+
+  const CustomizedTextButton(
+      {super.key,
+      required this.label,
+      required this.press,
+      required this.color,
+      required this.fontWeight,
+      required this.fontSize});
+  @override
+  Widget build(BuildContext context) {
+    return TextButton(
+      onPressed: press,
+      child: Text(
+        label,
+        style: GoogleFonts.josefinSans(
+          color: color,
+          fontWeight: fontWeight,
+          fontSize: fontSize,
+        ),
+      ),
+    );
+  }
 }
 
 Widget _labelTextInput(String label, String hintText, bool isPassword) {
