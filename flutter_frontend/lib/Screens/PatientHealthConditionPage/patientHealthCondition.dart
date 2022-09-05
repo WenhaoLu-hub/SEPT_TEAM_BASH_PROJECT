@@ -12,9 +12,12 @@ class PatientHealthCondition extends StatefulWidget {
 class _PatientHealthConditionState extends State<PatientHealthCondition> {
   bool isFeverPressed = false;
   List<String> _selectedConditions = [];
+  List<String> confirmedConditions = [];
 
   static const sampleImageURL =
       "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Lion_d%27Afrique.jpg/1879px-Lion_d%27Afrique.jpg";
+
+  final TextEditingController _othersController = TextEditingController();
 
   Widget healthConditionRow(String condition) {
     bool isSelected = _selectedConditions.contains(condition);
@@ -53,6 +56,36 @@ class _PatientHealthConditionState extends State<PatientHealthCondition> {
         ],
       ),
     );
+  }
+
+  Widget blackBorderButton({
+    required String buttonText,
+    required VoidCallback? onPressed,
+    double? width,
+    double? height,
+    EdgeInsets? padding = EdgeInsets.zero,
+  }) {
+    return CupertinoButton(
+        padding: EdgeInsets.zero,
+        onPressed: onPressed,
+        child: Container(
+          alignment: Alignment.center,
+          margin: padding,
+          width: width ?? double.infinity,
+          height: height ?? 60,
+          decoration: BoxDecoration(
+            color: Colors.white,
+            border: Border.all(color: Colors.black, width: 2),
+          ),
+          child: Text(
+            buttonText,
+            style: const TextStyle(
+              color: Colors.black,
+              fontWeight: FontWeight.w800,
+              fontSize: 24,
+            ),
+          ),
+        ));
   }
 
   @override
@@ -94,6 +127,48 @@ class _PatientHealthConditionState extends State<PatientHealthCondition> {
             healthConditionRow("Tiredness"),
             healthConditionRow("Sore throat"),
             healthConditionRow("Chest pain"),
+            Container(
+              width: 300,
+              color: Colors.white,
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  const SizedBox(
+                    width: 80,
+                    child: Text("Others:"),
+                  ),
+                  Expanded(
+                    child: TextField(
+                      controller: _othersController,
+                      decoration: const InputDecoration(
+                        border: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.black, width: 2),
+                        ),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(
+                    width: 12,
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(
+              height: 60,
+            ),
+            blackBorderButton(
+                buttonText: "Confirm",
+                onPressed: () {
+                  confirmedConditions.clear();
+                  confirmedConditions.addAll(_selectedConditions);
+                  if (_othersController.text.isNotEmpty) {
+                    confirmedConditions.add(_othersController.text);
+                  }
+
+                  print(confirmedConditions);
+                },
+                width: 150,
+                height: 50),
             const SizedBox(
               height: 120,
             ),
