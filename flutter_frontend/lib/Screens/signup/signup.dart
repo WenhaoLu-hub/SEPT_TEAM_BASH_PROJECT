@@ -7,8 +7,12 @@ import 'package:team_bash_project/Screens/login/login.dart';
 import '../components/customizedTextButton.dart';
 import '../components/textFieldContainer.dart';
 
+var list = <String>["Doctor", "Patient"];
+
 class SignUp extends StatelessWidget {
   const SignUp({Key? key}) : super(key: key);
+  // String valueChoose;
+  // List listitem = ["doctor","patient"];
 
   @override
   Widget build(BuildContext context) {
@@ -42,6 +46,10 @@ class SignUp extends StatelessWidget {
               const SizedBox(
                 height: 30,
               ),
+              DropDownButtonSelector(),
+              const SizedBox(
+                height: 30,
+              ),
               const TextFieldContainer(
                 title: "Password",
                 hintText: "Password",
@@ -62,8 +70,7 @@ class SignUp extends StatelessWidget {
               const SizedBox(
                 height: 50,
               ),
-              _signUpLabel(
-                  "Already have an account?", const Color(0xff909090)),
+              _signUpLabel("Already have an account?", const Color(0xff909090)),
               CustomizedTextButton(
                 label: "Login Now",
                 fontSize: 18,
@@ -82,6 +89,59 @@ class SignUp extends StatelessWidget {
         ),
       ),
     ));
+  }
+}
+
+class DropDownButtonSelector extends StatefulWidget {
+  const DropDownButtonSelector({Key? key}) : super(key: key);
+  @override
+  State<StatefulWidget> createState() {
+    return _DropDownButtonState();
+  }
+}
+
+class _DropDownButtonState extends State<DropDownButtonSelector> {
+  String dropdownValue = list.first;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          "Account Type",
+          style: GoogleFonts.josefinSans(
+              textStyle: const TextStyle(
+                  color: Color(0xff293462),
+                  fontWeight: FontWeight.w600,
+                  fontSize: 20)),
+        ),
+        Container(
+          width: double.infinity,
+          child: DropdownButton(
+            value: dropdownValue,
+            //  icon: const Icon(Icons.arrow_downward),
+            elevation: 16,
+            style: const TextStyle(color: Colors.deepPurple),
+            underline: Container(
+              height: 1,
+              color: const Color(0xffdfe8f3),
+            ),
+            items: list
+                .map((value) => DropdownMenuItem(
+                      value: value,
+                      child: Text(value),
+                    ))
+                .toList(),
+            onChanged: (String? value) {
+              setState(() {
+                dropdownValue = value!;
+              });
+            },
+          ),
+        ),
+      ],
+    );
   }
 }
 
