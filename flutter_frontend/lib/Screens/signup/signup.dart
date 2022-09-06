@@ -6,9 +6,9 @@ import 'package:team_bash_project/Screens/login/login.dart';
 
 import '../components/customizedTextButton.dart';
 import '../components/textFieldContainer.dart';
+import 'formPage.dart';
 
 //fake data
-var list = <String>["Doctor", "Patient"];
 
 class SignUp extends StatelessWidget {
   const SignUp({Key? key}) : super(key: key);
@@ -37,37 +37,13 @@ class SignUp extends StatelessWidget {
               ),
               _loginLabel(),
               const SizedBox(
-                height: 60,
-              ),
-              const TextFieldContainer(
-                title: "Username",
-                hintText: "your username",
-                isPassword: false,
-              ),
-              const SizedBox(
                 height: 30,
               ),
-              const DropDownButtonSelector(),
-              const SizedBox(
-                height: 30,
+              SignUpFormPage(
+                onSubmit: (List value) {
+                  print(value.length);
+                },
               ),
-              const TextFieldContainer(
-                title: "Password",
-                hintText: "Password",
-                isPassword: true,
-              ),
-              const SizedBox(
-                height: 30,
-              ),
-              const TextFieldContainer(
-                title: "Confirm Password",
-                hintText: "Confirm Password",
-                isPassword: true,
-              ),
-              const SizedBox(
-                height: 50,
-              ),
-              _confirmBtn(),
               const SizedBox(
                 height: 50,
               ),
@@ -90,67 +66,6 @@ class SignUp extends StatelessWidget {
         ),
       ),
     ));
-  }
-}
-
-class DropDownButtonSelector extends StatefulWidget {
-  const DropDownButtonSelector({Key? key}) : super(key: key);
-  @override
-  State<StatefulWidget> createState() {
-    return _DropDownButtonState();
-  }
-}
-
-class _DropDownButtonState extends State<DropDownButtonSelector> {
-  String? _dropdownValue;
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          "Account Type",
-          style: GoogleFonts.josefinSans(
-              textStyle: const TextStyle(
-                  color: Color(0xff293462),
-                  fontWeight: FontWeight.w600,
-                  fontSize: 20)),
-        ),
-        Container(
-          width: double.infinity,
-          child: DropdownButton(
-            isExpanded: true,
-            hint: const Text("Choose your account type"),
-            value: _dropdownValue,
-            //  icon: const Icon(Icons.arrow_downward),
-            // elevation: 16,
-            style: GoogleFonts.josefinSans(
-                textStyle: const TextStyle(
-                  color: Colors.black,
-                  fontWeight: FontWeight.w400,
-                  fontSize: 20,
-                ),
-              ),
-            underline: Container(
-              height: 1,
-              color: const Color(0xffdfe8f3),
-            ),
-            items: list
-                .map((value) => DropdownMenuItem(
-                      value: value,
-                      child: Text(value),
-                    ))
-                .toList(),
-            onChanged: (String? value) {
-              setState(() {
-                _dropdownValue = value!;
-              });
-            },
-          ),
-        ),
-      ],
-    );
   }
 }
 

@@ -11,8 +11,10 @@ class TextSubmitWidget extends StatefulWidget {
 
 class _TextSubmitWidgetState extends State<TextSubmitWidget> {
   final _usernameController = TextEditingController();
+  bool _submitted = false;
 
   void _submit() {
+    setState(() => _submitted = true);
     // if there is no error text
     if (_errorText == null) {
       // notify the parent widget via the onSubmit callback
@@ -67,7 +69,7 @@ class _TextSubmitWidgetState extends State<TextSubmitWidget> {
                 cursorColor: const Color.fromARGB(255, 100, 94, 94),
                 decoration: InputDecoration(
                     hintText: "yourname",
-                    errorText: _errorText,
+                    errorText: _submitted ? _errorText : null,
                     hintStyle: GoogleFonts.josefinSans(
                       textStyle: const TextStyle(
                         color: Color(0xffc5d2e1),

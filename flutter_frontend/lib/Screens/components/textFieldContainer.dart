@@ -6,12 +6,15 @@ class TextFieldContainer extends StatelessWidget {
   final String title;
   final String hintText;
   final bool isPassword;
-
+  final String? Function(String?) validator;
+  final void Function(String) onChanged;
   // ignore: use_key_in_widget_constructors
   const TextFieldContainer({
     required this.title,
     required this.hintText,
     required this.isPassword,
+    required this.validator,
+    required this.onChanged,
   });
 
   @override
@@ -27,8 +30,10 @@ class TextFieldContainer extends StatelessWidget {
                   fontWeight: FontWeight.w600,
                   fontSize: 20)),
         ),
-        TextField(
+        TextFormField(
           obscureText: isPassword,
+          validator: validator,
+          onChanged: onChanged,
           cursorColor: const Color.fromARGB(255, 100, 94, 94),
           decoration: InputDecoration(
               hintText: hintText,

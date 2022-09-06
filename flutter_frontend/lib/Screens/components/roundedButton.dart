@@ -10,20 +10,23 @@ class RoundedButton extends StatelessWidget {
     required this.press});
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(
-      style: ButtonStyle(
-        padding: MaterialStateProperty.resolveWith<EdgeInsetsGeometry>(
-            (Set<MaterialState> states) =>
-                const EdgeInsets.symmetric(horizontal: 5, vertical: 16)),
-        shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-            RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(29.0),
-        )),
-      ),
-      onPressed: press,
-      child: Text(
-        text,
-        style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+    return SizedBox(
+      width: double.infinity,
+      child: ElevatedButton(
+        style: ButtonStyle(
+          padding: MaterialStateProperty.resolveWith<EdgeInsetsGeometry>(
+              (Set<MaterialState> states) =>
+                  const EdgeInsets.symmetric(horizontal: 5, vertical: 16)),
+          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+              RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(29.0),
+          )),
+        ),
+        onPressed: press,
+        child: Text(
+          text,
+          style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+        ),
       ),
     );
   }
