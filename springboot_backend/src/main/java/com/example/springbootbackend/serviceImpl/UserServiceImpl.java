@@ -8,12 +8,14 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 
 @Service
 @Transactional
 public class UserServiceImpl implements UserService {
     @Resource
     private UserMapper userMapper;
+    private HttpSession session;
     @Override
     public String search(User user) {
         return userMapper.search(user);
@@ -33,5 +35,12 @@ public class UserServiceImpl implements UserService {
     @Override
     public void change(User user) {
         userMapper.change(user);
+    }
+
+    @Override
+    public String login(String userName, String password) {
+        Long id = userMapper.login(userName,password);
+        String sessionId = session.getId();
+        return "a";
     }
 }
