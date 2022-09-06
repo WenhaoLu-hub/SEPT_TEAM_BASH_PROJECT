@@ -7,6 +7,7 @@ import 'package:team_bash_project/Screens/login/login.dart';
 import '../components/customizedTextButton.dart';
 import '../components/textFieldContainer.dart';
 
+//fake data
 var list = <String>["Doctor", "Patient"];
 
 class SignUp extends StatelessWidget {

@@ -6,9 +6,13 @@ class TextFieldContainer extends StatelessWidget {
   final String title;
   final String hintText;
   final bool isPassword;
+
   // ignore: use_key_in_widget_constructors
-  const TextFieldContainer(
-      {required this.title, required this.hintText, required this.isPassword});
+  const TextFieldContainer({
+    required this.title,
+    required this.hintText,
+    required this.isPassword,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +29,7 @@ class TextFieldContainer extends StatelessWidget {
         ),
         TextField(
           obscureText: isPassword,
-          cursorColor: Color.fromARGB(255, 100, 94, 94),
+          cursorColor: const Color.fromARGB(255, 100, 94, 94),
           decoration: InputDecoration(
               hintText: hintText,
               hintStyle: GoogleFonts.josefinSans(

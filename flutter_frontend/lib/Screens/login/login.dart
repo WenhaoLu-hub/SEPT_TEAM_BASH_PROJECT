@@ -5,7 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:team_bash_project/Screens/signup/signup.dart';
 
 import '../components/customizedTextButton.dart';
-import '../components/textFieldContainer.dart';
+import 'TextSubmitWidget.dart';
 
 class Login extends StatelessWidget {
   const Login({Key? key}) : super(key: key);
@@ -34,23 +34,7 @@ class Login extends StatelessWidget {
               const SizedBox(
                 height: 100,
               ),
-              const TextFieldContainer(
-                title: "username",
-                hintText: "your username",
-                isPassword: false,
-              ),
-              const SizedBox(
-                height: 30,
-              ),
-              const TextFieldContainer(
-                title: "Password",
-                hintText: "your password",
-                isPassword: true,
-              ),
-              const SizedBox(
-                height: 60,
-              ),
-              _loginBtn(),
+              TextSubmitWidget(onSubmit: (String value) { print(value);},),
               const SizedBox(
                 height: 50,
               ),
@@ -90,25 +74,7 @@ Widget _signUpLabel(String label, Color textColor) {
   );
 }
 
-Widget _loginBtn() {
-  return Container(
-      width: double.infinity,
-      height: 60,
-      decoration: const BoxDecoration(
-          color: Color(0xff008fff),
-          borderRadius: BorderRadius.all(Radius.circular(30))),
-      child: const TextButton(
-        onPressed: null,
-        child: Text(
-          "Login",
-          style: TextStyle(
-            color: Colors.white,
-            fontWeight: FontWeight.w800,
-            fontSize: 24,
-          ),
-        ),
-      ));
-}
+
 
 Widget _loginLabel() {
   return Center(
