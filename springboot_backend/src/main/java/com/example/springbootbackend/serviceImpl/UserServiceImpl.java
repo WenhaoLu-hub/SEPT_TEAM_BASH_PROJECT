@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import java.util.Random;
 
 @Service
 @Transactional
@@ -53,7 +54,8 @@ public class UserServiceImpl implements UserService {
     @Override
     public void sendEmail(String mailNumber) {
         String subject = "重置密码邮件";
-        String text = "2333";
+        String code = generateVerifyCode();
+        String text = "「重置密码」您的验证码是："+code;
         SimpleMailMessage simpleMailMessage = new SimpleMailMessage();
         simpleMailMessage.setFrom(account);
         simpleMailMessage.setTo(mailNumber);
@@ -62,4 +64,12 @@ public class UserServiceImpl implements UserService {
         javaMailSender.send(simpleMailMessage);
     }
 
+    private String generateVerifyCode(){
+        StringBuffer code = new StringBuffer();
+        Random random = new Random();
+        for(int i=0;i<4;i++){
+            code.append(random.nextInt(10));
+        }
+        return code.toString();
+    }
 }
