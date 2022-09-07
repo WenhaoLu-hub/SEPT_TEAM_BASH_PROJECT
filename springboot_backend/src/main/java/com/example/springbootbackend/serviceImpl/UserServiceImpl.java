@@ -38,9 +38,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public String login(String userName, String password) {
-        Long id = userMapper.login(userName,password);
-        String sessionId = session.getId();
-        return "a";
+    public Long login(String userName, String password) {
+        return userMapper.login(userName,password);
     }
 }
