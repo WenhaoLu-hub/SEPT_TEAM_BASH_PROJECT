@@ -9,5 +9,5 @@ public interface UserService {
     public void delete(Long id);
     public void change(User user);
 
-    String login(String userName, String password);
+    Long login(String userName, String password);
 }
