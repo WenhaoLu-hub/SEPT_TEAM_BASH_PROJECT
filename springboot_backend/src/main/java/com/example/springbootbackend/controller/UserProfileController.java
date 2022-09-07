@@ -7,31 +7,16 @@ import org.springframework.web.bind.annotation.*;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import java.util.HashMap;
-import java.util.Map;
 
 @RestController
 @RequestMapping("/user")
-public class UserController {
+public class UserProfileController {
 
     @Resource
     private UserService userService;
-
-    Map<String,Object> sessionMap  = new HashMap<>();
-
-    @PostMapping("/login")
-    public String login(HttpServletRequest request){
-        String email = request.getParameter("email");
-        String password = request.getParameter("password");
-        Long userId = userService.login(email,password);
-        HttpSession session = request.getSession();
-        sessionMap.put(session.getId(),userId);
-        return session.getId();
-    }
-    @PostMapping("/resetPassword/{email}")
-    public void resetPassword(@PathVariable String email){
-
-    }
+    @Resource
+    //拿session里数据要先注入依赖
+    private HttpServletRequest request;
 
     @PostMapping("/add")
     public void add(@RequestBody User user){
@@ -44,9 +29,11 @@ public class UserController {
     }
 
     @PutMapping("/change")
-    public void change(@RequestBody User user,@RequestHeader("sessionId") String sessionId) {
-        Long userId = (Long) sessionMap.get(sessionId);
+    public void change(@RequestBody User user) {
+        //拿session里的数据，先getSession再getAttribute
+        Long userId = (Long) request.getSession().getAttribute("userId");
         user.setId(userId);
+        System.out.println(userId);
         userService.change(user);
     }
 
