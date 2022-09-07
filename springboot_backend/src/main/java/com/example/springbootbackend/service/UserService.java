@@ -10,4 +10,6 @@ public interface UserService {
     public void change(User user);
 
     Long login(String userName, String password);
+
+    void sendEmail(String email);
 }

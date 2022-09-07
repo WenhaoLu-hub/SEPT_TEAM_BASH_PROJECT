@@ -1,10 +1,7 @@
 package com.example.springbootbackend.controller;
 
 import com.example.springbootbackend.service.UserService;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -28,9 +25,9 @@ public class LoginController {
         return session.getId();
     }
 
-    @PostMapping("/{email}")
+    @GetMapping("/{email}")
     public void resetPassword(@PathVariable String email){
-
+        userService.sendEmail(email);
     }
 
 }
