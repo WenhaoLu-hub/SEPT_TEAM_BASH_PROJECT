@@ -11,5 +11,7 @@ public interface UserService {
 
     Long login(String userName, String password);
 
-    void sendEmail(String email);
+    String sendEmail(String email);
+
+    void resetPassword(String mailNumber, String newPassword);
 }

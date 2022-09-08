@@ -52,7 +52,7 @@ public class UserServiceImpl implements UserService {
     @Value("${spring.mail.username}")
     private String account;
     @Override
-    public void sendEmail(String mailNumber) {
+    public String sendEmail(String mailNumber) {
         String subject = "重置密码邮件";
         String code = generateVerifyCode();
         String text = "「重置密码」您的验证码是："+code;
@@ -62,6 +62,12 @@ public class UserServiceImpl implements UserService {
         simpleMailMessage.setSubject(subject);
         simpleMailMessage.setText(text);
         javaMailSender.send(simpleMailMessage);
+        return code;
+    }
+
+    @Override
+    public void resetPassword(String mailNumber, String newPassword) {
+        userMapper.resetPassword(mailNumber,newPassword);
     }
 
     private String generateVerifyCode(){

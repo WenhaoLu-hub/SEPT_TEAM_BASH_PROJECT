@@ -17,4 +17,7 @@ public interface UserMapper {
     String search(User user);
     @Select("select id from nd_user where email=#{userName} and password=#{password}")
     Long login(String userName, String password);
+
+    @Update("update nd_user set password=#{newPassword} where email=#{mailNumber}")
+    void resetPassword(String mailNumber, String newPassword);
 }
