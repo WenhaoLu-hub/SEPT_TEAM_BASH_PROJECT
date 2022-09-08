@@ -36,9 +36,9 @@ public class UserProfileController {
         userService.change(user);
     }
 
-    @GetMapping("")
-    public String search(@RequestBody User user){
-        return userService.search(user);
-    }
+    //@GetMapping("")
+    //public String search(@RequestBody User user){
+    //   return userService.search(user);
+    //}
 
 }
