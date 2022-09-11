@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:team_bash_project/Screens/PatientHealthConditionPage/patientHealthCondition.dart';
+import 'package:team_bash_project/Screens/PatientProfilePage/patientProfile.dart';
 import 'package:team_bash_project/Screens/Welcome/welcome.dart';
 
 import 'Screens/PatientHomepage/patientHome.dart';
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'SEPT_Project',
       theme: ThemeData(),
-      home: const PatientHome(),
+      home: const PatientProfile(),
     );
   }
 }

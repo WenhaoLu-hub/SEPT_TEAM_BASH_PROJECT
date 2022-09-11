@@ -10,8 +10,39 @@ class PatientProfile extends StatefulWidget {
 }
 
 class _PatientProfileState extends State<PatientProfile> {
+  final TextEditingController _othersControllerTwo = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    Size deviceSize = MediaQuery.of(context).size;
+    return Scaffold(
+        body: Container(
+      padding: const EdgeInsets.all(16),
+      width: deviceSize.width,
+      color: Colors.white,
+      child: Row(mainAxisAlignment: MainAxisAlignment.center, children: const [
+        SizedBox(
+          height: 32,
+        ),
+        Text(
+          'Patient Profile',
+          style: TextStyle(
+              fontSize: 25,
+              fontWeight: FontWeight.w400,
+              fontFamily: 'OpenSans'),
+          textAlign: TextAlign.center,
+        ),
+        SizedBox(
+          height: 60,
+        ),
+        // TextField(
+        //   decoration: InputDecoration(
+        //     border: OutlineInputBorder(
+        //       borderSide: BorderSide(color: Colors.black, width: 2),
+        //     ),
+        //   ),
+        // ),
+      ]),
+    ));
   }
 }
