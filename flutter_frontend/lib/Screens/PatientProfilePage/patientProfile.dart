@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 
 import 'package:flutter/cupertino.dart';
@@ -20,29 +22,32 @@ class _PatientProfileState extends State<PatientProfile> {
       padding: const EdgeInsets.all(16),
       width: deviceSize.width,
       color: Colors.white,
-      child: Row(mainAxisAlignment: MainAxisAlignment.center, children: const [
-        SizedBox(
-          height: 32,
-        ),
-        Text(
-          'Patient Profile',
-          style: TextStyle(
-              fontSize: 25,
-              fontWeight: FontWeight.w400,
-              fontFamily: 'OpenSans'),
-          textAlign: TextAlign.center,
-        ),
-        SizedBox(
-          height: 60,
-        ),
-        // TextField(
-        //   decoration: InputDecoration(
-        //     border: OutlineInputBorder(
-        //       borderSide: BorderSide(color: Colors.black, width: 2),
-        //     ),
-        //   ),
-        // ),
-      ]),
+      child: Row(mainAxisAlignment: MainAxisAlignment.center,
+          // ignore: prefer_const_literals_to_create_immutables
+          children: [
+            const SizedBox(
+              height: 32,
+            ),
+            const Text(
+              'Patient Profile',
+              style: TextStyle(
+                  fontSize: 25,
+                  fontWeight: FontWeight.w400,
+                  fontFamily: 'OpenSans'),
+              textAlign: TextAlign.center,
+            ),
+            const SizedBox(
+              height: 60,
+            ),
+            TextField(
+              controller: _othersControllerTwo,
+              decoration: InputDecoration(
+                border: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.black, width: 2),
+                ),
+              ),
+            ),
+          ]),
     ));
   }
 }
