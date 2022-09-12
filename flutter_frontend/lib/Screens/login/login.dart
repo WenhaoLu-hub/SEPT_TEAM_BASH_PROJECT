@@ -1,11 +1,15 @@
 // ignore_for_file: sized_box_for_whitespace
 
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:team_bash_project/Screens/model/registeredUser.dart';
 import 'package:team_bash_project/Screens/signup/signup.dart';
 
 import '../components/customizedTextButton.dart';
 import 'TextSubmitWidget.dart';
+import 'loginForm.dart';
 
 class Login extends StatelessWidget {
   const Login({Key? key}) : super(key: key);
@@ -24,17 +28,20 @@ class Login extends StatelessWidget {
             // mainAxisAlignment: MainAxisAlignment.,
             children: [
               const SizedBox(
-                height: 80,
+                height: 120,
               ),
               _logo(context),
               const SizedBox(
                 height: 50,
               ),
-              _loginLabel(),
-              const SizedBox(
-                height: 100,
+              LoginFormPage(
+                onSubmit: (List value) {
+                  print(value.length);
+                  RegisteredUser user = RegisteredUser(value[0], value[1]);
+                  String jsonUser = jsonEncode(user);
+                  print(jsonUser);
+                },
               ),
-              TextSubmitWidget(onSubmit: (String value) { print(value);},),
               const SizedBox(
                 height: 50,
               ),
@@ -73,8 +80,6 @@ Widget _signUpLabel(String label, Color textColor) {
     ),
   );
 }
-
-
 
 Widget _loginLabel() {
   return Center(

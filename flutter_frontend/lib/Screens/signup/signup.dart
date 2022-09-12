@@ -1,12 +1,14 @@
 // ignore_for_file: sized_box_for_whitespace
 
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:team_bash_project/Screens/login/login.dart';
 
 import '../components/customizedTextButton.dart';
-import '../components/textFieldContainer.dart';
-import 'formPage.dart';
+import '../model/user.dart';
+import 'signUpForm.dart';
 
 //fake data
 
@@ -42,6 +44,9 @@ class SignUp extends StatelessWidget {
               SignUpFormPage(
                 onSubmit: (List value) {
                   print(value.length);
+                  User user = User(value[0], value[1],value[2]);
+                  String jsonUser = jsonEncode(user);
+                  print(jsonUser);
                 },
               ),
               const SizedBox(

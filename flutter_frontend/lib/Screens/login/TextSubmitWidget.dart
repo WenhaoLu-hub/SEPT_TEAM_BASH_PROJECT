@@ -28,7 +28,7 @@ class _TextSubmitWidgetState extends State<TextSubmitWidget> {
     // Note: you can do your own custom validation here
     // Move this logic this outside the widget for more testable code
     if (text.isEmpty) {
-      return 'Can\'t be empty';
+      return 'username nan\'t be empty';
     }
     if (text.length < 4) {
       return 'Too short';
@@ -142,13 +142,8 @@ class _TextSubmitWidgetState extends State<TextSubmitWidget> {
       }
       // this entire widget tree will rebuild every time
       // the controller value changes
-      
-      
+
     );
   }
 }
-
-// Widget _loginBtn() {
-//   return 
-// }
 
