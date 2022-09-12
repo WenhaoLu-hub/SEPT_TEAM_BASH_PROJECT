@@ -7,7 +7,7 @@ import javax.annotation.Resource;
 public class HealthStatusController {
     @Resource
     private UserService userService;
-    @PostMapping("/healthStatus")
+    @GetMapping("/healthStatus")
     public void addHealthStatus(@RequestBody String status){
         userService.addHealthStatus(status);
     }
