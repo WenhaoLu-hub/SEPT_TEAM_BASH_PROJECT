@@ -11,6 +11,7 @@ class SignUpFormPage extends StatefulWidget {
   @override
   SignUpFormState createState() => SignUpFormState();
 }
+
 String? _dropdownValue;
 var list = <String>["Doctor", "Patient"];
 
@@ -43,8 +44,8 @@ class SignUpFormState extends State<SignUpFormPage> {
               ),
               TextFieldContainer(
                 onChanged: (text) => setState(() => _username = text),
-                title: 'username',
-                hintText: "Username",
+                title: 'email',
+                hintText: "name@example.com",
                 isPassword: false,
                 validator: (text) {
                   if (text == null || text.isEmpty) {
@@ -56,7 +57,9 @@ class SignUpFormState extends State<SignUpFormPage> {
                   if (text.length > 20) {
                     return "Too long";
                   }
-                  if(!RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(_username)){
+                  if (!RegExp(
+                          r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+                      .hasMatch(_username)) {
                     return "please type the correct email";
                   }
                   return null;
@@ -65,7 +68,10 @@ class SignUpFormState extends State<SignUpFormPage> {
               const SizedBox(
                 height: 20,
               ),
-              const DropDownButtonSelector(),
+              DropDownButtonSelector(accountType: "account type",
+              validator: (value) =>
+                value == null ? "please the account type" : null,
+              ),
               const SizedBox(
                 height: 20,
               ),
@@ -121,7 +127,7 @@ class SignUpFormState extends State<SignUpFormPage> {
                   // if (_formKey.currentState!.validate()) {
                   //   // If the form is valid, display a snackbar. In the real world,
                   //   // you'd often call a server or save the information in a database.\
-                  //   return ;
+                  //   return 
                   //   ScaffoldMessenger.of(context).showSnackBar(
                   //     const SnackBar(content: Text('Processing Data')),
                   //   );
@@ -199,7 +205,9 @@ extension extString on String {
 }
 
 class DropDownButtonSelector extends StatefulWidget {
-  const DropDownButtonSelector({Key? key}) : super(key: key);
+  final String? Function(String?)? validator;
+  final String accountType;
+  const DropDownButtonSelector({Key? key, this.validator, required this.accountType}) : super(key: key);
   @override
   State<StatefulWidget> createState() {
     return _DropDownButtonState();
@@ -207,15 +215,16 @@ class DropDownButtonSelector extends StatefulWidget {
 }
 
 class _DropDownButtonState extends State<DropDownButtonSelector> {
-  
-
+  // String? Function(String?)? validator;
+  // String? accountType;
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          "Account Type",
+          // "Account Type",
+          widget.accountType,
           style: GoogleFonts.josefinSans(
               textStyle: const TextStyle(
                   color: Color(0xff293462),
@@ -224,7 +233,16 @@ class _DropDownButtonState extends State<DropDownButtonSelector> {
         ),
         Container(
           width: double.infinity,
-          child: DropdownButton(
+          child: DropdownButtonFormField(
+            validator: widget.validator,
+            decoration: const InputDecoration(
+                enabled: true,
+                disabledBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(
+                  style: BorderStyle.solid,
+                  color: Color(0xffdfe8f3),
+                ))),
+
             isExpanded: true,
             hint: const Text("Choose your account type"),
             value: _dropdownValue,
@@ -237,10 +255,7 @@ class _DropDownButtonState extends State<DropDownButtonSelector> {
                 fontSize: 20,
               ),
             ),
-            underline: Container(
-              height: 1,
-              color: const Color(0xffdfe8f3),
-            ),
+      
             items: list
                 .map((value) => DropdownMenuItem(
                       value: value,
@@ -248,9 +263,10 @@ class _DropDownButtonState extends State<DropDownButtonSelector> {
                     ))
                 .toList(),
             onChanged: (String? value) {
-              setState(() {
-                _dropdownValue = value!;
-              });
+              setState(
+                () => _dropdownValue = value!,
+                // valdator:
+              );
             },
           ),
         ),

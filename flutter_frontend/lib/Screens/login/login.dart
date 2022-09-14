@@ -8,7 +8,6 @@ import 'package:team_bash_project/Screens/model/registeredUser.dart';
 import 'package:team_bash_project/Screens/signup/signup.dart';
 
 import '../components/customizedTextButton.dart';
-import 'TextSubmitWidget.dart';
 import 'loginForm.dart';
 
 class Login extends StatelessWidget {
@@ -81,19 +80,6 @@ Widget _signUpLabel(String label, Color textColor) {
   );
 }
 
-Widget _loginLabel() {
-  return Center(
-    child: Text(
-      "Login",
-      style: GoogleFonts.josefinSans(
-          textStyle: const TextStyle(
-        color: Color(0xff164276),
-        fontWeight: FontWeight.w900,
-        fontSize: 40,
-      )),
-    ),
-  );
-}
 
 Widget _logo(BuildContext context) {
   Size size = MediaQuery.of(context).size;

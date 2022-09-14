@@ -17,12 +17,12 @@ public class LoginController {
     public String login(HttpServletRequest request) {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
-        Long userId = userService.login(email, password);
-        //生成session
-        HttpSession session = request.getSession();
-        //设置session里的数据
-        session.setAttribute("userId", userId);
-        return session.getId();
+            Long userId = userService.login(email, password);
+            //生成session
+            HttpSession session = request.getSession();
+            //设置session里的数据
+            session.setAttribute("userId", userId);
+            return session.getId();
     }
 
     @GetMapping("/{email}")
