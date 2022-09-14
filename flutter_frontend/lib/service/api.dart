@@ -4,9 +4,11 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 class NetWorkHandler {
   static final client = http.Client();
   static final storage = FlutterSecureStorage();
-  static void post(var body, String endPoint) async {
-    var response = await client.post(buildUri(endPoint), body: body);
+  static Future<String> post(var body, String endPoint) async {
+    var response = await client.post(buildUri(endPoint), body: body, headers: 
+    {"Content-type":"application/json"});
     print("api call -> \n"+response.body);
+    return response.body;
   }
 
   static Uri buildUri(String endPoint) {
