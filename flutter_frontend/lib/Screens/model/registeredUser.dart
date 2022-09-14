@@ -3,7 +3,7 @@ class RegisteredUser {
   String password;
   RegisteredUser(this.username, this.password);
   Map toJson() => {
-        'name': username,
+        'email': username,
         'password': password,
       };
 }

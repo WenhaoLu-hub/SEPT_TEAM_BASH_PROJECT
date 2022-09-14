@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get_state_manager/get_state_manager.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../components/roundedButton.dart';
 import '../components/textFieldContainer.dart';
+import 'controller/login_controller.dart';
 
 class LoginFormPage extends StatefulWidget {
-  const LoginFormPage({Key? key, required this.onSubmit}) : super(key: key);
+  LoginFormPage({Key? key, required this.onSubmit}) : super(key: key);
   final ValueChanged<List> onSubmit;
+  
   @override
   LoginFormPageState createState() => LoginFormPageState();
 }
@@ -16,16 +19,18 @@ class LoginFormPageState extends State<LoginFormPage> {
   final _formKey = GlobalKey<FormState>();
   String _username = '';
   String _password = '';
-
+  var loginController = Get.put(LoginController());
   void _submit() {
     if (_formKey.currentState!.validate()) {
       _formKey.currentState!.save();
+      loginController.login();
       print("submit successfully");
       widget.onSubmit([
         _username,
         _password,
       ]);
     }
+    
   }
 
   @override
@@ -39,6 +44,7 @@ class LoginFormPageState extends State<LoginFormPage> {
               TextFieldContainer(
                 onChanged: (text) => setState(() => _username = text),
                 title: 'username',
+                controller: loginController.emailEditingController,
                 hintText: "name@example.com",
                 isPassword: false,
                 validator: (text) {
@@ -66,6 +72,7 @@ class LoginFormPageState extends State<LoginFormPage> {
               TextFieldContainer(
                 onChanged: (text) => setState(() => _password = text),
                 title: 'password',
+                controller:loginController.passwordEditingController,
                 hintText: "password",
                 isPassword: true,
                 validator: (text) {

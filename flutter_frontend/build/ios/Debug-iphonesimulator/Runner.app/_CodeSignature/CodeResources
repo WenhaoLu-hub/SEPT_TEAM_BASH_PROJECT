@@ -46,7 +46,7 @@
 		</data>
 		<key>Frameworks/App.framework/App</key>
 		<data>
-		+p2TECjRf4RLynpCGyL1rNYtero=
+		RTfZp+PgXQxkCfue9JROL32A1Aw=
 		</data>
 		<key>Frameworks/App.framework/Info.plist</key>
 		<data>
@@ -54,7 +54,7 @@
 		</data>
 		<key>Frameworks/App.framework/_CodeSignature/CodeResources</key>
 		<data>
-		fNfZA/kJ3N5Pjj4LfxsBFGWMLfg=
+		Mq7ayJyRmK24lcAoUEtVxV4MJRM=
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/AssetManifest.json</key>
 		<data>
@@ -66,7 +66,7 @@
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/NOTICES.Z</key>
 		<data>
-		lXw8HfqT1tZiITH0VkCTbUT1liY=
+		qAeSrjUiolY4EwnFycCtgUBygMw=
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/assets/fonts/OpenSans-Bold.ttf</key>
 		<data>
@@ -114,7 +114,7 @@
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/kernel_blob.bin</key>
 		<data>
-		c2eVRsuLkCvLj0zCRkgSU6c0Dso=
+		3pTGbgvVrkDCMMzkkO/+tyrx9ZI=
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/packages/cupertino_icons/assets/CupertinoIcons.ttf</key>
 		<data>
@@ -126,7 +126,7 @@
 		</data>
 		<key>Frameworks/Flutter.framework/Flutter</key>
 		<data>
-		710Nh+vXBh5Xc57LUQ6DOY8PERg=
+		tSBL1ajwFcDC3SBneKJIlfqO5oY=
 		</data>
 		<key>Frameworks/Flutter.framework/Headers/Flutter.h</key>
 		<data>
@@ -208,6 +208,18 @@
 		<data>
 		5zcJ5BY+w7z+M0to6P+uUWPn04o=
 		</data>
+		<key>Frameworks/flutter_secure_storage.framework/Info.plist</key>
+		<data>
+		V3r+hvbg4RB0aPyzeiyLXGYuldQ=
+		</data>
+		<key>Frameworks/flutter_secure_storage.framework/_CodeSignature/CodeResources</key>
+		<data>
+		8B87nxAdsDH+ggTF8/UvydQ5z7I=
+		</data>
+		<key>Frameworks/flutter_secure_storage.framework/flutter_secure_storage</key>
+		<data>
+		3mGB77+BbGvVnvrQXCOQKXoeUQ8=
+		</data>
 		<key>Frameworks/path_provider_ios.framework/Info.plist</key>
 		<data>
 		xD8RbN+nJgF8OdZVnAZ1vUa1Bms=
@@ -218,7 +230,7 @@
 		</data>
 		<key>Frameworks/path_provider_ios.framework/path_provider_ios</key>
 		<data>
-		DbjDw5CEebOTgFtnWXyHBUANUCo=
+		aVjLDshEetcOH/w5x2pBWpp3qm0=
 		</data>
 		<key>Info.plist</key>
 		<data>
@@ -305,7 +317,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			nfG2TeWuMnomhT84oCSSJHmzIIqlKHVO2+S4y+SeSVk=
+			yJ8B8iAB4+oZ53c0xl6CeY05lQVbgM1n5O3UXXTY6mA=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/Info.plist</key>
@@ -319,7 +331,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			o8Ifsp6jJlNgvQMqSjbtJEnwXzMozuCKBf7GL7P0uvk=
+			Fqds73O/2X0Kz4fLh71mdTgRKWcpL0e/rnwQTDUvNW4=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/flutter_assets/AssetManifest.json</key>
@@ -340,7 +352,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			ntsOLdsdjYVfUj+JU0HfqovKGFrgR+jGnE4il0899MQ=
+			nOsh2ijD7HW4cta9Qqptb1n2AjCYOY3YOMUkW25/CyM=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/flutter_assets/assets/fonts/OpenSans-Bold.ttf</key>
@@ -424,7 +436,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			rwr0aCaavkt2L11T5DzarR06Mq12mjCuiMuXqaNbEPU=
+			G52RdhGYwiQ8YsXCEnbFJy3ta9MAKNsLAj4r/zvG4b4=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/flutter_assets/packages/cupertino_icons/assets/CupertinoIcons.ttf</key>
@@ -445,7 +457,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			joLCYTg/h1ik3pjtoEot2/9db+D8VOJf4kHyucF/T+I=
+			0itp/pz3tqKToch7F0BRjIS+8b0eEYE/Sy2YjSpvA8I=
 			</data>
 		</dict>
 		<key>Frameworks/Flutter.framework/Headers/Flutter.h</key>
@@ -588,6 +600,27 @@
 			yNAOslsdK6e70q88cOrqlKovbuH0GiUDe+ICgawnSrQ=
 			</data>
 		</dict>
+		<key>Frameworks/flutter_secure_storage.framework/Info.plist</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			JzwDL4jDBJwTGtmTPt4lfdXUR5Ui1/yh0ZQClyFkz+c=
+			</data>
+		</dict>
+		<key>Frameworks/flutter_secure_storage.framework/_CodeSignature/CodeResources</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			Tk8PgIJaqvcMCRJtgqPyCkn8t9OSnTPTRur16Ql/kTE=
+			</data>
+		</dict>
+		<key>Frameworks/flutter_secure_storage.framework/flutter_secure_storage</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			/R+FUQbUf+/+OZI74JTLfH2WLnH1OPXSbFMSKIexSCg=
+			</data>
+		</dict>
 		<key>Frameworks/path_provider_ios.framework/Info.plist</key>
 		<dict>
 			<key>hash2</key>
@@ -606,7 +639,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			OOUVnpeGdeYAJo1hqyxEmQ+Wz8wtNel819bagIayJ/g=
+			BbVt3vDGpEe5QWxI8B83KI2SJO+BSugFZD3P7Tiu5LQ=
 			</data>
 		</dict>
 	</dict>

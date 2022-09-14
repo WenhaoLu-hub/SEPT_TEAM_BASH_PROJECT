@@ -6,6 +6,7 @@ class TextFieldContainer extends StatelessWidget {
   final String title;
   final String hintText;
   final bool isPassword;
+  final TextEditingController? controller;
   final String? Function(String?) validator;
   final void Function(String) onChanged;
   // ignore: use_key_in_widget_constructors
@@ -14,7 +15,7 @@ class TextFieldContainer extends StatelessWidget {
     required this.hintText,
     required this.isPassword,
     required this.validator,
-    required this.onChanged,
+    required this.onChanged, this.controller,
   });
 
   @override
@@ -32,6 +33,7 @@ class TextFieldContainer extends StatelessWidget {
         ),
         TextFormField(
           obscureText: isPassword,
+          controller: controller,
           validator: validator,
           onChanged: onChanged,
           cursorColor: const Color.fromARGB(255, 100, 94, 94),
