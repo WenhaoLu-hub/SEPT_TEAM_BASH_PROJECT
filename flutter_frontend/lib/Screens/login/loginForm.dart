@@ -36,7 +36,7 @@ class LoginFormPageState extends State<LoginFormPage> {
             children: [
               TextFieldContainer(
                 onChanged: (text) => setState(() => _username = text),
-                title: 'username',
+                title: 'email',
                 controller: loginController.emailEditingController,
                 hintText: "name@example.com",
                 isPassword: false,
@@ -85,7 +85,7 @@ class LoginFormPageState extends State<LoginFormPage> {
                 },
               ),
               const SizedBox(
-                height: 30,
+                height: 70,
               ),
               RoundedButton(
                 press: () {

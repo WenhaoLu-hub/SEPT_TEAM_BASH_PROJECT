@@ -36,11 +36,11 @@ class SignUp extends StatelessWidget {
               ),
               _loginLabel(),
               const SizedBox(
-                height: 30,
+                height: 20,
               ),
               SignUpFormPage(),
               const SizedBox(
-                height: 50,
+                height: 10,
               ),
               _signUpLabel("Already have an account?", const Color(0xff909090)),
               CustomizedTextButton(
@@ -55,6 +55,9 @@ class SignUp extends StatelessWidget {
                   );
                 },
                 color: const Color(0xff164276),
+              ),
+              const SizedBox(
+                height: 30,
               ),
             ],
           ),

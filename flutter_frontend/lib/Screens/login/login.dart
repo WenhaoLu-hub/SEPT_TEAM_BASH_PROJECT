@@ -26,15 +26,19 @@ class Login extends StatelessWidget {
             // mainAxisAlignment: MainAxisAlignment.,
             children: [
               const SizedBox(
-                height: 120,
+                height: 100,
               ),
               _logo(context),
               const SizedBox(
                 height: 50,
               ),
+              _loginLabel(),
+              const SizedBox(
+                height: 30,
+              ),
               const LoginFormPage(),
               const SizedBox(
-                height: 50,
+                height: 30,
               ),
               _signUpLabel(
                   "Dont's have an account yet?", const Color(0xff909090)),
@@ -81,6 +85,19 @@ Widget _logo(BuildContext context) {
         width: size.width * 0.25,
         image: const AssetImage('assets/images/logo.png'),
       ),
+    ),
+  );
+}
+Widget _loginLabel() {
+  return Center(
+    child: Text(
+      "Login",
+      style: GoogleFonts.josefinSans(
+          textStyle: const TextStyle(
+        color: Color(0xff164276),
+        fontWeight: FontWeight.w900,
+        fontSize: 40,
+      )),
     ),
   );
 }
