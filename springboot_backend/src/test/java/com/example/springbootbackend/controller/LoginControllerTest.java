@@ -1,5 +1,6 @@
 package com.example.springbootbackend.controller;
 
+import com.example.springbootbackend.exception.UserNotExistException;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -14,7 +15,7 @@ class LoginControllerTest {
     private HttpServletRequest httpServletRequest;
 
     @Test
-    void login(){
+    void login() throws UserNotExistException {
         ParameterRequestWrapper request = new ParameterRequestWrapper(httpServletRequest);
         request.addParameter("email","wxn1023717264@163.com");
         request.addParameter("password","test");
