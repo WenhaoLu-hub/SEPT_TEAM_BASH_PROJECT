@@ -4,7 +4,6 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:team_bash_project/Screens/model/registeredUser.dart';
 import 'package:team_bash_project/Screens/signup/signup.dart';
 
 import '../components/customizedTextButton.dart';
@@ -33,14 +32,7 @@ class Login extends StatelessWidget {
               const SizedBox(
                 height: 50,
               ),
-              LoginFormPage(
-                onSubmit: (List value) {
-                  print(value.length);
-                  RegisteredUser user = RegisteredUser(value[0], value[1]);
-                  String jsonUser = jsonEncode(user);
-                  print(jsonUser);
-                },
-              ),
+              const LoginFormPage(),
               const SizedBox(
                 height: 50,
               ),
@@ -79,7 +71,6 @@ Widget _signUpLabel(String label, Color textColor) {
     ),
   );
 }
-
 
 Widget _logo(BuildContext context) {
   Size size = MediaQuery.of(context).size;

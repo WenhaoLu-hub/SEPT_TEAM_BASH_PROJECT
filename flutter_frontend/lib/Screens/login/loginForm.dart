@@ -8,9 +8,8 @@ import '../components/textFieldContainer.dart';
 import 'controller/login_controller.dart';
 
 class LoginFormPage extends StatefulWidget {
-  LoginFormPage({Key? key, required this.onSubmit}) : super(key: key);
-  final ValueChanged<List> onSubmit;
-  
+  const LoginFormPage({Key? key}) : super(key: key);
+
   @override
   LoginFormPageState createState() => LoginFormPageState();
 }
@@ -25,12 +24,7 @@ class LoginFormPageState extends State<LoginFormPage> {
       _formKey.currentState!.save();
       loginController.login();
       print("submit successfully");
-      widget.onSubmit([
-        _username,
-        _password,
-      ]);
     }
-    
   }
 
   @override
@@ -40,7 +34,6 @@ class LoginFormPageState extends State<LoginFormPage> {
           key: _formKey,
           child: Column(
             children: [
-              
               TextFieldContainer(
                 onChanged: (text) => setState(() => _username = text),
                 title: 'username',
@@ -57,7 +50,9 @@ class LoginFormPageState extends State<LoginFormPage> {
                   if (text.length > 20) {
                     return "Too long";
                   }
-                  if(!RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(_username)){
+                  if (!RegExp(
+                          r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+                      .hasMatch(_username)) {
                     return "please type the correct email";
                   }
                   return null;
@@ -72,7 +67,7 @@ class LoginFormPageState extends State<LoginFormPage> {
               TextFieldContainer(
                 onChanged: (text) => setState(() => _password = text),
                 title: 'password',
-                controller:loginController.passwordEditingController,
+                controller: loginController.passwordEditingController,
                 hintText: "password",
                 isPassword: true,
                 validator: (text) {
@@ -98,7 +93,7 @@ class LoginFormPageState extends State<LoginFormPage> {
                   // if (_formKey.currentState!.validate()) {
                   //   // If the form is valid, display a snackbar. In the real world,
                   //   // you'd often call a server or save the information in a database.\
-                  //   // return 
+                  //   // return
                   //   // ScaffoldMessenger.of(context).showSnackBar(
                   //   //   const SnackBar(content: Text('Processing Data')),
                   //   // );

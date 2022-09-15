@@ -7,15 +7,12 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:team_bash_project/Screens/login/login.dart';
 
 import '../components/customizedTextButton.dart';
-import '../model/user.dart';
 import 'signUpForm.dart';
 
 //fake data
 
 class SignUp extends StatelessWidget {
   const SignUp({Key? key}) : super(key: key);
-  // String valueChoose;
-  // List listitem = ["doctor","patient"];
 
   @override
   Widget build(BuildContext context) {
@@ -41,14 +38,7 @@ class SignUp extends StatelessWidget {
               const SizedBox(
                 height: 30,
               ),
-              SignUpFormPage(
-                onSubmit: (List value) {
-                  print(value.length);
-                  User user = User(value[0], value[1],value[2]);
-                  String jsonUser = jsonEncode(user);
-                  print(jsonUser);
-                },
-              ),
+              SignUpFormPage(),
               const SizedBox(
                 height: 50,
               ),

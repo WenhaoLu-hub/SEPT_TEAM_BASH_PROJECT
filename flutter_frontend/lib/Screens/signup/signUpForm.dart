@@ -6,8 +6,8 @@ import '../components/roundedButton.dart';
 import '../components/textFieldContainer.dart';
 
 class SignUpFormPage extends StatefulWidget {
-  const SignUpFormPage({Key? key, required this.onSubmit}) : super(key: key);
-  final ValueChanged<List> onSubmit;
+  const SignUpFormPage({Key? key}) : super(key: key);
+
   @override
   SignUpFormState createState() => SignUpFormState();
 }
@@ -24,11 +24,6 @@ class SignUpFormState extends State<SignUpFormPage> {
   void _submit() {
     if (_formKey.currentState!.validate()) {
       _formKey.currentState!.save();
-      widget.onSubmit([
-        _username,
-        _password,
-        _dropdownValue,
-      ]);
     }
   }
 
@@ -68,9 +63,10 @@ class SignUpFormState extends State<SignUpFormPage> {
               const SizedBox(
                 height: 20,
               ),
-              DropDownButtonSelector(accountType: "account type",
-              validator: (value) =>
-                value == null ? "please the account type" : null,
+              DropDownButtonSelector(
+                accountType: "account type",
+                validator: (value) =>
+                    value == null ? "please the account type" : null,
               ),
               const SizedBox(
                 height: 20,
@@ -127,7 +123,7 @@ class SignUpFormState extends State<SignUpFormPage> {
                   // if (_formKey.currentState!.validate()) {
                   //   // If the form is valid, display a snackbar. In the real world,
                   //   // you'd often call a server or save the information in a database.\
-                  //   return 
+                  //   return
                   //   ScaffoldMessenger.of(context).showSnackBar(
                   //     const SnackBar(content: Text('Processing Data')),
                   //   );
@@ -207,7 +203,9 @@ extension extString on String {
 class DropDownButtonSelector extends StatefulWidget {
   final String? Function(String?)? validator;
   final String accountType;
-  const DropDownButtonSelector({Key? key, this.validator, required this.accountType}) : super(key: key);
+  const DropDownButtonSelector(
+      {Key? key, this.validator, required this.accountType})
+      : super(key: key);
   @override
   State<StatefulWidget> createState() {
     return _DropDownButtonState();
@@ -255,7 +253,7 @@ class _DropDownButtonState extends State<DropDownButtonSelector> {
                 fontSize: 20,
               ),
             ),
-      
+
             items: list
                 .map((value) => DropdownMenuItem(
                       value: value,
