@@ -61,9 +61,7 @@ class LoginFormPageState extends State<LoginFormPage> {
               const SizedBox(
                 height: 20,
               ),
-              const SizedBox(
-                height: 20,
-              ),
+              
               TextFieldContainer(
                 onChanged: (text) => setState(() => _password = text),
                 title: 'password',
@@ -89,16 +87,6 @@ class LoginFormPageState extends State<LoginFormPage> {
               ),
               RoundedButton(
                 press: () {
-                  // Validate returns true if the form is valid, or false otherwise.
-                  // if (_formKey.currentState!.validate()) {
-                  //   // If the form is valid, display a snackbar. In the real world,
-                  //   // you'd often call a server or save the information in a database.\
-                  //   // return
-                  //   // ScaffoldMessenger.of(context).showSnackBar(
-                  //   //   const SnackBar(content: Text('Processing Data')),
-                  //   // );
-                  // }
-                  print("click");
                   _submit();
                 },
                 text: 'Submit',
@@ -147,26 +135,4 @@ class CustomFormField extends StatelessWidget {
   }
 }
 
-// ignore: camel_case_extensions
-extension extString on String {
-  bool get isValidName {
-    final nameRegExp =
-        RegExp(r"^\s*([A-Za-z]{1,}([\.,] |[-']| ))+[A-Za-z]+\.?\s*$");
-    return nameRegExp.hasMatch(this);
-  }
 
-  bool get isValidPassword {
-    final passwordRegExp = RegExp(
-        r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\><*~]).{8,}/pre>');
-    return passwordRegExp.hasMatch(this);
-  }
-
-  bool get isNotNull {
-    return this != null;
-  }
-
-  bool get isValidPhone {
-    final phoneRegExp = RegExp(r"^\+?0[0-9]{10}$");
-    return phoneRegExp.hasMatch(this);
-  }
-}

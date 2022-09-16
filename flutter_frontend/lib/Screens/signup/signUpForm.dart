@@ -1,13 +1,18 @@
+import 'package:dropdown_formfield/dropdown_formfield.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_custom_selector/widget/flutter_single_select.dart';
+import 'package:get_state_manager/get_state_manager.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:http/http.dart';
+import 'package:team_bash_project/Screens/signup/controller/signup_controller.dart';
+import 'package:dropdown_search/dropdown_search.dart';
 
 import '../components/roundedButton.dart';
 import '../components/textFieldContainer.dart';
 
 class SignUpFormPage extends StatefulWidget {
   const SignUpFormPage({Key? key}) : super(key: key);
-
   @override
   SignUpFormState createState() => SignUpFormState();
 }
@@ -19,11 +24,13 @@ class SignUpFormState extends State<SignUpFormPage> {
   final _formKey = GlobalKey<FormState>();
   String _username = '';
   String _password = '';
-  String _confirmPasswword = '';
-
+  String _confirmPassword = '';
+  var signupController = Get.put(SignupController());
   void _submit() {
     if (_formKey.currentState!.validate()) {
+      signupController.accountTypeEditingController.text = _dropdownValue!;
       _formKey.currentState!.save();
+      signupController.signup();
     }
   }
 
@@ -40,6 +47,7 @@ class SignUpFormState extends State<SignUpFormPage> {
               TextFieldContainer(
                 onChanged: (text) => setState(() => _username = text),
                 title: 'email',
+                controller: signupController.emailEditingController,
                 hintText: "name@example.com",
                 isPassword: false,
                 validator: (text) {
@@ -64,6 +72,7 @@ class SignUpFormState extends State<SignUpFormPage> {
                 height: 20,
               ),
               DropDownButtonSelector(
+                signupController: signupController,
                 accountType: "account type",
                 validator: (value) =>
                     value == null ? "please the account type" : null,
@@ -73,6 +82,7 @@ class SignUpFormState extends State<SignUpFormPage> {
               ),
               TextFieldContainer(
                 onChanged: (text) => setState(() => _password = text),
+                controller: signupController.passwordEditingController,
                 title: 'password',
                 hintText: "password",
                 isPassword: true,
@@ -94,7 +104,7 @@ class SignUpFormState extends State<SignUpFormPage> {
                 height: 30,
               ),
               TextFieldContainer(
-                onChanged: (text) => setState(() => _confirmPasswword = text),
+                onChanged: (text) => setState(() => _confirmPassword = text),
                 title: 'confirm password',
                 hintText: "Confirm password",
                 isPassword: true,
@@ -119,15 +129,6 @@ class SignUpFormState extends State<SignUpFormPage> {
               ),
               RoundedButton(
                 press: () {
-                  // Validate returns true if the form is valid, or false otherwise.
-                  // if (_formKey.currentState!.validate()) {
-                  //   // If the form is valid, display a snackbar. In the real world,
-                  //   // you'd often call a server or save the information in a database.\
-                  //   return
-                  //   ScaffoldMessenger.of(context).showSnackBar(
-                  //     const SnackBar(content: Text('Processing Data')),
-                  //   );
-                  // }
                   _submit();
                 },
                 text: 'Submit',
@@ -176,52 +177,29 @@ class CustomFormField extends StatelessWidget {
   }
 }
 
-// ignore: camel_case_extensions
-extension extString on String {
-  bool get isValidName {
-    final nameRegExp =
-        RegExp(r"^\s*([A-Za-z]{1,}([\.,] |[-']| ))+[A-Za-z]+\.?\s*$");
-    return nameRegExp.hasMatch(this);
-  }
-
-  bool get isValidPassword {
-    final passwordRegExp = RegExp(
-        r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\><*~]).{8,}/pre>');
-    return passwordRegExp.hasMatch(this);
-  }
-
-  bool get isNotNull {
-    return this != null;
-  }
-
-  bool get isValidPhone {
-    final phoneRegExp = RegExp(r"^\+?0[0-9]{10}$");
-    return phoneRegExp.hasMatch(this);
-  }
-}
-
 class DropDownButtonSelector extends StatefulWidget {
+  final SignupController signupController;
   final String? Function(String?)? validator;
   final String accountType;
-  const DropDownButtonSelector(
-      {Key? key, this.validator, required this.accountType})
-      : super(key: key);
+  const DropDownButtonSelector({
+    Key? key,
+    this.validator,
+    required this.accountType,
+    required this.signupController,
+  }) : super(key: key);
   @override
   State<StatefulWidget> createState() {
-    return _DropDownButtonState();
+    return DropDownButtonState();
   }
 }
 
-class _DropDownButtonState extends State<DropDownButtonSelector> {
-  // String? Function(String?)? validator;
-  // String? accountType;
+class DropDownButtonState extends State<DropDownButtonSelector> {
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          // "Account Type",
           widget.accountType,
           style: GoogleFonts.josefinSans(
               textStyle: const TextStyle(
@@ -261,10 +239,12 @@ class _DropDownButtonState extends State<DropDownButtonSelector> {
                     ))
                 .toList(),
             onChanged: (String? value) {
-              setState(
-                () => _dropdownValue = value!,
-                // valdator:
-              );
+              setState(() {
+                _dropdownValue = value!;
+              }
+
+                  // valdator:
+                  );
             },
           ),
         ),
