@@ -48,7 +48,7 @@ public class UserServiceImpl implements UserService {
     public UserServiceImpl(JavaMailSender javaMailSender) {
         this.javaMailSender = javaMailSender;
     }
-    
+
     @Value("${spring.mail.username}")
     private String account;
     @Override
