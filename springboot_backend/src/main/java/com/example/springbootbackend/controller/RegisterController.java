@@ -36,7 +36,7 @@ public class RegisterController {
         user.setId(SnowFlakeUtil.getSnowFlakeId());
         userService.add(user);
         back.put("code", 1);
-        back.put("msg", "signup swuccess");
+        back.put("msg", "signup success");
         return back;
     }
 }

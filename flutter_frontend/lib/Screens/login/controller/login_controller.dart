@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:get_state_manager/get_state_manager.dart';
+import 'package:get/get.dart';
 import 'package:team_bash_project/Screens/login/model/login_model.dart';
 import 'package:team_bash_project/service/api.dart';
 
@@ -12,10 +12,16 @@ class LoginController extends GetxController {
         email: emailEditingController.text,
         password: passwordEditingController.text);
     print("login func -> \n" + loginModelToJson(loginModel));
+    var email = emailEditingController.text;
+    var password  = passwordEditingController.text;
     var response =
-        await NetWorkHandler.post(loginModelToJson(loginModel), "/login");
+        await NetWorkHandler.post(loginModelToJson(loginModel),"/login?email=$email&password=$password");
     //validate the data, successfully 
     // var data = json.decode(response);
-    //
+    print(response);
+    // print("response:"+ data);
+    // if (data["message"] == "UserNotExist") {
+    //   //
+    // }
   }
 }

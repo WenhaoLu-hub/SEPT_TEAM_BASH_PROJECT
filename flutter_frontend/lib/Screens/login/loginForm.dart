@@ -2,9 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get_state_manager/get_state_manager.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:team_bash_project/Screens/signup/signup.dart';
 
+import '../components/customizedTextButton.dart';
 import '../components/roundedButton.dart';
 import '../components/textFieldContainer.dart';
+import '../reset_password/reset_password.dart';
 import 'controller/login_controller.dart';
 
 class LoginFormPage extends StatefulWidget {
@@ -47,7 +50,7 @@ class LoginFormPageState extends State<LoginFormPage> {
                   if (text.length < 8) {
                     return 'Too short';
                   }
-                  if (text.length > 20) {
+                  if (text.length > 30) {
                     return "Too long";
                   }
                   if (!RegExp(
@@ -61,7 +64,6 @@ class LoginFormPageState extends State<LoginFormPage> {
               const SizedBox(
                 height: 20,
               ),
-              
               TextFieldContainer(
                 onChanged: (text) => setState(() => _password = text),
                 title: 'password',
@@ -83,7 +85,28 @@ class LoginFormPageState extends State<LoginFormPage> {
                 },
               ),
               const SizedBox(
-                height: 70,
+                height: 13,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  CustomizedTextButton(
+                    label: "Fortet password?",
+                    fontSize: 17,
+                    fontWeight: FontWeight.w600,
+                    press: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => const ResetPassword(),
+                        ),
+                      );
+                    },
+                    color: const Color(0xff164276),
+                  ),
+                ],
+              ),
+              const SizedBox(
+                height: 13,
               ),
               RoundedButton(
                 press: () {
@@ -134,5 +157,3 @@ class CustomFormField extends StatelessWidget {
     );
   }
 }
-
-

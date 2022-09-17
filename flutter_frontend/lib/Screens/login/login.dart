@@ -38,7 +38,7 @@ class Login extends StatelessWidget {
               ),
               const LoginFormPage(),
               const SizedBox(
-                height: 30,
+                height: 20,
               ),
               _signUpLabel(
                   "Dont's have an account yet?", const Color(0xff909090)),
@@ -55,6 +55,7 @@ class Login extends StatelessWidget {
                 },
                 color: const Color(0xff164276),
               ),
+              
             ],
           ),
         ),

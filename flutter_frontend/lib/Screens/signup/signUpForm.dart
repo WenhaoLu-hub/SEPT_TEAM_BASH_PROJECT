@@ -57,7 +57,7 @@ class SignUpFormState extends State<SignUpFormPage> {
                   if (text.length < 8) {
                     return 'Too short';
                   }
-                  if (text.length > 20) {
+                  if (text.length > 30) {
                     return "Too long";
                   }
                   if (!RegExp(

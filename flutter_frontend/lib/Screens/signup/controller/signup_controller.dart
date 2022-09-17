@@ -21,7 +21,7 @@ class SignupController extends GetxController {
         var data = json.decode(response);
         print(data["code"]);
         if (data["code"] == 1) {
-          Get.to(const Login());
+          Get.to(()=>const Login());
         } 
         
   }

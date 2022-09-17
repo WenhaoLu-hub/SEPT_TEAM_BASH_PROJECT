@@ -19,7 +19,6 @@ class SignUp extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         body: SizedBox(
-      
       width: double.infinity,
       child: Padding(
         padding: const EdgeInsets.symmetric(

@@ -18,8 +18,9 @@ class LoginControllerTest {
     void login() throws UserNotExistException {
         ParameterRequestWrapper request = new ParameterRequestWrapper(httpServletRequest);
         request.addParameter("email","wxn1023717264@163.com");
-        request.addParameter("password","test");
-        loginController.login(request);
+        request.addParameter("password","new");
+        String token = loginController.login(request);
+        System.out.println("token:"+token);
     }
 
     @Test
