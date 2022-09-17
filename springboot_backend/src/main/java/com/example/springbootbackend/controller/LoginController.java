@@ -1,5 +1,6 @@
 package com.example.springbootbackend.controller;
 
+import com.example.springbootbackend.exception.UserNotExistException;
 import com.example.springbootbackend.service.UserService;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,12 +15,17 @@ public class LoginController {
     private UserService userService;
 
     @PostMapping("")
-    public Integer login(@RequestParam("email") String email, @RequestParam("password") String password) {
-        System.out.println("controller email:" + email);
-        System.out.println("controller password:" + password);
-        Integer userId = userService.login(email, password);
-        System.out.println("userid:" + userId);
-        return userId;
+    public String login(HttpServletRequest request) throws UserNotExistException {
+        String email = request.getParameter("email");
+        String password = request.getParameter("password");
+        Long userId = userService.login(email, password);
+        //账号密码不对
+        if(userId==null) throw new UserNotExistException("UserNotExist");
+        //生成session
+        HttpSession session = request.getSession();
+        //设置session里的数据
+        session.setAttribute("userId", userId);
+        return session.getId();
     }
 
     @GetMapping("/{email}")

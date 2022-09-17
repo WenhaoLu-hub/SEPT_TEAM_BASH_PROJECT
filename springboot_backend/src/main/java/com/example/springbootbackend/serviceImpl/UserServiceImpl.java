@@ -41,16 +41,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public int login(String email, String password) {
-//        return userMapper.login(userName,password);
-        System.out.println("username:" + email);
-        System.out.println("password:" + password);
-        //返还用户id 看需求
-        return jdbcTemplate.queryForObject("select id from nd_user where email = ? and password = ?",
-                new Object[]{email,password},
-                Integer.class);
+    public Long login(String userName, String password) {
+        return userMapper.login(userName,password);
     }
     // 发送邮件
+
     private JavaMailSender javaMailSender;
     public UserServiceImpl(JavaMailSender javaMailSender) {
         this.javaMailSender = javaMailSender;
