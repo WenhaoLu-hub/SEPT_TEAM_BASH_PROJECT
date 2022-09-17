@@ -26,7 +26,6 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void add(User user) {
-        user.setId(SnowFlakeUtil.getSnowFlakeId());
         userMapper.add(user);
     }
 
@@ -50,6 +49,7 @@ public class UserServiceImpl implements UserService {
     public UserServiceImpl(JavaMailSender javaMailSender) {
         this.javaMailSender = javaMailSender;
     }
+
     @Value("${spring.mail.username}")
     private String account;
     @Override

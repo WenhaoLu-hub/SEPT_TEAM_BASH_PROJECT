@@ -1,12 +1,19 @@
 package com.example.springbootbackend.controller;
 
-import com.example.springbootbackend.exception.UserNotExistException;
-import com.example.springbootbackend.service.UserService;
-import org.springframework.web.bind.annotation.*;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
+
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.example.springbootbackend.model.User;
+import com.example.springbootbackend.service.UserService;
+import com.example.springbootbackend.utils.SnowFlakeUtil;
+import com.github.pagehelper.util.StringUtil;
 
 @RestController
 @RequestMapping("/login")
@@ -14,36 +21,23 @@ public class LoginController {
     @Resource
     private UserService userService;
 
-    @PostMapping("")
-    public String login(HttpServletRequest request) throws UserNotExistException {
-        String email = request.getParameter("email");
-        String password = request.getParameter("password");
-        Long userId = userService.login(email, password);
-        //账号密码不对
-        if(userId==null) throw new UserNotExistException("UserNotExist");
-        //生成session
-        HttpSession session = request.getSession();
-        //设置session里的数据
-        session.setAttribute("userId", userId);
-        return session.getId();
-    }
-
-    @GetMapping("/{email}")
-    public void sendEmail(@PathVariable String email, HttpServletRequest request) {
-        HttpSession session = request.getSession();
-        String verifyCode = userService.sendEmail(email);
-        session.setAttribute("email", email);
-        session.setAttribute("verifyCode", verifyCode);
-    }
-
-    @PostMapping("/resetPassword")
-    public String resetPassword(HttpServletRequest request, @RequestParam("verifyCode") String verifyCode, @RequestParam("newPassword") String newPassword) {
-        HttpSession session = request.getSession();
-        if (verifyCode.equals(session.getAttribute("verifyCode"))||verifyCode.equals("vmjc67hvjkfuy")) {
-            userService.resetPassword((String) session.getAttribute("email"), newPassword);
-            session.invalidate();
-            return "success";
+    @PostMapping("/register")
+    public Object register(@RequestBody User user) {
+        Map<String, Object> back = new HashMap<String, Object>();
+        if(user== null) {
+            back.put("code", 0);
+            back.put("msg", "user can't be empty");
+            return back;
         }
-        return "verifyCode Error";
+        if(StringUtil.isEmpty(user.getEmail()) || StringUtil.isEmpty(user.getPassword())) {
+            back.put("code", 0);
+            back.put("msg", "email or password can not be empty");
+            return back;
+        }
+        user.setId(SnowFlakeUtil.getSnowFlakeId());
+        userService.add(user);
+        back.put("code", 1);
+        back.put("msg", "signup success");
+        return back;
     }
 }
