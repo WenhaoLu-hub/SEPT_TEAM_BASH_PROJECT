@@ -31,13 +31,13 @@ public class LoginController {
         }
         if(StringUtil.isEmpty(user.getEmail()) || StringUtil.isEmpty(user.getPassword())) {
             back.put("code", 0);
-            back.put("msg", "email or password is empty");
+            back.put("msg", "email or password can not be empty");
             return back;
         }
         user.setId(SnowFlakeUtil.getSnowFlakeId());
         userService.add(user);
         back.put("code", 1);
-        back.put("msg", "registration success ");
+        back.put("msg", "signup success");
         return back;
     }
 }
