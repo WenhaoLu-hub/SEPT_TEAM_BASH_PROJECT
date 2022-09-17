@@ -38,7 +38,7 @@ class SignUp extends StatelessWidget {
               const SizedBox(
                 height: 20,
               ),
-              SignUpFormPage(),
+              const SignUpFormPage(),
               const SizedBox(
                 height: 10,
               ),

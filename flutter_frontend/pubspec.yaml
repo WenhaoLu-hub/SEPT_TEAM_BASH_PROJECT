@@ -41,6 +41,8 @@ dependencies:
   dropdown_search: ^5.0.2
   dropdown_formfield: ^0.1.4
   flutter_custom_selector: ^0.0.3
+  cached_network_image: ^3.2.1
+
 
 dev_dependencies:
   flutter_test:

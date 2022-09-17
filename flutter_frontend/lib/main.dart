@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:team_bash_project/Screens/Welcome/welcome.dart';
 
+import 'Screens/PatientHomepage/patientHome.dart';
+
 void main() {
   runApp(const MyApp());
 }
