@@ -36,6 +36,10 @@ dependencies:
   cupertino_icons: ^1.0.2
   cached_network_image: ^3.2.1
   google_fonts: ^3.0.1
+  dropdown_formfield: ^0.1.4
+  get_state_manager: ^3.13.0
+  dropdown_search: ^5.0.2
+  flutter_secure_storage: ^6.0.0
 
 dev_dependencies:
   flutter_test:

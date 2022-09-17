@@ -12,8 +12,6 @@ class PatientProfile extends StatefulWidget {
 }
 
 class _PatientProfileState extends State<PatientProfile> {
-  final TextEditingController _othersControllerTwo = TextEditingController();
-
   @override
   Widget build(BuildContext context) {
     Size deviceSize = MediaQuery.of(context).size;
@@ -38,14 +36,6 @@ class _PatientProfileState extends State<PatientProfile> {
             ),
             const SizedBox(
               height: 60,
-            ),
-            TextField(
-              controller: _othersControllerTwo,
-              decoration: InputDecoration(
-                border: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.black, width: 2),
-                ),
-              ),
             ),
           ]),
     ));
