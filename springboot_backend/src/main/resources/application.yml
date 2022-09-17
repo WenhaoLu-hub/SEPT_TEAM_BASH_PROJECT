@@ -3,7 +3,7 @@ spring:
     driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql://127.0.0.1:3306/nd_telemedicine_app?useSSL=false&useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC&allowPublicKeyRetrieval=true
     username: root
-    password: 1288jjj.
+    password: 1288Jjj.
   mail:
     host: smtp.163.com
     username: sifangao97@163.com

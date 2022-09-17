@@ -19,12 +19,12 @@ class SignupModel {
   factory SignupModel.fromJson(Map<String, dynamic> json) => SignupModel(
         email: json["email"],
         password: json["password"],
-        accountType: json["accountType"],
+        accountType: json["type"],
       );
 
   Map<String, dynamic> toJson() => {
         "email": email,
         "password": password,
-        "accountType": accountType,
+        "type": accountType,
       };
 }
