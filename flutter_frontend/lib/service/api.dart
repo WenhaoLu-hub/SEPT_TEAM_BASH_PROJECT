@@ -25,7 +25,7 @@ class NetWorkHandler {
     return Uri.parse(apiPath);
   }
 
-  static void storeTocken(String token) async {
+  static Future<void> storeTocken(String token) async {
     await storage.write(key: "token", value: token);
   }
 
