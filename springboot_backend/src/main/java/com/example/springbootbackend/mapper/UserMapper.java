@@ -7,7 +7,8 @@ import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
 public interface UserMapper {
-    @Insert("insert into nd_user(id,first_name,last_name,gender,age,phone_number,address) values(#{id},#{firstName},#{lastName},#{gender},#{age},#{phoneNumber},#{address})")
+    @Insert("insert into nd_user(id,first_name,last_name,gender,age,phone_number,address,email,password,type)"
+            + "values(#{id},#{firstName},#{lastName},#{gender},#{age},#{phoneNumber},#{address},#{email},#{password},#{type})")
     void add(User user);
     @Delete("delete from nd_user where id=#{id}")
     void delete(Long id);
