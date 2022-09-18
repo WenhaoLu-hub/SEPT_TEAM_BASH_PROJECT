@@ -8,15 +8,16 @@ class NetWorkHandler {
     print(buildUri(endPoint));
     var response = await client.post(buildUri(endPoint),
         body: body, headers: {"Content-type": "application/json"});
+        
     return response.body;
   }
 
 
-  static Future<String> get(String endPoint) async {
+  static Future<http.Response> get(String endPoint) async {
     var response = await client
         .get(buildUri(endPoint), headers: {"Content-type": "application/json"});
         print(buildUri(endPoint));
-    return response.body;
+    return response;
   }
 
   static Uri buildUri(String endPoint) {

@@ -1,10 +1,10 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:team_bash_project/Screens/reset_password/controller/reset_password_controller.dart';
 import '../components/roundedButton.dart';
-
 
 class ResetPasswordForm extends StatefulWidget {
   const ResetPasswordForm({Key? key}) : super(key: key);
@@ -19,9 +19,8 @@ class ResetPasswordFormState extends State<ResetPasswordForm> {
   var resetPasswordController = Get.put(ResetPasswordController());
   void _submit() {
     if (_formKey.currentState!.validate()) {
-      // signupController.accountTypeEditingController.text = _dropdownValue!;
       _formKey.currentState!.save();
-     resetPasswordController.reset_pass();
+      resetPasswordController.reset_pass();
     }
   }
 
@@ -32,7 +31,6 @@ class ResetPasswordFormState extends State<ResetPasswordForm> {
           key: _formKey,
           child: Column(
             children: [
-              
               TextFormField(
                 controller: resetPasswordController.emailEditingController,
                 validator: (text) {
@@ -84,3 +82,22 @@ class ResetPasswordFormState extends State<ResetPasswordForm> {
   }
 }
 
+class ErrorHandler extends StatelessWidget {
+  const ErrorHandler({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return CupertinoAlertDialog(
+      title: const Text("error"),
+      content: const Text("incorrect email"),
+      actions: [
+        CupertinoDialogAction(
+          child: Text("ok"),
+          onPressed: () {
+            // Navigator.of(context).pop();
+          },
+        ),
+      ],
+    );
+  }
+}

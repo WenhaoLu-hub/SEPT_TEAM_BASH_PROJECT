@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'SEPT_Project',
-      theme: ThemeData(),
+      theme: ThemeData(platform:TargetPlatform.iOS,),
       home: const Welcome(),
     );
   }
