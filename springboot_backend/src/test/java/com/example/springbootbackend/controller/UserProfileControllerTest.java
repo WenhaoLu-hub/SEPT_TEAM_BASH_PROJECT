@@ -32,7 +32,7 @@ class UserProfileControllerTest {
         User user = new User();
         user.setFirstName("S");
         user.setLastName("fan");
-        userProfileController.change(user);
+//        userProfileController.change(user);
     }
 
 }
