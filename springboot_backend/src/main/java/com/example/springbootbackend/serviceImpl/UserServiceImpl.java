@@ -3,7 +3,6 @@ package com.example.springbootbackend.serviceImpl;
 import com.example.springbootbackend.mapper.UserMapper;
 import com.example.springbootbackend.model.User;
 import com.example.springbootbackend.service.UserService;
-import com.example.springbootbackend.utils.SnowFlakeUtil;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -26,7 +25,13 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void add(User user) {
-        user.setId(SnowFlakeUtil.getSnowFlakeId());
+        // 用当前时间+1位随机数的方式生成一个ID
+        long nowTime = System.currentTimeMillis()/1000;
+        Integer nowTimeInt = Long.valueOf(nowTime).intValue();
+        Random random = new Random();
+        Long userId = Long.valueOf(nowTimeInt + random.nextInt(9));
+        // 重新设置userId
+        user.setId(userId);
         userMapper.add(user);
     }
 
