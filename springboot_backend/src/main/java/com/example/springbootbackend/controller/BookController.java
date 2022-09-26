@@ -1,5 +1,7 @@
 package com.example.springbootbackend.controller;
 
+import com.auth0.jwt.JWT;
+import com.example.springbootbackend.exception.UserNotExistException;
 import com.example.springbootbackend.mapper.BookMapper;
 import com.example.springbootbackend.model.Book;
 import com.example.springbootbackend.model.LoginState;
@@ -19,6 +21,15 @@ import java.util.List;
 public class BookController {
     @Resource
     private BookService bookService;
+
+    @PostMapping("/addAvailability/{date}")
+    public void addAvailability(@PathVariable String date,HttpServletRequest request) throws ParseException, UserNotExistException {
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        Date date1 = simpleDateFormat.parse(date);
+        String token = request.getHeader(("token"));
+        LoginState loginState = JWTUtil.generateLoginState(token);
+        bookService.addAvailability(date1,loginState.getId());
+    }
 
     @PostMapping("/{date}")
     public void book(@PathVariable String date, HttpServletRequest request) throws ParseException {
