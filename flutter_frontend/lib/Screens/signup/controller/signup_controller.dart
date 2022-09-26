@@ -7,11 +7,15 @@ import 'package:team_bash_project/service/api.dart';
 
 class SignupController extends GetxController {
   TextEditingController emailEditingController = TextEditingController();
+  TextEditingController firstNameEditingController = TextEditingController();
+  TextEditingController lastNameEditingController = TextEditingController();
   TextEditingController passwordEditingController = TextEditingController();
   TextEditingController accountTypeEditingController = TextEditingController();
   void signup() async {
     SignupModel signupModel = SignupModel(
         email: emailEditingController.text,
+        firstName: firstNameEditingController.text,
+        lastName: lastNameEditingController.text,
         password: passwordEditingController.text,
         accountType: accountTypeEditingController.text);
     print(

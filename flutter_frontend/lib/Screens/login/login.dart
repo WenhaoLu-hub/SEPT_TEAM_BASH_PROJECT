@@ -1,7 +1,7 @@
 // ignore_for_file: sized_box_for_whitespace
 
 import 'dart:convert';
-
+import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:team_bash_project/Screens/signup/signup.dart';
@@ -47,11 +47,7 @@ class Login extends StatelessWidget {
                 fontSize: 18,
                 fontWeight: FontWeight.w800,
                 press: () {
-                  Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (context) => SignUp(),
-                    ),
-                  );
+                  Get.to(()=> const SignUp());
                 },
                 color: const Color(0xff164276),
               ),

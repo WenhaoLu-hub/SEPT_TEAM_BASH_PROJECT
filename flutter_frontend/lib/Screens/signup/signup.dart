@@ -49,11 +49,7 @@ class SignUp extends StatelessWidget {
                 fontSize: 18,
                 fontWeight: FontWeight.w800,
                 press: () {
-                  Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (context) => const Login(),
-                    ),
-                  );
+                  Get.to(()=> const Login());
                 },
                 color: const Color(0xff164276),
               ),

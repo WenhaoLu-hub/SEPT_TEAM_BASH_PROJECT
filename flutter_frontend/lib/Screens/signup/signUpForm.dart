@@ -22,8 +22,15 @@ var list = <String>["Doctor", "Patient"];
 
 class SignUpFormState extends State<SignUpFormPage> {
   final _formKey = GlobalKey<FormState>();
-  String _username = '';
+  // void _processData() {
+  //   // Process your data and upload to server
+  //   _formKey.currentState?.reset();
+  //   widget._formKey?.currentState?.reset();
+  // }
+  String _email = '';
   String _password = '';
+  String _firstName = '';
+  String _lastName = '';
   String _confirmPassword = '';
   var signupController = Get.put(SignupController());
   void _submit() {
@@ -45,7 +52,7 @@ class SignUpFormState extends State<SignUpFormPage> {
                 height: 20,
               ),
               TextFieldContainer(
-                onChanged: (text) => setState(() => _username = text),
+                onChanged: (text) => setState(() => _email = text),
                 title: 'email',
                 controller: signupController.emailEditingController,
                 hintText: "name@example.com",
@@ -62,8 +69,63 @@ class SignUpFormState extends State<SignUpFormPage> {
                   }
                   if (!RegExp(
                           r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
-                      .hasMatch(_username)) {
+                      .hasMatch(_email)) {
                     return "please type the correct email";
+                  }
+                  return null;
+                },
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              
+              TextFieldContainer(
+                onChanged: (text) => setState(() => _firstName = text),
+                title: 'first name',
+                controller: signupController.firstNameEditingController,
+                hintText: "first name",
+                isPassword: false,
+                validator: (text) {
+                  if (text == null || text.isEmpty) {
+                    return 'first name can\'t be empty';
+                  }
+                  if (text.length < 2) {
+                    return 'Too short';
+                  }
+                  if (text.length > 20) {
+                    return "Too long";
+                  }
+                  if (!RegExp(
+                          r"^[\w'\-,.][^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]]{2,}$")
+                      .hasMatch(_firstName)) {
+                    return "please type the correct first name";
+                  }
+                  return null;
+                },
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              TextFieldContainer(
+                onChanged: (text) => setState(() => _lastName = text),
+                title: 'last name',
+                controller: signupController.lastNameEditingController,
+                hintText: "last name",
+                isPassword: false,
+                validator: (text) {
+                  if (text == null || text.isEmpty) {
+                    return 'last name can\'t be empty';
+                  }
+                  if (text.length < 2) {
+                    return 'Too short';
+                  }
+                  if (text.length > 20) {
+                    return "Too long";
+                  }
+                  if (!RegExp(
+                          r"^[\w'\-,.][^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]]{1,}$")
+                      .hasMatch(_lastName)) {
+                    return "please type the correct last name";
                   }
                   return null;
                 },
