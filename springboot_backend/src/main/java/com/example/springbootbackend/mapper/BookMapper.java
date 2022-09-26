@@ -13,4 +13,7 @@ public interface BookMapper {
     List<Date> checkSpareDate(Long doctorId);
     @Select("select id,time,description,comment from nd_appointment where patient_id=#{id}")
     List<Book> query(Long id);
+
+    @Insert("insert into nd_doctor_availability(doctor_id,available_day) values(#{id},#{date1})")
+    void addAvailability(Date date1, Long id);
 }
