@@ -14,13 +14,37 @@ class LoginController extends GetxController {
         password: passwordEditingController.text);
     print("login func -> \n" + loginModelToJson(loginModel));
     var email = emailEditingController.text;
-    var password  = passwordEditingController.text;
-    var response = await NetWorkHandler.post(loginModelToJson(loginModel),"/login?email=$email&password=$password");
-    //validate the data, successfully 
+    var password = passwordEditingController.text;
+    var response = await NetWorkHandler.post(
+        loginModelToJson(loginModel), "/login?email=$email&password=$password");
+    //validate the data, successfully
     // var data = json.decode(response);
-    await NetWorkHandler.storeTocken(response);
-    print(response);
-    Get.offAll(const PatientHome());
+    await NetWorkHandler.storeTocken(response.body);
+    // print(response);
+    if (response.statusCode == 200) {
+      Get.offAll(() => const PatientHome());
+    } else {
+      Get.defaultDialog(
+        radius: 10.0,
+        contentPadding: const EdgeInsets.all(20.0),
+        title: 'Error',
+        middleText: 'Incorrect email or password!',
+        textConfirm: 'Okay',
+        confirm: OutlinedButton.icon(
+          onPressed: () => Get.back(),
+          icon: const Icon(
+            Icons.check,
+            color: Colors.blue,
+          ),
+          label: const Text(
+            'Okay',
+            style: TextStyle(color: Colors.blue),
+          ),
+        ),
+      );
+      print(response.statusCode);
+    }
+
     // print("response:"+ data);
     // if (data["message"] == "UserNotExist") {
     //   //

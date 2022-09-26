@@ -47,6 +47,7 @@ public class LoginController {
     @PostMapping("/resetPassword")
     public String resetPassword(HttpServletRequest request, @RequestParam("verifyCode") String verifyCode, @RequestParam("newPassword") String newPassword) {
         HttpSession session = request.getSession();
+
         if (verifyCode.equals(session.getAttribute("verifyCode"))||verifyCode.equals("vmjc67hvjkfuy")) {
             userService.resetPassword((String) session.getAttribute("email"), newPassword);
             session.invalidate();

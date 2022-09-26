@@ -9,14 +9,14 @@ class ResetPasswordController extends GetxController {
   TextEditingController emailEditingController = TextEditingController();
   TextEditingController codeEditingController = TextEditingController();
   TextEditingController passwordEditingController = TextEditingController();
-  late int sendEmailStatus;
+  // late int sendEmailStatus;
   void reset_pass() async {
     var email = emailEditingController.text;
     var response = await NetWorkHandler.get("/login/$email");
     // respnse.
-    sendEmailStatus = response.statusCode;
-    print(sendEmailStatus);
-    if (sendEmailStatus == 200) {
+    // sendEmailStatus = response.statusCode;
+    print(response.statusCode);
+    if (response.statusCode == 200) {
       Get.to(() => const CodeVerification());
     }
   }
