@@ -1,5 +1,6 @@
 package com.example.springbootbackend.serviceImpl;
 
+import com.example.springbootbackend.exception.UserNotExistException;
 import com.example.springbootbackend.mapper.BookMapper;
 import com.example.springbootbackend.mapper.UserMapper;
 import com.example.springbootbackend.model.Book;
@@ -32,5 +33,12 @@ public class BookServiceImpl implements BookService {
     @Override
     public List<Book> getBookList(Long id) {
         return bookMapper.query(id);
+    }
+
+    @Override
+    public void addAvailability(Date date1, Long id) throws UserNotExistException {
+        String type =  userMapper.getType(id);
+        if(!type.equals("doctor")) throw new UserNotExistException("Doctor not exists");
+        bookMapper.addAvailability(date1,id);
     }
 }
