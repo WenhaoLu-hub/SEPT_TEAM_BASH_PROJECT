@@ -4,7 +4,8 @@ import com.example.springbootbackend.model.User;
 
 public interface UserService {
 
-    public String search(User user);
+    public User search(Long id);
+
     public void add(User user);
     public void delete(Long id);
     public void change(User user);

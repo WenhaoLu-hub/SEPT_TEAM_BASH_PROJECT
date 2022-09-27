@@ -1,14 +1,37 @@
+import 'dart:async';
+
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:team_bash_project/Screens/Welcome/components/roundedButton.dart';
-import 'package:cached_network_image/cached_network_image.dart';
+import 'package:get/get.dart';
+import 'package:team_bash_project/Screens/login/controller/login_controller.dart';
 
-class PatientHome extends StatelessWidget {
-  const PatientHome({Key? key}) : super(key: key);
+import '../../service/netWorkHandler.dart';
+
+class PatientHome extends StatefulWidget {
+   PatientHome({Key? key}) : super(key: key);
+  // final loginController = Get.find<LoginController>();
   static const sampleImageURL =
       "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Lion_d%27Afrique.jpg/1879px-Lion_d%27Afrique.jpg";
 
+  @override
+  State<PatientHome> createState() => _PatientHomeState();
+}
+
+class _PatientHomeState extends State<PatientHome> {
   final sampleName = "Jadon";
+@override
+  void initState(){
+    super.initState();
+    checkLogin();
+
+  }
+  void checkLogin()async {
+    String? token = await NetWorkHandler.getToken();
+    print('token in patienthome page');
+    print(token);
+
+  }
   @override
   Widget build(BuildContext context) {
     Size deviceSize = MediaQuery.of(context).size;
@@ -37,7 +60,7 @@ class PatientHome extends StatelessWidget {
                     decoration:
                         BoxDecoration(borderRadius: BorderRadius.circular(30)),
                     child: CachedNetworkImage(
-                      imageUrl: sampleImageURL,
+                      imageUrl: PatientHome.sampleImageURL,
                       placeholder: (context, url) =>
                           const CircularProgressIndicator(),
                       errorWidget: (context, url, error) =>
@@ -47,7 +70,7 @@ class PatientHome extends StatelessWidget {
                 ),
               ),
               Text(
-                'Hi, $sampleName',
+                'hi, $sampleName',// loginController.emailEditingController.text,
                 style: const TextStyle(
                     fontSize: 25,
                     fontWeight: FontWeight.w400,
