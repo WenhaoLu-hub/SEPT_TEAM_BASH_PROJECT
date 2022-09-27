@@ -43,6 +43,8 @@ dependencies:
   flutter_custom_selector: ^0.0.3
   cached_network_image: ^3.2.1
   get: ^4.6.5
+  crypto: ^3.0.2
+  encrypt: ^5.0.0
 
 
 dev_dependencies:

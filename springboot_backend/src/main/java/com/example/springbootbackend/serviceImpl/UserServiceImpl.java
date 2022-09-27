@@ -20,8 +20,8 @@ public class UserServiceImpl implements UserService {
     private UserMapper userMapper;
 
     @Override
-    public String search(User user) {
-        return userMapper.search(user);
+    public User search(Long id) {
+        return userMapper.search(id);
     }
 
     @Override

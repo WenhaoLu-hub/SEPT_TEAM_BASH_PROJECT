@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:team_bash_project/Screens/login/login.dart';
-import 'package:team_bash_project/service/api.dart';
+import 'package:team_bash_project/service/netWorkHandler.dart';
 
 import '../code_verification.dart';
 
@@ -12,7 +12,7 @@ class ResetPasswordController extends GetxController {
   // late int sendEmailStatus;
   void reset_pass() async {
     var email = emailEditingController.text;
-    var response = await NetWorkHandler.get("/login/$email");
+    var response = await NetWorkHandler.get("/login/$email",null);
     // respnse.
     // sendEmailStatus = response.statusCode;
     print(response.statusCode);

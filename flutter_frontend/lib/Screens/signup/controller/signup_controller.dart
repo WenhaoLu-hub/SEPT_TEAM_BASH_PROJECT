@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:team_bash_project/Screens/login/login.dart';
 import 'package:team_bash_project/Screens/signup/model/signup_model.dart';
-import 'package:team_bash_project/service/api.dart';
+import 'package:team_bash_project/service/netWorkHandler.dart';
 
 class SignupController extends GetxController {
   TextEditingController emailEditingController = TextEditingController();

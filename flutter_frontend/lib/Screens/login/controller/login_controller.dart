@@ -2,8 +2,9 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:team_bash_project/Screens/PatientHomepage/patientHome.dart';
+import 'package:team_bash_project/Screens/landing_page/landing_page.dart';
 import 'package:team_bash_project/Screens/login/model/login_model.dart';
-import 'package:team_bash_project/service/api.dart';
+import 'package:team_bash_project/service/netWorkHandler.dart';
 
 class LoginController extends GetxController {
   TextEditingController emailEditingController = TextEditingController();
@@ -18,11 +19,10 @@ class LoginController extends GetxController {
     var response = await NetWorkHandler.post(
         loginModelToJson(loginModel), "/login?email=$email&password=$password");
     //validate the data, successfully
-    // var data = json.decode(response);
-    await NetWorkHandler.storeTocken(response.body);
-    // print(response);
     if (response.statusCode == 200) {
-      Get.offAll(() => const PatientHome());
+      print(response.body);
+      await NetWorkHandler.storeToken(response.body);
+      Get.offAll(() => LandingPage());
     } else {
       Get.defaultDialog(
         radius: 10.0,
@@ -44,10 +44,5 @@ class LoginController extends GetxController {
       );
       print(response.statusCode);
     }
-
-    // print("response:"+ data);
-    // if (data["message"] == "UserNotExist") {
-    //   //
-    // }
   }
 }
