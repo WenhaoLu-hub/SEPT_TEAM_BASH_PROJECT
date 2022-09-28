@@ -10,7 +10,6 @@ import 'package:team_bash_project/Screens/login/login.dart';
 import '../components/customizedTextButton.dart';
 import 'signUpForm.dart';
 
-//fake data
 
 class SignUp extends StatelessWidget {
   const SignUp({Key? key}) : super(key: key);

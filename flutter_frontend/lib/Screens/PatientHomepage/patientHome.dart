@@ -9,7 +9,8 @@ import 'package:team_bash_project/Screens/patientHomepage/controller/patient_hom
 import '../../service/netWorkHandler.dart';
 
 class PatientHome extends StatefulWidget {
-  PatientHome({Key? key}) : super(key: key);
+
+  const PatientHome({Key? key}) : super(key: key);
   // final loginController = Get.find<LoginController>();
   static const sampleImageURL =
       "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Lion_d%27Afrique.jpg/1879px-Lion_d%27Afrique.jpg";
@@ -100,7 +101,7 @@ class _PatientHomeState extends State<PatientHome> {
                 print("Pressed first button");
               }),
           _button(buttonText: "Book an Appointment",
-          onPressed: () => Get.toNamed("page"),),
+          onPressed: () => Get.toNamed("/patient/booking"),),
           _button(buttonText: "My Appointment"),
           _button(buttonText: "My Record"),
           _button(buttonText: "My Prescription"),
