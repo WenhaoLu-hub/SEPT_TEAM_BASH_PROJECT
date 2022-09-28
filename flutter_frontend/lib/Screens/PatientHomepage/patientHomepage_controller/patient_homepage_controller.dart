@@ -21,12 +21,8 @@ class PatientPageController extends GetxController {
       var response = await NetWorkHandler.get("/login/user-detail?id=$id", {
           "Content-type": "application/json",
           "authorization":scopedToken});
-      // print("response body:");
-      // print(response.body);
       var data = json.decode(response.body);
       print(data['user']['firstName']);
-      // print("data-> ");
-      // print(data['firstName']['firstName']);
       firstname = data['user']['firstName'];
       print("firstname ${firstname}");
       return firstname;

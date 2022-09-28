@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:team_bash_project/Screens/Welcome/welcome.dart';
+import 'package:team_bash_project/Screens/booking/booking.dart';
 import 'package:team_bash_project/Screens/landing_page/landing_page.dart';
 import 'package:team_bash_project/Screens/login/login.dart';
 import 'package:team_bash_project/Screens/patientHomepage/patientHome.dart';
@@ -27,6 +28,7 @@ class MyApp extends StatelessWidget {
         GetPage(name:"/signup",page:()=>const SignUp()),
         GetPage(name:"/landingpage",page:()=>const LandingPage()),
         GetPage(name:"/patient",page:()=> PatientHome()),
+        GetPage(name:"/patient/booking",page:()=> const Booking()),
       ],
       initialRoute: '/home',
       // home: const Welcome(),

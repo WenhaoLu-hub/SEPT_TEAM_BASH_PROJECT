@@ -100,7 +100,8 @@ class _PatientHomeState extends State<PatientHome> {
               onPressed: () {
                 print("Pressed first button");
               }),
-          _button(buttonText: "Book an Appointment"),
+          _button(buttonText: "Book an Appointment",
+          onPressed: () => Get.toNamed("/patient/booking"),),
           _button(buttonText: "My Appointment"),
           _button(buttonText: "My Record"),
           _button(buttonText: "My Prescription"),
