@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -9,6 +7,7 @@ class DropDownSelector extends StatefulWidget {
   String? selectValue;
   final String defaultValue;
   final List<String> dropdownList;
+  final void Function(String?)? onChanged;
   DropDownSelector({
     Key? key,
     required this.validator,
@@ -16,8 +15,9 @@ class DropDownSelector extends StatefulWidget {
     required this.defaultValue,
     required this.dropdownList,
     required this.selectValue,
+    required this.onChanged,
   }) : super(key: key);
-  
+
   @override
   State<StatefulWidget> createState() {
     return DropDownState();
@@ -27,7 +27,6 @@ class DropDownSelector extends StatefulWidget {
 class DropDownState extends State<DropDownSelector> {
   @override
   Widget build(BuildContext context) {
-    
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -66,11 +65,7 @@ class DropDownState extends State<DropDownSelector> {
                       child: Text(value),
                     ))
                 .toList(),
-            onChanged: (String? value) {
-              setState(() {
-                widget.selectValue = value!;
-              });
-            },
+            onChanged: widget.onChanged,
           ),
         ),
       ],

@@ -17,7 +17,9 @@ class Booking extends StatefulWidget {
   State<Booking> createState() => _BookingState();
 }
 
-String? _dropdownValue;
+String? _doctorDropdownValue;
+String? _timeDropdownValue;
+String? _optionDropdownValue;
 
 class _BookingState extends State<Booking> {
   final _formKey = GlobalKey<FormState>();
@@ -25,20 +27,17 @@ class _BookingState extends State<Booking> {
   var timeList = <String>["1 PM", "9 AM"];
   var mode = <String>["face to face", "online"];
   String _selectedDate = '';
-  String _dateCount = '';
-  String _range = '';
-  String _rangeCount = '';
   final bookingController = Get.put(BookingController());
   void _submit() {
     if (_formKey.currentState!.validate()) {
       print("press the button");
-      // print(_selectedDate as DateTime);
-      print(_selectedDate);
-      // final dateString = dateFormatter.format(_selectedDate as DateTime);
-      // print('Selected date: $dateString');
-      // DateFormat('dd/MM/yyyy').format(_selectedDate.)
 
+      bookingController.doctorEditingController.text = _doctorDropdownValue!;
+      bookingController.timeEditingController.text = _timeDropdownValue!;
+      bookingController.optionEditingController.text = _optionDropdownValue!;
+      bookingController.dateEditingController.text = _selectedDate;
       _formKey.currentState!.save();
+      bookingController.booking();
     }
   }
 
@@ -68,28 +67,21 @@ class _BookingState extends State<Booking> {
                   ),
                   Row(
                     children: [
-                      const BackButton(),
+                      BackButton(
+                        onPressed: (() =>
+                          Get.back()
+                        ),
+                      ),
                       _title(),
                     ],
                   ),
                   const SizedBox(
                     height: 30,
                   ),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    mainAxisSize: MainAxisSize.min,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Text('Selected date: $_selectedDate'),
-                    ],
-                  ),
+                  
                   SfDateRangePicker(
                     showNavigationArrow: true,
                     enablePastDates: false,
-                    // onSelectionChanged: (value)=> setState(() {
-                    //   // DateFormat('dd/MM/yyyy').format()
-                    //   _selectedDate = value.toString();
-                    // }),
                     onSelectionChanged: _onSelectionChanged,
                     selectionMode: DateRangePickerSelectionMode.single,
                   ),
@@ -102,30 +94,49 @@ class _BookingState extends State<Booking> {
                     dropdownList: doctorList,
                     validator: (value) =>
                         value == null ? "please the account type" : null,
-                    selectValue: _dropdownValue,
+                    selectValue: _doctorDropdownValue,
+                    onChanged: (String? value) {
+                      setState(() {
+                        value == null ? null : _doctorDropdownValue = value;
+                        print("dropdown value : ${value}");
+                        print("changed value $_doctorDropdownValue");
+                      });
+                    },
                   ),
                   const SizedBox(
                     height: 20,
                   ),
                   DropDownSelector(
-                    title: "available time",
-                    defaultValue: "choose your doctor",
-                    dropdownList: timeList,
-                    validator: (value) =>
-                        value == null ? "time can not be empty" : null,
-                    selectValue: _dropdownValue,
-                  ),
+                      title: "meeting time",
+                      defaultValue: "choose your doctor",
+                      dropdownList: timeList,
+                      validator: (value) =>
+                          value == null ? "time can not be empty" : null,
+                      selectValue: _timeDropdownValue,
+                      onChanged: (String? value) {
+                        setState(() {
+                          value == null ? null : _timeDropdownValue = value;
+                          print("dropdown value : ${value}");
+                          print("changed value $_timeDropdownValue");
+                        });
+                      }),
                   const SizedBox(
                     height: 20,
                   ),
                   DropDownSelector(
-                    title: "meeting option",
-                    defaultValue: "choose your doctor",
-                    dropdownList: mode,
-                    validator: (value) =>
-                        value == null ? "mode can not be empty" : null,
-                    selectValue: _dropdownValue,
-                  ),
+                      title: "meeting option",
+                      defaultValue: "choose your doctor",
+                      dropdownList: mode,
+                      validator: (value) =>
+                          value == null ? "mode can not be empty" : null,
+                      selectValue: _optionDropdownValue,
+                      onChanged: (String? value) {
+                        setState(() {
+                          value == null ? null : _optionDropdownValue = value;
+                          print("dropdown value : ${value}");
+                          print("changed value $_optionDropdownValue");
+                        });
+                      }),
                   const SizedBox(
                     height: 40,
                   ),
