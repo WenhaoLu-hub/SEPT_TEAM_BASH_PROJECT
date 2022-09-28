@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 class RoundedButton extends StatelessWidget {
   final String text;
   final VoidCallback press;
-  // ignore: use_key_in_widget_constructors
   const RoundedButton({
     required this.text,
     required this.press});

@@ -1,12 +1,12 @@
-import 'package:dropdown_formfield/dropdown_formfield.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_custom_selector/widget/flutter_single_select.dart';
-import 'package:get_state_manager/get_state_manager.dart';
+import 'package:get/get.dart';
+
 import 'package:google_fonts/google_fonts.dart';
-import 'package:http/http.dart';
+
 import 'package:team_bash_project/Screens/signup/controller/signup_controller.dart';
-import 'package:dropdown_search/dropdown_search.dart';
+
 
 import '../components/roundedButton.dart';
 import '../components/textFieldContainer.dart';
@@ -22,11 +22,6 @@ var list = <String>["Doctor", "Patient"];
 
 class SignUpFormState extends State<SignUpFormPage> {
   final _formKey = GlobalKey<FormState>();
-  // void _processData() {
-  //   // Process your data and upload to server
-  //   _formKey.currentState?.reset();
-  //   widget._formKey?.currentState?.reset();
-  // }
   String _email = '';
   String _password = '';
   String _firstName = '';

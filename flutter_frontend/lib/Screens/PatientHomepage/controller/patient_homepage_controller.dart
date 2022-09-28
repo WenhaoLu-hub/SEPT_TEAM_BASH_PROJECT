@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'package:encrypt/encrypt.dart';
 import 'package:get/get.dart';
 import 'package:team_bash_project/service/netWorkHandler.dart';
 import 'package:jaguar_jwt/jaguar_jwt.dart';

@@ -4,9 +4,8 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:team_bash_project/Screens/login/controller/login_controller.dart';
-import 'package:team_bash_project/Screens/patientHomepage/patientHomepage_controller/patient_homepage_controller.dart';
-
+// ignore: unused_import
+import 'package:team_bash_project/Screens/patientHomepage/controller/patient_homepage_controller.dart';
 import '../../service/netWorkHandler.dart';
 
 class PatientHome extends StatefulWidget {
@@ -101,7 +100,7 @@ class _PatientHomeState extends State<PatientHome> {
                 print("Pressed first button");
               }),
           _button(buttonText: "Book an Appointment",
-          onPressed: () => Get.toNamed("/patient/booking"),),
+          onPressed: () => Get.toNamed("page"),),
           _button(buttonText: "My Appointment"),
           _button(buttonText: "My Record"),
           _button(buttonText: "My Prescription"),

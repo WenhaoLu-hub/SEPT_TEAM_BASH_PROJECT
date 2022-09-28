@@ -31,7 +31,6 @@ class MyApp extends StatelessWidget {
         GetPage(name:"/patient/booking",page:()=> const Booking()),
       ],
       initialRoute: '/home',
-      // home: const Welcome(),
     );
   }
 }
