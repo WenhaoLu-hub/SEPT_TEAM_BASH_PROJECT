@@ -49,7 +49,7 @@ class SignUp extends StatelessWidget {
                 fontSize: 18,
                 fontWeight: FontWeight.w800,
                 press: () {
-                  Get.to(()=> const Login());
+                  Get.toNamed("/login");
                 },
                 color: const Color(0xff164276),
               ),

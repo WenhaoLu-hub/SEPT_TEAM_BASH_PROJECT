@@ -17,12 +17,14 @@ class LoginController extends GetxController {
     var email = emailEditingController.text;
     var password = passwordEditingController.text;
     var response = await NetWorkHandler.post(
-        loginModelToJson(loginModel), "/login?email=$email&password=$password");
+        loginModelToJson(loginModel), "/login?email=$email&password=$password",{
+          "Content-type": "application/json",
+          });
     //validate the data, successfully
     if (response.statusCode == 200) {
       print(response.body);
       await NetWorkHandler.storeToken(response.body);
-      Get.offAll(() => LandingPage());
+      Get.offAll(() => PatientHome());
     } else {
       Get.defaultDialog(
         radius: 10.0,

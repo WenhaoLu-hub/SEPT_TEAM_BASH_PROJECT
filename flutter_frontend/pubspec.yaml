@@ -45,6 +45,7 @@ dependencies:
   get: ^4.6.5
   crypto: ^3.0.2
   encrypt: ^5.0.0
+  jaguar_jwt: ^3.0.0
 
 
 dev_dependencies:

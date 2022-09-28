@@ -12,7 +12,7 @@ class ResetPasswordController extends GetxController {
   // late int sendEmailStatus;
   void reset_pass() async {
     var email = emailEditingController.text;
-    var response = await NetWorkHandler.get("/login/$email",null);
+    var response = await NetWorkHandler.get("/login/$email", null);
     // respnse.
     // sendEmailStatus = response.statusCode;
     print(response.statusCode);
@@ -25,7 +25,9 @@ class ResetPasswordController extends GetxController {
     var code = codeEditingController.text;
     var newPassword = passwordEditingController.text;
     var response = await NetWorkHandler.post(
-        null, "/login/resetPassword?verifyCode=$code&newPassword=$newPassword");
+        null,
+        "/login/resetPassword?verifyCode=$code&newPassword=$newPassword",
+        {"Content-type": "application/json"});
     Get.to(() => const Login());
   }
 }

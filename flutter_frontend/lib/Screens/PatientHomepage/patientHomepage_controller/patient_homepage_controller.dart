@@ -4,34 +4,34 @@ import 'package:get/get.dart';
 import 'package:team_bash_project/service/netWorkHandler.dart';
 import 'package:jaguar_jwt/jaguar_jwt.dart';
 
-class LandingPageController extends GetxController {
+class PatientPageController extends GetxController {
   RxString token = ''.obs;
-  RxBool loggedIn = false.obs;
+  // RxString firstname = ''.obs;
+  String firstname = '' ;
 
-  @override
-  void onInit() {
-    super.onInit();
-    checkLogin();
-  }
-
-  void checkLogin() async {
+  Future<String> getName() async {
     var scopedToken = await NetWorkHandler.getToken();
     if (scopedToken != null) {
       final parts = scopedToken.split('.');
       final payload = parts[1];
       final String decoded_data = B64urlEncRfc7515.decodeUtf8(payload);
-      print("decoded_data : $decoded_data");
-      var data = json.decode(decoded_data);
-      print(data["id"]);
-      var id = data["id"];
-      token.value = data["id"];
-      loggedIn.value = true;
+      var decoded_token = json.decode(decoded_data);
+      var id = decoded_token["id"];
+      token.value = decoded_token["id"];
       var response = await NetWorkHandler.get("/login/user-detail?id=$id", {
           "Content-type": "application/json",
           "authorization":scopedToken});
-      print("response body:");
-      print(response.body);
+      // print("response body:");
+      // print(response.body);
+      var data = json.decode(response.body);
+      print(data['user']['firstName']);
+      // print("data-> ");
+      // print(data['firstName']['firstName']);
+      firstname = data['user']['firstName'];
+      print("firstname ${firstname}");
+      return firstname;
     }
+    return firstname;
   }
 
   

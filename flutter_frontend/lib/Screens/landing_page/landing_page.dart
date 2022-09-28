@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
-
 import '../../service/netWorkHandler.dart';
 import 'controller/landingpage_controller.dart';
 
@@ -14,10 +13,18 @@ class LandingPage extends StatefulWidget {
 }
 
 class _LandingPageState extends State<LandingPage> {
-  var landingPageController = Get.put(LandingPageController());
+  final landingPageController = Get.put(LandingPageController());
+  // LandingPageController inst = Get.find();
+  
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: Text('home'),);
+    // return const FutureBuilder(
+    //   builder: (BuildContext context, AsymcSmapsshot<String> model));
+    return Scaffold(
+      // body: if(landingPageController),
+      // body: Center(child: Text(landingPageController.token.value)),
+    );
   }
 }
+

@@ -4,8 +4,6 @@ import java.util.Map;
 import javax.annotation.Resource;
 
 import com.example.springbootbackend.model.User;
-import com.example.springbootbackend.utils.SnowFlakeUtil;
-import com.github.pagehelper.util.StringUtil;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -70,7 +68,8 @@ public class LoginController {
             return back;
         }
         back.put("code", 1);
-        back.put("msg", user);
+        back.put("msg", "user found");
+        back.put("user",user);
         return back;
     }
 }

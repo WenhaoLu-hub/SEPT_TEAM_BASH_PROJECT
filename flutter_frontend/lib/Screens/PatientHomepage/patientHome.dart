@@ -5,11 +5,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:team_bash_project/Screens/login/controller/login_controller.dart';
+import 'package:team_bash_project/Screens/patientHomepage/patientHomepage_controller/patient_homepage_controller.dart';
 
 import '../../service/netWorkHandler.dart';
 
 class PatientHome extends StatefulWidget {
-   PatientHome({Key? key}) : super(key: key);
+  PatientHome({Key? key}) : super(key: key);
   // final loginController = Get.find<LoginController>();
   static const sampleImageURL =
       "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Lion_d%27Afrique.jpg/1879px-Lion_d%27Afrique.jpg";
@@ -19,19 +20,8 @@ class PatientHome extends StatefulWidget {
 }
 
 class _PatientHomeState extends State<PatientHome> {
-  final sampleName = "Jadon";
-@override
-  void initState(){
-    super.initState();
-    checkLogin();
+  final patientPageController = Get.put(PatientPageController());
 
-  }
-  void checkLogin()async {
-    String? token = await NetWorkHandler.getToken();
-    print('token in patienthome page');
-    print(token);
-
-  }
   @override
   Widget build(BuildContext context) {
     Size deviceSize = MediaQuery.of(context).size;
@@ -69,13 +59,25 @@ class _PatientHomeState extends State<PatientHome> {
                   ),
                 ),
               ),
-              Text(
-                'hi, $sampleName',// loginController.emailEditingController.text,
-                style: const TextStyle(
-                    fontSize: 25,
-                    fontWeight: FontWeight.w400,
-                    fontFamily: 'OpenSans'),
-                textAlign: TextAlign.center,
+              FutureBuilder<String>(
+                future: patientPageController.getName(),
+                builder:
+                    (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
+                  if (snapshot.hasError) {
+                    return const Text('Error');
+                  } else if (snapshot.hasData) {
+                    return Text(
+                      'Hi, ${snapshot.data}', // loginController.emailEditingController.text,
+                      style: const TextStyle(
+                          fontSize: 25,
+                          fontWeight: FontWeight.w400,
+                          fontFamily: 'OpenSans'),
+                      textAlign: TextAlign.center,
+                    );
+                  } else {
+                    return const Text('Empty data');
+                  }
+                },
               ),
               CupertinoButton(
                 padding: EdgeInsets.zero,

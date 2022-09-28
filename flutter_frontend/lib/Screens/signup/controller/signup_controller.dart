@@ -20,8 +20,8 @@ class SignupController extends GetxController {
         accountType: accountTypeEditingController.text);
     print(
         "signup func signup para body -> \n" + signupModelToJson(signupModel));
-    var response =
-        await NetWorkHandler.post(signupModelToJson(signupModel), "/register");
+    var response = await NetWorkHandler.post(signupModelToJson(signupModel),
+        "/register", {"Content-type": "application/json"});
     // var data = json.decode(response);
     // print(data["code"]);
     if (response.statusCode == 200) {
