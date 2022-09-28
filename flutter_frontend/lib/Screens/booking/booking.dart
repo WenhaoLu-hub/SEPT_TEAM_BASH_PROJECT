@@ -17,7 +17,6 @@ class Booking extends StatefulWidget {
   State<Booking> createState() => _BookingState();
 }
 
-
 String? _dropdownValue;
 
 class _BookingState extends State<Booking> {
@@ -30,47 +29,25 @@ class _BookingState extends State<Booking> {
   String _range = '';
   String _rangeCount = '';
   final bookingController = Get.put(BookingController());
-  void _submit(){
-    
-    if(_formKey.currentState!.validate()){
+  void _submit() {
+    if (_formKey.currentState!.validate()) {
       print("press the button");
-      print('Selected date: ${_selectedDate}');
+      // print(_selectedDate as DateTime);
+      print(_selectedDate);
+      // final dateString = dateFormatter.format(_selectedDate as DateTime);
+      // print('Selected date: $dateString');
       // DateFormat('dd/MM/yyyy').format(_selectedDate.)
-      print('Selected date count: $_dateCount');
-      print('Selected range: $_range');
-      print('Selected ranges count: $_rangeCount');
+
       _formKey.currentState!.save();
     }
   }
 
-  /// The method for [DateRangePickerSelectionChanged] callback, which will be
-  /// called whenever a selection changed on the date picker widget.
   void _onSelectionChanged(DateRangePickerSelectionChangedArgs args) {
-    /// The argument value will return the changed date as [DateTime] when the
-    /// widget [SfDateRangeSelectionMode] set as single.
-    ///
-    /// The argument value will return the changed dates as [List<DateTime>]
-    /// when the widget [SfDateRangeSelectionMode] set as multiple.
-    ///
-    /// The argument value will return the changed range as [PickerDateRange]
-    /// when the widget [SfDateRangeSelectionMode] set as range.
-    ///
-    /// The argument value will return the changed ranges as
-    /// [List<PickerDateRange] when the widget [SfDateRangeSelectionMode] set as
-    /// multi range.
-    // setState(() {
-    //   if (args.value is PickerDateRange) {
-    //     _range = '${DateFormat('dd/MM/yyyy').format(args.value.startDate)} -'
-    //         // ignore: lines_longer_than_80_chars
-    //         ' ${DateFormat('dd/MM/yyyy').format(args.value.endDate ?? args.value.startDate)}';
-    //   } else if (args.value is DateTime) {
-    //     _selectedDate = args.value.toString();
-    //   } else if (args.value is List<DateTime>) {
-    //     _dateCount = args.value.length.toString();
-    //   } else {
-    //     _rangeCount = args.value.length.toString();
-    //   }
-    // });
+    setState(() {
+      if (args.value is DateTime) {
+        _selectedDate = DateFormat('dd/MM/yyyy').format(args.value);
+      }
+    });
   }
 
   @override
@@ -98,15 +75,23 @@ class _BookingState extends State<Booking> {
                   const SizedBox(
                     height: 30,
                   ),
-                  
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Text('Selected date: $_selectedDate'),
+                    ],
+                  ),
                   SfDateRangePicker(
                     showNavigationArrow: true,
                     enablePastDates: false,
-                    onSelectionChanged: (value)=> setState(() {
-                      _selectedDate = value.toString();
-                    }),
+                    // onSelectionChanged: (value)=> setState(() {
+                    //   // DateFormat('dd/MM/yyyy').format()
+                    //   _selectedDate = value.toString();
+                    // }),
+                    onSelectionChanged: _onSelectionChanged,
                     selectionMode: DateRangePickerSelectionMode.single,
-                    // maxDate:1;
                   ),
                   const SizedBox(
                     height: 20,
@@ -116,9 +101,8 @@ class _BookingState extends State<Booking> {
                     defaultValue: "choose your doctor",
                     dropdownList: doctorList,
                     validator: (value) =>
-                      value == null ? "please the account type" : null,
+                        value == null ? "please the account type" : null,
                     selectValue: _dropdownValue,
-                    
                   ),
                   const SizedBox(
                     height: 20,
@@ -128,9 +112,8 @@ class _BookingState extends State<Booking> {
                     defaultValue: "choose your doctor",
                     dropdownList: timeList,
                     validator: (value) =>
-                      value == null ? "time can not be empty" : null,
+                        value == null ? "time can not be empty" : null,
                     selectValue: _dropdownValue,
-                  
                   ),
                   const SizedBox(
                     height: 20,
@@ -140,9 +123,8 @@ class _BookingState extends State<Booking> {
                     defaultValue: "choose your doctor",
                     dropdownList: mode,
                     validator: (value) =>
-                      value == null ? "mode can not be empty" : null,
+                        value == null ? "mode can not be empty" : null,
                     selectValue: _dropdownValue,
-                    
                   ),
                   const SizedBox(
                     height: 40,
@@ -176,4 +158,3 @@ Widget _title() {
     ),
   );
 }
-
