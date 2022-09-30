@@ -31,13 +31,13 @@ public class BookController {
         bookService.addAvailability(date1,loginState.getId());
     }
 
-    @PostMapping("/{date}")
-    public void book(@PathVariable String date, HttpServletRequest request) throws ParseException {
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        Date date1 = simpleDateFormat.parse(date);
+    @PostMapping("/{dateTime}/{type}")
+    public void book(@PathVariable String dateTime, @PathVariable String type, HttpServletRequest request) throws ParseException {
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Date date1 = simpleDateFormat.parse(dateTime);
         String token = request.getHeader("token");
         LoginState loginState = JWTUtil.generateLoginState(token);
-        bookService.book(date1,loginState.getId());
+        bookService.book(date1,type,loginState.getId());
     }
 
     @GetMapping("")

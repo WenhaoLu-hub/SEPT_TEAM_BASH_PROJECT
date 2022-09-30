@@ -20,9 +20,9 @@ public class BookServiceImpl implements BookService {
     @Resource
     private UserMapper userMapper;
     @Override
-    public void book(Date date, Long id) {
+    public void book(Date date, String type, Long id) {
         Long doctorId = userMapper.getMyDoctor(id);
-        bookMapper.insert(doctorId,id,date);
+        bookMapper.insert(doctorId,id,date,type);
     }
 
     @Override
