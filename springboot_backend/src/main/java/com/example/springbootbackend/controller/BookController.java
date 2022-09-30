@@ -36,6 +36,7 @@ public class BookController {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         Date date1 = simpleDateFormat.parse(dateTime);
         String token = request.getHeader("token");
+        System.out.println(token);
         LoginState loginState = JWTUtil.generateLoginState(token);
         bookService.book(date1,type,loginState.getId());
     }

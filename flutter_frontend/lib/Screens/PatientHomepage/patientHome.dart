@@ -1,14 +1,27 @@
+import 'dart:async';
+
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:team_bash_project/Screens/Welcome/components/roundedButton.dart';
-import 'package:cached_network_image/cached_network_image.dart';
+import 'package:get/get.dart';
+// ignore: unused_import
+import 'package:team_bash_project/Screens/patientHomepage/controller/patient_homepage_controller.dart';
+import '../../service/netWorkHandler.dart';
 
-class PatientHome extends StatelessWidget {
+class PatientHome extends StatefulWidget {
+
   const PatientHome({Key? key}) : super(key: key);
+  // final loginController = Get.find<LoginController>();
   static const sampleImageURL =
       "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Lion_d%27Afrique.jpg/1879px-Lion_d%27Afrique.jpg";
 
-  final sampleName = "Jadon";
+  @override
+  State<PatientHome> createState() => _PatientHomeState();
+}
+
+class _PatientHomeState extends State<PatientHome> {
+  final patientPageController = Get.put(PatientPageController());
+
   @override
   Widget build(BuildContext context) {
     Size deviceSize = MediaQuery.of(context).size;
@@ -37,7 +50,7 @@ class PatientHome extends StatelessWidget {
                     decoration:
                         BoxDecoration(borderRadius: BorderRadius.circular(30)),
                     child: CachedNetworkImage(
-                      imageUrl: sampleImageURL,
+                      imageUrl: PatientHome.sampleImageURL,
                       placeholder: (context, url) =>
                           const CircularProgressIndicator(),
                       errorWidget: (context, url, error) =>
@@ -46,13 +59,25 @@ class PatientHome extends StatelessWidget {
                   ),
                 ),
               ),
-              Text(
-                'Hi, $sampleName',
-                style: const TextStyle(
-                    fontSize: 25,
-                    fontWeight: FontWeight.w400,
-                    fontFamily: 'OpenSans'),
-                textAlign: TextAlign.center,
+              FutureBuilder<String>(
+                future: patientPageController.getName(),
+                builder:
+                    (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
+                  if (snapshot.hasError) {
+                    return const Text('Error');
+                  } else if (snapshot.hasData) {
+                    return Text(
+                      'Hi, ${snapshot.data}', // loginController.emailEditingController.text,
+                      style: const TextStyle(
+                          fontSize: 25,
+                          fontWeight: FontWeight.w400,
+                          fontFamily: 'OpenSans'),
+                      textAlign: TextAlign.center,
+                    );
+                  } else {
+                    return const Text('Empty data');
+                  }
+                },
               ),
               CupertinoButton(
                 padding: EdgeInsets.zero,
@@ -75,7 +100,8 @@ class PatientHome extends StatelessWidget {
               onPressed: () {
                 print("Pressed first button");
               }),
-          _button(buttonText: "Book an Appointment"),
+          _button(buttonText: "Book an Appointment",
+          onPressed: () => Get.toNamed("/patient/booking"),),
           _button(buttonText: "My Appointment"),
           _button(buttonText: "My Record"),
           _button(buttonText: "My Prescription"),

@@ -19,7 +19,7 @@ public interface UserMapper {
     @Update("update nd_user set first_name=#{firstName},last_name=#{lastName},gender=#{gender},phone_number=#{phoneNumber},age=#{age},address=#{address} where id=#{id}")
     void change(User user);
     @Select("select * from nd_user where id=#{id}")
-    String search(User user);
+    User search(Long id);
     @Select("select id from nd_user where email=#{userName} and password=#{password}")
     Long login(String userName, String password);
 
