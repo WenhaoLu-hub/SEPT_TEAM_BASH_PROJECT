@@ -18,8 +18,6 @@ public class UserProfileController {
 
     @Resource
     private UserService userService;
-    @Resource
-    private HttpServletRequest request;
 
     @PostMapping("/add")
     public void add(@RequestBody User user){
@@ -32,7 +30,7 @@ public class UserProfileController {
     }
 
     @PutMapping("/change")
-    public void change(@RequestBody User user) {
+    public void change(@RequestBody User user,HttpServletRequest request) {
         String token = request.getHeader("token");
         System.out.println(token);
         LoginState loginState = JWTUtil.generateLoginState(token);
