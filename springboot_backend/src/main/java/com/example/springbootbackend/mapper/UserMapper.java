@@ -6,6 +6,8 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
+import java.util.List;
+
 public interface UserMapper {
 
     @Select("select type from nd_user where id=#{id}")
@@ -22,7 +24,8 @@ public interface UserMapper {
     User search(Long id);
     @Select("select id from nd_user where email=#{userName} and password=#{password}")
     Long login(String userName, String password);
-
+    @Select("select * from nd_user where type=#{type}")
+    List<User> getDoctors(String type);
     @Update("update nd_user set password=#{newPassword} where email=#{mailNumber}")
     void resetPassword(String mailNumber, String newPassword);
 }

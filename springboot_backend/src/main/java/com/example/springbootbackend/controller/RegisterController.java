@@ -4,13 +4,11 @@ import com.example.springbootbackend.model.User;
 import com.example.springbootbackend.service.UserService;
 //import com.example.springbootbackend.utils.SnowFlakeUtil;
 import com.github.pagehelper.util.StringUtil;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -19,7 +17,16 @@ public class RegisterController {
 
     @Resource
     private UserService userService;
+    @GetMapping("/doctors")
+    public Object getDoctors(){
 
+        List<User> doctors = userService.searchDoctors("doctor");
+        Map<String, Object> back = new HashMap<String, Object>();
+        back.put("code", 1);
+        back.put("msg", "doctor list");
+        back.put("user",doctors);
+        return back;
+    }
     @PostMapping()
     public Object register(@RequestBody User user) {
         System.out.println(user);

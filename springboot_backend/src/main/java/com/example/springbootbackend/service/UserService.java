@@ -2,6 +2,8 @@ package com.example.springbootbackend.service;
 
 import com.example.springbootbackend.model.User;
 
+import java.util.List;
+
 public interface UserService {
 
     public User search(Long id);
@@ -15,4 +17,6 @@ public interface UserService {
     String sendEmail(String email);
 
     void resetPassword(String mailNumber, String newPassword);
+
+    List<User> searchDoctors(String type);
 }

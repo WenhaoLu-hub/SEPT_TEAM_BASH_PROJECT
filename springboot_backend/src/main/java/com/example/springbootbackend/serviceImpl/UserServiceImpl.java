@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import java.util.List;
 import java.util.Random;
 
 @Service
@@ -75,6 +76,11 @@ public class UserServiceImpl implements UserService {
     @Override
     public void resetPassword(String mailNumber, String newPassword) {
         userMapper.resetPassword(mailNumber,newPassword);
+    }
+
+    @Override
+    public List<User> searchDoctors(String type) {
+        return userMapper.getDoctors(type);
     }
 
     private String generateVerifyCode(){
