@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'SEPT_Project',
       theme: ThemeData(),
-      home: const PatientProfile(),
+      home: const PatientHome(),
     );
   }
 }
