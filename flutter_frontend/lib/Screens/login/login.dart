@@ -47,7 +47,7 @@ class Login extends StatelessWidget {
                 fontSize: 18,
                 fontWeight: FontWeight.w800,
                 press: () {
-                  Get.toNamed("/detail");
+                  Get.toNamed("/signup");
                 },
                 color: const Color(0xff164276),
               ),

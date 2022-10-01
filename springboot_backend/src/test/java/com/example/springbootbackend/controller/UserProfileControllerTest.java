@@ -9,8 +9,6 @@ import org.springframework.mock.web.MockHttpServletRequest;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 @SpringBootTest
 class UserProfileControllerTest {
     @Resource
@@ -22,8 +20,8 @@ class UserProfileControllerTest {
     @Test
     void add() {
         User user = new User();
-        user.setFirstName("Si");
-        user.setLastName("fan");
+        user.setFirst_name("Si");
+        user.setLast_name("fan");
         userProfileController.add(user);
     }
 
@@ -40,8 +38,8 @@ class UserProfileControllerTest {
         request.addParameter("email","wxn1023717264@163.com");
         request.addParameter("password","new");
         User user = new User();
-        user.setFirstName("S");
-        user.setLastName("fan");
+        user.setFirst_name("S");
+        user.setLast_name("fan");
         String token = loginController.login(request);
         // 模拟一个HttpServletRequest,放入token
         MockHttpServletRequest request1 = new MockHttpServletRequest();

@@ -22,6 +22,7 @@ public class RegisterController {
 
     @PostMapping()
     public Object register(@RequestBody User user) {
+        System.out.println(user);
         Map<String, Object> back = new HashMap<String, Object>();
         if(user== null) {
             back.put("code", 0);

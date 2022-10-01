@@ -61,6 +61,7 @@ public class LoginController {
     @GetMapping("/user-detail")
     public Object getUser(@RequestParam long id) {
         User user = userService.search(id);
+        System.out.println(user);
         Map<String, Object> back = new HashMap<String, Object>();
         if(user== null) {
             back.put("code", 0);

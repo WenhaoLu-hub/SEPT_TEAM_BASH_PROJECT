@@ -1,11 +1,11 @@
 package com.example.springbootbackend.model;
 
 public class User {
-    String firstName;
-    String lastName;
+    String first_name;
+    String last_name;
     String gender;
     int age;
-    int phoneNumber;
+    int phone_number;
     String address;
     Long id;
 
@@ -21,20 +21,20 @@ public class User {
         this.id = id;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public String getFirst_name() {
+        return first_name;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setFirst_name(String first_name) {
+        this.first_name = first_name;
     }
 
-    public String getLastName() {
-        return lastName;
+    public String getLast_name() {
+        return last_name;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setLast_name(String last_name) {
+        this.last_name = last_name;
     }
 
     public String getGender() {
@@ -53,12 +53,12 @@ public class User {
         this.age = age;
     }
 
-    public int getPhoneNumber() {
-        return phoneNumber;
+    public int getPhone_number() {
+        return phone_number;
     }
 
-    public void setPhoneNumber(int phoneNumber) {
-        this.phoneNumber = phoneNumber;
+    public void setPhone_number(int phone_number) {
+        this.phone_number = phone_number;
     }
 
     public String getAddress() {
@@ -93,4 +93,19 @@ public class User {
         this.type = type;
     }
 
+    @Override
+    public String toString() {
+        return "User{" +
+                "first_name='" + first_name + '\'' +
+                ", last_name='" + last_name + '\'' +
+                ", gender='" + gender + '\'' +
+                ", age=" + age +
+                ", phone_number=" + phone_number +
+                ", address='" + address + '\'' +
+                ", id=" + id +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", type='" + type + '\'' +
+                '}';
+    }
 }

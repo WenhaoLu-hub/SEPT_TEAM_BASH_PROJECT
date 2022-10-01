@@ -21,6 +21,7 @@ class PatientPageController extends GetxController {
           "Content-type": "application/json",
           "authorization":scopedToken});
       var data = json.decode(response.body);
+      print(data);
       print(data['user']['firstName']);
       firstname = data['user']['firstName'];
       print("firstname ${firstname}");

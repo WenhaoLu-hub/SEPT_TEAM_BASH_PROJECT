@@ -31,7 +31,6 @@ class _BookingState extends State<Booking> {
   void _submit() {
     if (_formKey.currentState!.validate()) {
       print("press the button");
-
       bookingController.doctorEditingController.text = _doctorDropdownValue!;
       bookingController.timeEditingController.text = _timeDropdownValue!;
       bookingController.optionEditingController.text = _optionDropdownValue!;
@@ -44,7 +43,11 @@ class _BookingState extends State<Booking> {
   void _onSelectionChanged(DateRangePickerSelectionChangedArgs args) {
     setState(() {
       if (args.value is DateTime) {
-        _selectedDate = DateFormat('dd/MM/yyyy').format(args.value);
+        final now = DateTime.now();
+        String formattedTime = DateFormat('HH:mm:ss').format(now);
+        _selectedDate =
+            DateFormat('dd/MM/yyyy').format(args.value) + " " + formattedTime;
+        print("formatted time : ${_selectedDate}");
       }
     });
   }
@@ -68,9 +71,7 @@ class _BookingState extends State<Booking> {
                   Row(
                     children: [
                       BackButton(
-                        onPressed: (() =>
-                          Get.back()
-                        ),
+                        onPressed: (() => Get.back()),
                       ),
                       _title(),
                     ],
@@ -78,7 +79,7 @@ class _BookingState extends State<Booking> {
                   const SizedBox(
                     height: 30,
                   ),
-                  
+                  Text('Selected date: $_selectedDate'),
                   SfDateRangePicker(
                     showNavigationArrow: true,
                     enablePastDates: false,
