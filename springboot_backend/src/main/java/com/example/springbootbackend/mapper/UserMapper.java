@@ -12,7 +12,7 @@ public interface UserMapper {
     String getType(Long id);
     @Select("select doctor_id from nd_user where id=#{id}")
     Long getMyDoctor(Long id);
-    @Insert("insert into nd_user(id,email,password,type,first_name,last_name,gender,age,phone_number,address) values(#{id},#{email},#{password},#{type},#{firstName},#{lastName},#{gender},#{age},#{phoneNumber},#{address})")
+    @Insert("insert into nd_user(id,email,password,type,firstName,lastName,gender,age,phoneNumber,address) values(#{id},#{email},#{password},#{type},#{firstName},#{lastName},#{gender},#{age},#{phoneNumber},#{address})")
     void add(User user);
     @Delete("delete from nd_user where id=#{id}")
     void delete(Long id);

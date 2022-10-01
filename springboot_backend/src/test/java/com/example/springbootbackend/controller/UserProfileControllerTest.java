@@ -20,8 +20,8 @@ class UserProfileControllerTest {
     @Test
     void add() {
         User user = new User();
-        user.setFirst_name("Si");
-        user.setLast_name("fan");
+        user.setFirstName("Si");
+        user.setLastName("fan");
         userProfileController.add(user);
     }
 
@@ -38,8 +38,8 @@ class UserProfileControllerTest {
         request.addParameter("email","wxn1023717264@163.com");
         request.addParameter("password","new");
         User user = new User();
-        user.setFirst_name("S");
-        user.setLast_name("fan");
+        user.setFirstName("S");
+        user.setLastName("fan");
         String token = loginController.login(request);
         // 模拟一个HttpServletRequest,放入token
         MockHttpServletRequest request1 = new MockHttpServletRequest();

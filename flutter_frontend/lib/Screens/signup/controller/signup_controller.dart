@@ -11,13 +11,15 @@ class SignupController extends GetxController {
   TextEditingController lastNameEditingController = TextEditingController();
   TextEditingController passwordEditingController = TextEditingController();
   TextEditingController accountTypeEditingController = TextEditingController();
+  TextEditingController doctorEditingController = TextEditingController();
   void signup() async {
     SignupModel signupModel = SignupModel(
         email: emailEditingController.text,
         firstName: firstNameEditingController.text,
         lastName: lastNameEditingController.text,
         password: passwordEditingController.text,
-        accountType: accountTypeEditingController.text);
+        accountType: accountTypeEditingController.text,
+        doctor: doctorEditingController.text);
     print(
         "signup func signup para body -> \n" + signupModelToJson(signupModel));
     var response = await NetWorkHandler.post(signupModelToJson(signupModel),

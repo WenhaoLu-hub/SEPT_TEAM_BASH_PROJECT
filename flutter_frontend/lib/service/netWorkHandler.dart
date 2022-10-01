@@ -9,7 +9,7 @@ class NetWorkHandler {
     var response = await client.post(buildUri(endPoint),
         body: body, 
         headers:headers);
-        // headers: {"Content-type": "application/json"});
+        
     print(buildUri(endPoint));
     return response;
   }

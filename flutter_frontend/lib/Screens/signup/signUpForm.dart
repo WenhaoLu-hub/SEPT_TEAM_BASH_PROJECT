@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
 import 'package:google_fonts/google_fonts.dart';
+import 'package:team_bash_project/Screens/components/dropDownSelector.dart';
 
 import 'package:team_bash_project/Screens/signup/controller/signup_controller.dart';
 
@@ -16,10 +17,10 @@ class SignUpFormPage extends StatefulWidget {
   @override
   SignUpFormState createState() => SignUpFormState();
 }
-
+String? _doctorDropdownValue;
 String? _dropdownValue;
 var list = <String>["Doctor", "Patient"];
-
+var doctorList = <String>["Doctor1", "Doctor2","Doctor3"];
 class SignUpFormState extends State<SignUpFormPage> {
   final _formKey = GlobalKey<FormState>();
   String _email = '';
@@ -31,6 +32,7 @@ class SignUpFormState extends State<SignUpFormPage> {
   void _submit() {
     if (_formKey.currentState!.validate()) {
       signupController.accountTypeEditingController.text = _dropdownValue!;
+      signupController.doctorEditingController.text = _doctorDropdownValue!;
       _formKey.currentState!.save();
       signupController.signup();
     }
@@ -253,6 +255,7 @@ class DropDownButtonSelector extends StatefulWidget {
 class DropDownButtonState extends State<DropDownButtonSelector> {
   @override
   Widget build(BuildContext context) {
+    
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -300,11 +303,31 @@ class DropDownButtonState extends State<DropDownButtonSelector> {
                 _dropdownValue = value!;
               }
 
-                  // valdator:
+      
                   );
             },
           ),
         ),
+        const SizedBox(
+          height: 20,
+        ),
+         DropDownSelector(
+                      title: "doctor list",
+                      defaultValue: "choose your doctor",
+                      dropdownList: doctorList,
+                      validator: (value) =>
+                          value == null ? "please choose a doctor" : null,
+                      selectValue: _doctorDropdownValue,
+                      onChanged: (String? value) {
+                        setState(() {
+                          value == null ? null : _doctorDropdownValue = value;
+                          print("dropdown value : ${value}");
+                          print("changed value $_doctorDropdownValue");
+                        });
+                      }),
+                  const SizedBox(
+                    height: 20,
+                  ),
       ],
     );
   }
