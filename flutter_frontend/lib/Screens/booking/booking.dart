@@ -90,24 +90,8 @@ class _BookingState extends State<Booking> {
                   const SizedBox(
                     height: 20,
                   ),
-                  // DropDownSelector(
-                  //   title: "available doctor",
-                  //   defaultValue: "choose your doctor",
-                  //   dropdownList: doctorList,
-                  //   validator: (value) =>
-                  //       value == null ? "please the account type" : null,
-                  //   selectValue: _doctorDropdownValue,
-                  //   onChanged: (String? value) {
-                  //     setState(() {
-                  //       value == null ? null : _doctorDropdownValue = value;
-                  //       print("dropdown value : ${value}");
-                  //       print("changed value $_doctorDropdownValue");
-                  //     });
-                  //   },
-                  // ),
-                  // const SizedBox(
-                  //   height: 20,
-                  // ),
+                  
+                 
                  
                   DropDownSelector(
                       title: "meeting option",

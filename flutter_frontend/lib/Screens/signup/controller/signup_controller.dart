@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:team_bash_project/Screens/login/login.dart';
+import 'package:team_bash_project/Screens/login/model/user.dart';
 import 'package:team_bash_project/Screens/signup/model/signup_model.dart';
 import 'package:team_bash_project/service/netWorkHandler.dart';
 
@@ -24,8 +25,7 @@ class SignupController extends GetxController {
         "signup func signup para body -> \n" + signupModelToJson(signupModel));
     var response = await NetWorkHandler.post(signupModelToJson(signupModel),
         "/register", {"Content-type": "application/json"});
-    // var data = json.decode(response);
-    // print(data["code"]);
+
     if (response.statusCode == 200) {
       Get.to(() => const Login());
     } else {
@@ -49,5 +49,19 @@ class SignupController extends GetxController {
       );
       print(response.body);
     }
+  }
+
+  Future<List<String?>?> getDoctors() async {
+    // http://localhost:8080/register/doctors
+    var response = await NetWorkHandler.get(
+        "/register/doctors", {"Content-type": "application/json"});
+    var data = json.decode(response.body);
+    print(data);
+    var doctors = data['doctors'];
+    final List<dynamic> doctor_names = doctors.map((e) => UserModel.fromJson(e).firstName).toList();
+    final List<String> list = doctor_names.map((e) => e.toString()).toList();
+    // print("after casting doctor_name type : ${list.runtimeType}");
+    print("doctor first name : ${list}");
+    return list;
   }
 }

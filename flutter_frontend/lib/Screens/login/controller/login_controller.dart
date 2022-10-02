@@ -4,11 +4,14 @@ import 'package:get/get.dart';
 import 'package:team_bash_project/Screens/PatientHomepage/patientHome.dart';
 import 'package:team_bash_project/Screens/landing_page/landing_page.dart';
 import 'package:team_bash_project/Screens/login/model/login_model.dart';
+import 'package:team_bash_project/Screens/login/model/user.dart';
 import 'package:team_bash_project/service/netWorkHandler.dart';
 
 class LoginController extends GetxController {
   TextEditingController emailEditingController = TextEditingController();
   TextEditingController passwordEditingController = TextEditingController();
+  
+
   void login() async {
     LoginModel loginModel = LoginModel(
         email: emailEditingController.text,
@@ -16,10 +19,10 @@ class LoginController extends GetxController {
     print("login func -> \n" + loginModelToJson(loginModel));
     var email = emailEditingController.text;
     var password = passwordEditingController.text;
-    var response = await NetWorkHandler.post(
-        loginModelToJson(loginModel), "/login?email=$email&password=$password",{
-          "Content-type": "application/json",
-          });
+    var response = await NetWorkHandler.post(loginModelToJson(loginModel),
+        "/login?email=$email&password=$password", {
+      "Content-type": "application/json",
+    });
     //validate the data, successfully
     if (response.statusCode == 200) {
       print(response.body);

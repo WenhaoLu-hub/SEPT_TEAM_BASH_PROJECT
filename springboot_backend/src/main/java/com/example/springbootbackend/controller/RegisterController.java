@@ -24,7 +24,7 @@ public class RegisterController {
         Map<String, Object> back = new HashMap<String, Object>();
         back.put("code", 1);
         back.put("msg", "doctor list");
-        back.put("user",doctors);
+        back.put("doctors",doctors);
         return back;
     }
     @PostMapping()

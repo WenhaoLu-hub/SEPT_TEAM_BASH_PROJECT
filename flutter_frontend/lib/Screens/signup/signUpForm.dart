@@ -12,15 +12,21 @@ import 'package:team_bash_project/Screens/signup/controller/signup_controller.da
 import '../components/roundedButton.dart';
 import '../components/textFieldContainer.dart';
 
+String? _doctorDropdownValue;
+String? _accountDropdownValue;
+var accountList = <String>["Doctor", "Patient"];
+// var doctorList = <String>["Doctor1", "Doctor2","Doctor3"];
+// var testList;
+
 class SignUpFormPage extends StatefulWidget {
   const SignUpFormPage({Key? key}) : super(key: key);
   @override
   SignUpFormState createState() => SignUpFormState();
 }
-String? _doctorDropdownValue;
-String? _dropdownValue;
-var list = <String>["Doctor", "Patient"];
-var doctorList = <String>["Doctor1", "Doctor2","Doctor3"];
+
+
+
+
 class SignUpFormState extends State<SignUpFormPage> {
   final _formKey = GlobalKey<FormState>();
   String _email = '';
@@ -29,17 +35,24 @@ class SignUpFormState extends State<SignUpFormPage> {
   String _lastName = '';
   String _confirmPassword = '';
   var signupController = Get.put(SignupController());
+  
+  // var doctorList = signupController.getDoctors();
   void _submit() {
     if (_formKey.currentState!.validate()) {
-      signupController.accountTypeEditingController.text = _dropdownValue!;
+      signupController.accountTypeEditingController.text = _accountDropdownValue!;
       signupController.doctorEditingController.text = _doctorDropdownValue!;
       _formKey.currentState!.save();
       signupController.signup();
     }
   }
-
+  
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context)  {
+    // var list = signupController.getDoctors();
+    // List<String>.from(list);
+    // Future<List<String>> string = list;
+    
+    // print("list in form : ${list}");
     return SafeArea(
       child: Form(
           key: _formKey,
@@ -130,12 +143,52 @@ class SignUpFormState extends State<SignUpFormPage> {
               const SizedBox(
                 height: 20,
               ),
-              DropDownButtonSelector(
-                signupController: signupController,
-                accountType: "account type",
-                validator: (value) =>
-                    value == null ? "please the account type" : null,
-              ),
+              DropDownSelector(
+                    title: "account type",
+                    defaultValue: "choose your account type",
+                    dropdownList: accountList,
+                    validator: (value) =>
+                        value == null ? "please choose an account type" : null,
+                    selectValue: _doctorDropdownValue,
+                    onChanged: (String? value) {
+                      setState(() {
+                        value == null ? null : _accountDropdownValue = value;
+                        print("dropdown value : ${value}");
+                        print("changed value $_accountDropdownValue");
+                      });
+                    },
+                  ),
+              const SizedBox(
+          height: 20,
+        ),
+         FutureBuilder<dynamic>(
+          future: signupController.getDoctors(),
+           builder: 
+           (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
+            if (snapshot.hasError) {
+          
+              print(signupController.getDoctors().runtimeType);
+              print(snapshot.error);
+                    return const Text('Error');
+                  } else if (snapshot.hasData) {
+            return DropDownSelector(
+                        title: "your personal doctor",
+                        defaultValue: "choose your doctor",
+                        dropdownList: snapshot.data,
+                        validator: (value) =>
+                            value == null ? "please choose a doctor" : null,
+                        selectValue: _doctorDropdownValue,
+                        onChanged: (String? value) {
+                          setState(() {
+                            value == null ? null : _doctorDropdownValue = value;
+                            print("dropdown value : ${value}");
+                            print("changed value $_doctorDropdownValue");
+                          });
+                        } ); }else {
+                    return const Text('Empty data');
+                  }},
+           
+         ),
               const SizedBox(
                 height: 20,
               ),
@@ -236,99 +289,3 @@ class CustomFormField extends StatelessWidget {
   }
 }
 
-class DropDownButtonSelector extends StatefulWidget {
-  final SignupController signupController;
-  final String? Function(String?)? validator;
-  final String accountType;
-  const DropDownButtonSelector({
-    Key? key,
-    this.validator,
-    required this.accountType,
-    required this.signupController,
-  }) : super(key: key);
-  @override
-  State<StatefulWidget> createState() {
-    return DropDownButtonState();
-  }
-}
-
-class DropDownButtonState extends State<DropDownButtonSelector> {
-  @override
-  Widget build(BuildContext context) {
-    
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          widget.accountType,
-          style: GoogleFonts.josefinSans(
-              textStyle: const TextStyle(
-                  color: Color(0xff293462),
-                  fontWeight: FontWeight.w600,
-                  fontSize: 20)),
-        ),
-        Container(
-          width: double.infinity,
-          child: DropdownButtonFormField(
-            validator: widget.validator,
-            decoration: const InputDecoration(
-                enabled: true,
-                disabledBorder: UnderlineInputBorder(
-                    borderSide: BorderSide(
-                  style: BorderStyle.solid,
-                  color: Color(0xffdfe8f3),
-                ))),
-
-            isExpanded: true,
-            hint: const Text("Choose your account type"),
-            value: _dropdownValue,
-            //  icon: const Icon(Icons.arrow_downward),
-            // elevation: 16,
-            style: GoogleFonts.josefinSans(
-              textStyle: const TextStyle(
-                color: Colors.black,
-                fontWeight: FontWeight.w400,
-                fontSize: 20,
-              ),
-            ),
-
-            items: list
-                .map((value) => DropdownMenuItem(
-                      value: value,
-                      child: Text(value),
-                    ))
-                .toList(),
-            onChanged: (String? value) {
-              setState(() {
-                _dropdownValue = value!;
-              }
-
-      
-                  );
-            },
-          ),
-        ),
-        const SizedBox(
-          height: 20,
-        ),
-         DropDownSelector(
-                      title: "your personal doctor",
-                      defaultValue: "choose your doctor",
-                      dropdownList: doctorList,
-                      validator: (value) =>
-                          value == null ? "please choose a doctor" : null,
-                      selectValue: _doctorDropdownValue,
-                      onChanged: (String? value) {
-                        setState(() {
-                          value == null ? null : _doctorDropdownValue = value;
-                          print("dropdown value : ${value}");
-                          print("changed value $_doctorDropdownValue");
-                        });
-                      }),
-                  const SizedBox(
-                    height: 20,
-                  ),
-      ],
-    );
-  }
-}
