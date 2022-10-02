@@ -15,17 +15,18 @@ import '../components/textFieldContainer.dart';
 String? _doctorDropdownValue;
 String? _accountDropdownValue;
 var accountList = <String>["Doctor", "Patient"];
-// var doctorList = <String>["Doctor1", "Doctor2","Doctor3"];
-// var testList;
+
+
 
 class SignUpFormPage extends StatefulWidget {
+  String GetDoctor(){
+  print("_doctorDropdownValue ${_doctorDropdownValue!}");
+  return _doctorDropdownValue!;
+}
   const SignUpFormPage({Key? key}) : super(key: key);
   @override
   SignUpFormState createState() => SignUpFormState();
 }
-
-
-
 
 class SignUpFormState extends State<SignUpFormPage> {
   final _formKey = GlobalKey<FormState>();
@@ -36,11 +37,10 @@ class SignUpFormState extends State<SignUpFormPage> {
   String _confirmPassword = '';
   var signupController = Get.put(SignupController());
   
-  // var doctorList = signupController.getDoctors();
-  void _submit() {
+  void _submit() async {
     if (_formKey.currentState!.validate()) {
       signupController.accountTypeEditingController.text = _accountDropdownValue!;
-      signupController.doctorEditingController.text = _doctorDropdownValue!;
+      signupController.doctorEditingController.text = await signupController.getDoctorId();
       _formKey.currentState!.save();
       signupController.signup();
     }
@@ -48,11 +48,6 @@ class SignUpFormState extends State<SignUpFormPage> {
   
   @override
   Widget build(BuildContext context)  {
-    // var list = signupController.getDoctors();
-    // List<String>.from(list);
-    // Future<List<String>> string = list;
-    
-    // print("list in form : ${list}");
     return SafeArea(
       child: Form(
           key: _formKey,
@@ -88,7 +83,6 @@ class SignUpFormState extends State<SignUpFormPage> {
               const SizedBox(
                 height: 20,
               ),
-              
               TextFieldContainer(
                 onChanged: (text) => setState(() => _firstName = text),
                 title: 'first name',
@@ -149,7 +143,7 @@ class SignUpFormState extends State<SignUpFormPage> {
                     dropdownList: accountList,
                     validator: (value) =>
                         value == null ? "please choose an account type" : null,
-                    selectValue: _doctorDropdownValue,
+                    selectValue: _accountDropdownValue,
                     onChanged: (String? value) {
                       setState(() {
                         value == null ? null : _accountDropdownValue = value;
@@ -161,33 +155,37 @@ class SignUpFormState extends State<SignUpFormPage> {
               const SizedBox(
           height: 20,
         ),
-         FutureBuilder<dynamic>(
-          future: signupController.getDoctors(),
-           builder: 
-           (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
-            if (snapshot.hasError) {
-          
-              print(signupController.getDoctors().runtimeType);
-              print(snapshot.error);
-                    return const Text('Error');
-                  } else if (snapshot.hasData) {
-            return DropDownSelector(
-                        title: "your personal doctor",
-                        defaultValue: "choose your doctor",
-                        dropdownList: snapshot.data,
-                        validator: (value) =>
-                            value == null ? "please choose a doctor" : null,
-                        selectValue: _doctorDropdownValue,
-                        onChanged: (String? value) {
-                          setState(() {
-                            value == null ? null : _doctorDropdownValue = value;
-                            print("dropdown value : ${value}");
-                            print("changed value $_doctorDropdownValue");
-                          });
-                        } ); }else {
-                    return const Text('Empty data');
-                  }},
-           
+        
+         Visibility(
+          visible: _accountDropdownValue == "Doctor" ? true: false,
+           child: FutureBuilder<dynamic>(
+            future: signupController.getDoctors(),
+             builder: 
+             (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
+              if (snapshot.hasError) {
+            
+                print(signupController.getDoctors().runtimeType);
+                print(snapshot.error);
+                      return const Text('Error');
+                    } else if (snapshot.hasData) {
+              return DropDownSelector(
+                          title: "your personal doctor",
+                          defaultValue: "choose your doctor",
+                          dropdownList: snapshot.data,
+                          validator: (value) =>
+                              value == null ? "please choose a doctor" : null,
+                          selectValue: _doctorDropdownValue,
+                          onChanged: (String? value) {
+                            setState(() {
+                              value == null ? null : _doctorDropdownValue = value;
+                              print("dropdown value : ${value}");
+                              print("changed value $_doctorDropdownValue");
+                            });
+                          } ); }else {
+                      return const Text('Empty data');
+                    }},
+             
+           ),
          ),
               const SizedBox(
                 height: 20,

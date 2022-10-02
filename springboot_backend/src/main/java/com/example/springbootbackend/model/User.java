@@ -13,6 +13,16 @@ public class User {
     String password;
     String type;
 
+    public int getDoctor_id() {
+        return doctor_id;
+    }
+
+    public void setDoctor_id(int doctor_id) {
+        this.doctor_id = doctor_id;
+    }
+
+    int doctor_id;
+
     public Long getId() {
         return id;
     }
@@ -96,16 +106,17 @@ public class User {
     @Override
     public String toString() {
         return "User{" +
-                "first_name='" + firstName + '\'' +
-                ", last_name='" + lastName + '\'' +
+                "firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
                 ", gender='" + gender + '\'' +
                 ", age=" + age +
-                ", phone_number=" + phoneNumber +
+                ", phoneNumber=" + phoneNumber +
                 ", address='" + address + '\'' +
                 ", id=" + id +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 ", type='" + type + '\'' +
+                ", doctor_id=" + doctor_id +
                 '}';
     }
 }

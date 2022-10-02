@@ -19,4 +19,6 @@ public interface UserService {
     void resetPassword(String mailNumber, String newPassword);
 
     List<User> searchDoctors(String type);
+
+    Long getDoctorId(String fullName);
 }

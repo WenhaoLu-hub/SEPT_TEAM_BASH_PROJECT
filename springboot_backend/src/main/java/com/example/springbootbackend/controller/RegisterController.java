@@ -27,6 +27,21 @@ public class RegisterController {
         back.put("doctors",doctors);
         return back;
     }
+
+    @GetMapping("/doctor/{fullName}")
+    public Object getDoctorID(@PathVariable String fullName){
+        Map<String, Object> response = new HashMap<String, Object>();
+        Long id = userService.getDoctorId(fullName);
+        if (id != null){
+            response.put("code", 0);
+            response.put("id", id);
+        }else {
+            response.put("code", 1);
+            response.put("msg", "can not find doctor id");
+        }
+        return response;
+
+    }
     @PostMapping()
     public Object register(@RequestBody User user) {
         System.out.println(user);

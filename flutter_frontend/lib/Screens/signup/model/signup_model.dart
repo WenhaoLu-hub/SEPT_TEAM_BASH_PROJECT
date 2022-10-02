@@ -12,7 +12,7 @@ class SignupModel {
     required this.lastName,
     required this.password,
     required this.accountType,
-    required this.doctor,
+    required this.doctor_id,
   });
 
   String email;
@@ -20,7 +20,7 @@ class SignupModel {
   String lastName;
   String password;
   String accountType;
-  String doctor;
+  String doctor_id;
 
   factory SignupModel.fromJson(Map<String, dynamic> json) => SignupModel(
         email: json["email"],
@@ -28,7 +28,7 @@ class SignupModel {
         lastName:json["lastName"],
         password: json["password"],
         accountType: json["type"],
-        doctor: json["doctor"],
+        doctor_id: json["doctor_id"],
       );
 
   Map<String, dynamic> toJson() => {
@@ -37,6 +37,6 @@ class SignupModel {
         "lastName":lastName,
         "password": password,
         "type": accountType,
-        "doctor":doctor,
+        "doctor_id":doctor_id,
       };
 }

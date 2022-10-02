@@ -14,7 +14,7 @@ public interface UserMapper {
     String getType(Long id);
     @Select("select doctor_id from nd_user where id=#{id}")
     Long getMyDoctor(Long id);
-    @Insert("insert into nd_user(id,email,password,type,firstName,lastName,gender,age,phoneNumber,address) values(#{id},#{email},#{password},#{type},#{firstName},#{lastName},#{gender},#{age},#{phoneNumber},#{address})")
+    @Insert("insert into nd_user(id,email,password,type,firstName,lastName,gender,age,phoneNumber,address,doctor_id) values(#{id},#{email},#{password},#{type},#{firstName},#{lastName},#{gender},#{age},#{phoneNumber},#{address},#{doctor_id})")
     void add(User user);
     @Delete("delete from nd_user where id=#{id}")
     void delete(Long id);
@@ -28,4 +28,7 @@ public interface UserMapper {
     List<User> getDoctors(String type);
     @Update("update nd_user set password=#{newPassword} where email=#{mailNumber}")
     void resetPassword(String mailNumber, String newPassword);
+
+    @Select("select id from nd_user where firstName=#{firstName} and lastName=#{lastName}")
+    Long getDoctorId(String firstName, String lastName);
 }

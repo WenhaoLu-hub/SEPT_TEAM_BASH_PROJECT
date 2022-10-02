@@ -83,6 +83,12 @@ public class UserServiceImpl implements UserService {
         return userMapper.getDoctors(type);
     }
 
+    @Override
+    public Long getDoctorId(String fullName) {
+        String [] s = fullName.split(" ");
+        return userMapper.getDoctorId(s[0],s[1]);
+    }
+
     private String generateVerifyCode(){
         StringBuffer code = new StringBuffer();
         Random random = new Random();

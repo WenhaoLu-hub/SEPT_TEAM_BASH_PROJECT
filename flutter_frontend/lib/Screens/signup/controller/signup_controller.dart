@@ -4,7 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:team_bash_project/Screens/login/login.dart';
 import 'package:team_bash_project/Screens/login/model/user.dart';
 import 'package:team_bash_project/Screens/signup/model/signup_model.dart';
+import 'package:team_bash_project/Screens/signup/signUpForm.dart';
 import 'package:team_bash_project/service/netWorkHandler.dart';
+
+
+final signUpController = Get.put(const SignUpFormPage());
 
 class SignupController extends GetxController {
   TextEditingController emailEditingController = TextEditingController();
@@ -20,7 +24,7 @@ class SignupController extends GetxController {
         lastName: lastNameEditingController.text,
         password: passwordEditingController.text,
         accountType: accountTypeEditingController.text,
-        doctor: doctorEditingController.text);
+        doctor_id: doctorEditingController.text);
     print(
         "signup func signup para body -> \n" + signupModelToJson(signupModel));
     var response = await NetWorkHandler.post(signupModelToJson(signupModel),
@@ -51,14 +55,25 @@ class SignupController extends GetxController {
     }
   }
 
+  Future<String> getDoctorId() async {
+    final fullName = signUpController.GetDoctor();
+    var response = await NetWorkHandler.get("/register/doctor/$fullName", {"Content-type": "application/json"});
+    print(response.body);
+    var data = json.decode(response.body);
+    if(data["code"] == 0){
+      return data["id"].toString();
+    }
+    return "";
+  }
+
   Future<List<String?>?> getDoctors() async {
     // http://localhost:8080/register/doctors
     var response = await NetWorkHandler.get(
         "/register/doctors", {"Content-type": "application/json"});
     var data = json.decode(response.body);
-    print(data);
+    // print(data);
     var doctors = data['doctors'];
-    final List<dynamic> doctor_names = doctors.map((e) => UserModel.fromJson(e).firstName).toList();
+    final List<dynamic> doctor_names = doctors.map((e) => UserModel.fromJson(e).firstName + " " + UserModel.fromJson(e).lastName).toList();
     final List<String> list = doctor_names.map((e) => e.toString()).toList();
     // print("after casting doctor_name type : ${list.runtimeType}");
     print("doctor first name : ${list}");
