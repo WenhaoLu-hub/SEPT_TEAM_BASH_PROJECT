@@ -4,9 +4,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-// ignore: unused_import
 import 'package:team_bash_project/Screens/patientHomepage/controller/patient_homepage_controller.dart';
-import '../../service/netWorkHandler.dart';
 
 class PatientHome extends StatefulWidget {
 
