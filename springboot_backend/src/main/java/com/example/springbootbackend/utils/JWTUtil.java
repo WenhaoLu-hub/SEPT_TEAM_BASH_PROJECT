@@ -4,7 +4,9 @@ import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTCreator;
 import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
+import com.auth0.jwt.interfaces.Claim;
 import com.auth0.jwt.interfaces.DecodedJWT;
+import com.example.springbootbackend.model.LoginState;
 
 import java.util.Calendar;
 import java.util.Map;
@@ -41,6 +43,29 @@ public class JWTUtil {
         JWTVerifier jwtVerifier = JWT.require(Algorithm.HMAC256(SECRET)).build();
         DecodedJWT decodedJWT = jwtVerifier.verify(token);
         return decodedJWT;
+    }
+
+    public static LoginState generateLoginState(String token){
+        DecodedJWT decodedJWT = decode(token);
+        Map<String, Claim> info = decodedJWT.getClaims();
+        Claim c1 = info.get("id");
+        String su = removeDouble(c1);
+        //String s = c1.toString();
+        //String su = s.substring(1,s.length()-1);
+        Long userId = Long.valueOf(su);
+
+        Claim c2 = info.get("email");
+        String email = removeDouble(c2);
+        LoginState loginState =new LoginState();
+        loginState.setId(userId);
+        loginState.setEmail(email);
+        return loginState;
+    }
+
+    private static String removeDouble(Claim c1){
+        String s = c1.toString();
+        String su = s.substring(1,s.length()-1);
+        return su;
     }
 }
 

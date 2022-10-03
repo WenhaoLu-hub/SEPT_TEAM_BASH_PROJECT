@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import java.util.List;
 import java.util.Random;
 
 @Service
@@ -19,8 +20,8 @@ public class UserServiceImpl implements UserService {
     private UserMapper userMapper;
 
     @Override
-    public String search(User user) {
-        return userMapper.search(user);
+    public User search(Long id) {
+        return userMapper.search(id);
     }
 
     @Override
@@ -50,10 +51,12 @@ public class UserServiceImpl implements UserService {
         return userMapper.login(userName,password);
     }
     // 发送邮件
+
     private JavaMailSender javaMailSender;
     public UserServiceImpl(JavaMailSender javaMailSender) {
         this.javaMailSender = javaMailSender;
     }
+
     @Value("${spring.mail.username}")
     private String account;
     @Override
@@ -73,6 +76,17 @@ public class UserServiceImpl implements UserService {
     @Override
     public void resetPassword(String mailNumber, String newPassword) {
         userMapper.resetPassword(mailNumber,newPassword);
+    }
+
+    @Override
+    public List<User> searchDoctors(String type) {
+        return userMapper.getDoctors(type);
+    }
+
+    @Override
+    public Long getDoctorId(String fullName) {
+        String [] s = fullName.split(" ");
+        return userMapper.getDoctorId(s[0],s[1]);
     }
 
     private String generateVerifyCode(){
