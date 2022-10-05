@@ -26,6 +26,8 @@ public interface UserMapper {
     Long login(String userName, String password);
     @Select("select * from nd_user where type=#{type}")
     List<User> getDoctors(String type);
+    @Select("select * from nd_user where type=#{type}")
+    List<User> getPatient(String type);
     @Update("update nd_user set password=#{newPassword} where email=#{mailNumber}")
     void resetPassword(String mailNumber, String newPassword);
 
