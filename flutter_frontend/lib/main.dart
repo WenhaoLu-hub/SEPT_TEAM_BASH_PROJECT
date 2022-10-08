@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:team_bash_project/Screens/booking/booking.dart';
 import 'package:team_bash_project/Screens/landing_page/landing_page.dart';
 import 'package:team_bash_project/Screens/login/login.dart';
