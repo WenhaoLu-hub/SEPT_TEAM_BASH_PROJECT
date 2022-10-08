@@ -23,16 +23,13 @@ String? _optionDropdownValue;
 
 class _BookingState extends State<Booking> {
   final _formKey = GlobalKey<FormState>();
-  // var doctorList = <String>["Doctor", "Patient"];
-  // var timeList = <String>["1 PM", "9 AM"];
+
   var mode = <String>["face to face", "online"];
   String _selectedDate = '';
   final bookingController = Get.put(BookingController());
   void _submit() {
     if (_formKey.currentState!.validate()) {
       print("press the button");
-      // bookingController.doctorEditingController.text = _doctorDropdownValue!;
-      // bookingController.timeEditingController.text = _timeDropdownValue!;
       bookingController.optionEditingController.text = _optionDropdownValue!;
       bookingController.dateEditingController.text = _selectedDate;
       _formKey.currentState!.save();
@@ -79,7 +76,6 @@ class _BookingState extends State<Booking> {
                   const SizedBox(
                     height: 30,
                   ),
-                  Text('Selected date: $_selectedDate'),
                   SfDateRangePicker(
                     showNavigationArrow: true,
                     enablePastDates: false,
@@ -90,15 +86,12 @@ class _BookingState extends State<Booking> {
                   const SizedBox(
                     height: 20,
                   ),
-                  
-                 
-                 
                   DropDownSelector(
                       title: "meeting option",
-                      defaultValue: "choose your doctor",
+                      defaultValue: "choose online or in person",
                       dropdownList: mode,
                       validator: (value) =>
-                          value == null ? "mode can not be empty" : null,
+                          value == null ? "option can not be empty" : null,
                       selectValue: _optionDropdownValue,
                       onChanged: (String? value) {
                         setState(() {

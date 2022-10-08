@@ -1,10 +1,8 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:team_bash_project/Screens/PatientHomepage/patientHome.dart';
-import 'package:team_bash_project/Screens/landing_page/landing_page.dart';
 import 'package:team_bash_project/Screens/login/model/login_model.dart';
-import 'package:team_bash_project/Screens/login/model/user.dart';
+import 'package:team_bash_project/Screens/patientHomepage/patientHome.dart';
 import 'package:team_bash_project/service/netWorkHandler.dart';
 
 class LoginController extends GetxController {
@@ -27,7 +25,7 @@ class LoginController extends GetxController {
     if (response.statusCode == 200) {
       print(response.body);
       await NetWorkHandler.storeToken(response.body);
-      Get.offAll(() => PatientHome());
+      Get.offAll(() => const PatientHome());
     } else {
       Get.defaultDialog(
         radius: 10.0,

@@ -157,7 +157,7 @@ class SignUpFormState extends State<SignUpFormPage> {
         ),
         
          Visibility(
-          visible: _accountDropdownValue == "Doctor" ? true: false,
+          visible: _accountDropdownValue == "Patient" ? true: false,
            child: FutureBuilder<dynamic>(
             future: signupController.getDoctors(),
              builder: 
