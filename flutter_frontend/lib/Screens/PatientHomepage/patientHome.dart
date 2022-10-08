@@ -39,6 +39,7 @@ class _PatientHomeState extends State<PatientHome> {
                 padding: EdgeInsets.zero,
                 onPressed: () {
                   print("Pressed patient profile pic");
+                  Get.toNamed("/patient/profile");
                 },
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(30),
@@ -97,6 +98,7 @@ class _PatientHomeState extends State<PatientHome> {
               buttonText: "Today's health condition",
               onPressed: () {
                 print("Pressed first button");
+                Get.toNamed("/patient/condition");
               }),
           _button(buttonText: "Book an Appointment",
           onPressed: () => Get.toNamed("/patient/booking"),),

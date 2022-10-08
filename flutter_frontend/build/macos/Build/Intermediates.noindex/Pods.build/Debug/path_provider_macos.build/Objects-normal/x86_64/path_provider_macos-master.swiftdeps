@@ -1,7 +1,7 @@
 version: "Apple Swift version 5.6 (swiftlang-5.6.0.323.62 clang-1316.0.20.8)"
 options: "683d2a9e3e91da9769c02ab0507b35966856697aa6f4b681123ce1807b62d71a"
-build_start_time: [1664778023, 766601085]
-build_end_time: [1664778043, 449347972]
+build_start_time: [1665222593, 857389926]
+build_end_time: [1665222595, 718590021]
 inputs:
   ? "/Users/asher/development/flutter/.pub-cache/hosted/pub.dartlang.org/path_provider_macos-2.0.6/macos/Classes/PathProviderPlugin.swift"
   : [1662051910, 781532287]
