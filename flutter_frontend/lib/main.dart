@@ -33,7 +33,6 @@ class MyApp extends StatelessWidget {
         GetPage(name:"/patient/booking",page:()=> const Booking()),
         GetPage(name:"/patient/profile",page:()=> const PatientProfile()),
         GetPage(name:"/patient/condition",page:()=> const PatientHealthCondition()),
-        
       ],
       initialRoute: '/home',
     );
