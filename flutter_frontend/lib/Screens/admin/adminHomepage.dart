@@ -1,24 +1,21 @@
-import 'dart:async';
-
+import 'package:flutter/src/foundation/key.dart';
+import 'package:flutter/src/widgets/framework.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:team_bash_project/Screens/patientHomepage/controller/patient_homepage_controller.dart';
 
-class PatientHome extends StatefulWidget {
-  const PatientHome({Key? key}) : super(key: key);
-  // final loginController = Get.find<LoginController>();
+class AdminHomepage extends StatefulWidget {
+  const AdminHomepage({Key? key}) : super(key: key);
   static const sampleImageURL =
       "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Lion_d%27Afrique.jpg/1879px-Lion_d%27Afrique.jpg";
 
   @override
-  State<PatientHome> createState() => _PatientHomeState();
+  State<AdminHomepage> createState() => _AdminHomepageState();
 }
 
-class _PatientHomeState extends State<PatientHome> {
-  final patientPageController = Get.put(PatientPageController());
-
+class _AdminHomepageState extends State<AdminHomepage> {
   @override
   Widget build(BuildContext context) {
     Size deviceSize = MediaQuery.of(context).size;
@@ -48,7 +45,7 @@ class _PatientHomeState extends State<PatientHome> {
                     decoration:
                         BoxDecoration(borderRadius: BorderRadius.circular(30)),
                     child: CachedNetworkImage(
-                      imageUrl: PatientHome.sampleImageURL,
+                      imageUrl: AdminHomepage.sampleImageURL,
                       placeholder: (context, url) =>
                           const CircularProgressIndicator(),
                       errorWidget: (context, url, error) =>
@@ -57,25 +54,33 @@ class _PatientHomeState extends State<PatientHome> {
                   ),
                 ),
               ),
-              FutureBuilder<String>(
-                future: patientPageController.getName(),
-                builder:
-                    (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
-                  if (snapshot.hasError) {
-                    return const Text('Error');
-                  } else if (snapshot.hasData) {
-                    return Text(
-                      'Hi, ${snapshot.data}', // loginController.emailEditingController.text,
-                      style: const TextStyle(
-                          fontSize: 25,
-                          fontWeight: FontWeight.w400,
-                          fontFamily: 'OpenSans'),
-                      textAlign: TextAlign.center,
-                    );
-                  } else {
-                    return const Text('Empty data');
-                  }
-                },
+              // FutureBuilder<String>(
+              //   future: patientPageController.getName(),
+              //   builder:
+              //       (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
+              //     if (snapshot.hasError) {
+              //       return const Text('Error');
+              //     } else if (snapshot.hasData) {
+              //       return Text(
+              //         'Hi, ${snapshot.data}', // loginController.emailEditingController.text,
+              //         style: const TextStyle(
+              //             fontSize: 25,
+              //             fontWeight: FontWeight.w400,
+              //             fontFamily: 'OpenSans'),
+              //         textAlign: TextAlign.center,
+              //       );
+              //     } else {
+              //       return const Text('Empty data');
+              //     }
+              //   },
+              // ),
+              const Text(
+                "Hello, Admin!",
+                style: TextStyle(
+                    fontSize: 25,
+                    fontWeight: FontWeight.w400,
+                    fontFamily: 'OpenSans'),
+                textAlign: TextAlign.center,
               ),
               CupertinoButton(
                 padding: EdgeInsets.zero,
@@ -91,21 +96,21 @@ class _PatientHomeState extends State<PatientHome> {
             ],
           ),
           const SizedBox(
-            height: 64,
+            height: 200,
           ),
           _button(
-              buttonText: "Today's health condition",
+              buttonText: "Account Management",
               onPressed: () {
                 print("Pressed first button");
-                Get.toNamed("/patient/condition");
+                // Get.toNamed("/patient/condition");
               }),
-          _button(
-            buttonText: "Book an Appointment",
-            onPressed: () => Get.toNamed("/patient/booking"),
-          ),
-          _button(buttonText: "My Appointment"),
-          _button(buttonText: "My Record"),
-          _button(buttonText: "My Prescription"),
+          // _button(
+          //   buttonText: "Book an Appointment",
+          //   onPressed: () => Get.toNamed("/patient/booking"),
+          // ),
+          // _button(buttonText: "My Appointment"),
+          // _button(buttonText: "My Record"),
+          // _button(buttonText: "My Prescription"),
         ]),
       ),
     );
