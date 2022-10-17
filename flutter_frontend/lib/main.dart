@@ -30,6 +30,7 @@ class MyApp extends StatelessWidget {
       ),
       getPages: [
         GetPage(name: "/home", page: () => const AdminManagePage()),
+        GetPage(name: "/home", page: () => const Welcome()),
         GetPage(name: "/login", page: () => const Login()),
         GetPage(name: "/signup", page: () => const SignUp()),
         GetPage(name: "/landingpage", page: () => const LandingPage()),
@@ -39,6 +40,7 @@ class MyApp extends StatelessWidget {
         GetPage(
             name: "/patient/condition",
             page: () => const PatientHealthCondition()),
+        GetPage(name: "/home", page: () => const AdminHomepage()),
       ],
       initialRoute: '/home',
     );
