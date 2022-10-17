@@ -10,6 +10,8 @@ import 'package:team_bash_project/Screens/patientHomepage/patientHome.dart';
 import 'package:team_bash_project/Screens/signup/signup.dart';
 import 'package:team_bash_project/Screens/welcome/welcome.dart';
 
+import 'Screens/admin/adminManagePage.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -27,7 +29,7 @@ class MyApp extends StatelessWidget {
         platform: TargetPlatform.iOS,
       ),
       getPages: [
-        GetPage(name: "/home", page: () => const AdminHomepage()),
+        GetPage(name: "/home", page: () => const AdminManagePage()),
         GetPage(name: "/login", page: () => const Login()),
         GetPage(name: "/signup", page: () => const SignUp()),
         GetPage(name: "/landingpage", page: () => const LandingPage()),
