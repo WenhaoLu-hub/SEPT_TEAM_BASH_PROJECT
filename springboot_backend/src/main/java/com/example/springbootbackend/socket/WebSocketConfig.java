@@ -1,4 +1,4 @@
-package com.myshop.socket;
+/*package com.myshop.socket;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -13,3 +13,4 @@ public class WebSocketConfig {
         return new ServerEndpointExporter();
     }
 }
+*/
