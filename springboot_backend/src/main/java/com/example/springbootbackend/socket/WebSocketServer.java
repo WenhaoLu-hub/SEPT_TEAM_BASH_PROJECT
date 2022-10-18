@@ -1,4 +1,4 @@
-package com.myshop.socket;
+/*package com.myshop.socket;
 
 
 import org.springframework.stereotype.Component;
@@ -109,4 +109,4 @@ public class WebSocketServer {
     public static CopyOnWriteArraySet<WebSocketServer> getWebSocketSet() {
         return webSocketSet;
     }
-}
+}*/
