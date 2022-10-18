@@ -52,7 +52,14 @@ Collaborating with each other to complete a project via Jira.
 - Then you can test your flutter environment: 
 
   - flutter doctor
- 
+
+
+## How to run project 
+- Flutter 
+
+  - docker run -i -p 8080:5000 -td flutter_docker 
+
+  - This command binds the port 5000 configured in the container to the TCP port 8080, accessible from the browser.
 
 ## Deployment
 
@@ -73,7 +80,18 @@ docker -v
 service docker restart
 ```
 
-
-
 ## Run
 Run the microservices separately.
+
+
+## Contributing 
+
+Kaida Zhang（s3823450） 
+
+Yifan Hu （s3849193）
+
+Haochen Shi（s3843450）
+
+Sifan Gao（s3753605） 
+
+Wenhao Lu（s3810097） 
