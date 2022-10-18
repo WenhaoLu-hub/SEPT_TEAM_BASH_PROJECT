@@ -29,7 +29,6 @@ class MyApp extends StatelessWidget {
         platform: TargetPlatform.iOS,
       ),
       getPages: [
-        GetPage(name: "/home", page: () => const AdminManagePage()),
         GetPage(name: "/home", page: () => const Welcome()),
         GetPage(name: "/login", page: () => const Login()),
         GetPage(name: "/signup", page: () => const SignUp()),
